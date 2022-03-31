@@ -1,4 +1,9 @@
 package CodeV1;
 
-public class Secteur {
+public abstract class Secteur {
+
+    public abstract int getX();
+    public abstract int getY();
+
+
 }

@@ -1,21 +1,23 @@
 package CodeV1;
 
-import java.util.*;
-public class Terre {
+public class Terre extends Secteur{
 
-    /**
-     * Default constructor
-     */
-    public Terre() {
+    private int x;
+    private int y;
+
+    private Object[][] local;
+
+    public Terre(int abs , int ord ) {
+
+        this.x = abs ;
+        this.y = ord ;
     }
 
-
-    public void Attribute1;
-    public void Attribute2;
-
-
-    public void Operation1() {
-        // TODO implement here
+    public int getX() {
+        return this.x;
     }
 
+    public int getY() {
+        return this.y;
+    }
 }

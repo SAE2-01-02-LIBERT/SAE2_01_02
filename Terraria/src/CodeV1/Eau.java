@@ -1,16 +1,27 @@
 package CodeV1;
 
-public class Eau {
+import java.time.Year;
 
+public class Eau extends Secteur {
+    private int x;
+    private int y;
+    private String type ;
 
-    public Eau() {
+    public Eau(int abs , int ord ) {
+        this.type = "X";
+        this.x =abs ;
+        this.y = ord ;
     }
 
-    public void Attribute1;
-
-
-    public void Operation1() {
-        // TODO implement here
+    public String getType() {
+        return this.type ;
     }
 
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
 }
