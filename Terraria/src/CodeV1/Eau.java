@@ -1,6 +1,5 @@
 package CodeV1;
 
-import java.time.Year;
 
 public class Eau extends Secteur {
     private int x;
@@ -23,5 +22,10 @@ public class Eau extends Secteur {
 
     public int getY() {
         return this.y;
+    }
+
+    @Override
+    public String toString() {
+        return "X";
     }
 }

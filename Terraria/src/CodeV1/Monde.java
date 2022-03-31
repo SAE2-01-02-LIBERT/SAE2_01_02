@@ -6,7 +6,8 @@ import java.util.*;
  *
  */
 public class Monde {
-    private ArrayList<ArrayList<Secteur>> secteurs;
+    private Secteur[][] secteurs;
+
 
 
     /** on verra plus tard le plus important c'est de generer le monde
@@ -23,27 +24,29 @@ public class Monde {
      */
 
     public Monde() {
-        this.secteurs=new ArrayList<ArrayList<Secteur>>();
+        this.secteurs=new Secteur[9][9];
 
     }
 
-    /**
-     *
-     */
-    public void Generation_du_monde(){
+    public void Generation_Map(){
+        int eau = 0;
+        for (int i =0 ; i < 9 ;i++){
+            for (int j= 0 ; j < 9 ; j++){
+                int valeur = (int)Math.random();
+                if (valeur==1 || eau == 10){
+                    this.secteurs[i][j]=new Terre(i,j);
+                }
+                else{
+                    this.secteurs[i][j]=new Eau(i,j);
+                    eau += 1;
+                }
+            }
+        }
 
     }
 
-    public String AfficherMonde(){
-        /**
-         * ici on doit faire une partie ou on doit afficher le monde sous
-         * forme de quadrilliage comme dans le code du jeu de la vie en python
-         * premier semestre
-         */
-        return null;
-
+    public void AfficherMonde(){
+       /*Ca vas commencer a étre dure enfaite*/
     }
-
-
 
 }

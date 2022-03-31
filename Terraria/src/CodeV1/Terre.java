@@ -8,9 +8,9 @@ public class Terre extends Secteur{
     private Object[][] local;
 
     public Terre(int abs , int ord ) {
-
         this.x = abs ;
         this.y = ord ;
+        this.local = new Object[1][1];
     }
 
     public int getX() {
@@ -19,5 +19,10 @@ public class Terre extends Secteur{
 
     public int getY() {
         return this.y;
+    }
+
+    @Override
+    public String toString() {
+        return "T";
     }
 }
