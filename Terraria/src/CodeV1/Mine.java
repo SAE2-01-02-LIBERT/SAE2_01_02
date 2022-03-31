@@ -1,5 +1,4 @@
 package CodeV1;
-import java.util.*;
 
 
 public class Mine {
@@ -10,8 +9,9 @@ public class Mine {
     private int max=50;
     private int stock;
 
-    public Mine(String type) {
-        super("Mine", "M" + type.charAt(0));
+    public Mine(int numero, String type) {
+        /*super("Mine", "M" + type.charAt(0)); .... ok */
+        this.numero = numero;
         this.type = type;
         this.capacite = (int) (max + Math.random() * ( max - min ));
     }
