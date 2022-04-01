@@ -5,7 +5,7 @@ import java.util.*;
 /**
  *
  */
-public class Robot {
+public class Robot extends Local{
     private final String type;
     private int soute;
     private final int capacite;
@@ -14,13 +14,15 @@ public class Robot {
     private int numero;
 
     public Robot(String type, int[] coord, int numero){
-        this.type =type;
+        this.type = type;
         this.numero = numero;
         this.minerai = 0;
         this.capacite =0;
+        this.coord=new int[1];
     }
 
-    private String info(){
+    @Override
+    public String getinfo(){
         return "" +
                 "R" + this.numero + "\n" +
             /** sa ligne et sa colonne**/

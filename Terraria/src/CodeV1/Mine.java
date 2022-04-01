@@ -1,7 +1,7 @@
 package CodeV1;
 
 
-public class Mine {
+public class Mine extends Local {
     private final int numero; /*les finals c''est a degager*/
     private final String type; /*les finals c''est a degager*/
     private int capacite;
@@ -16,8 +16,8 @@ public class Mine {
         this.capacite = (int) (max + Math.random() * ( max - min ));
     }
 
-
-    public String info(){
+    @Override
+    public String getinfo(){
         return "" +
                 "M " + this.numero + "\n" +
                 /** sa ligne et sa colonne**/

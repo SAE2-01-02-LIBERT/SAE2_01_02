@@ -3,7 +3,7 @@ package CodeV1;
 import java.util.*;
 
 
-public class Entrepot {
+public class Entrepot extends Local{
     private int positionX;
     private int positionY;
     private int stock;
@@ -26,7 +26,8 @@ public class Entrepot {
         this.positionY=PY;
         this.positionX=PX;
     }
-    private String info(){
+    @Override
+    public String getinfo(){
         return "" +
                 "R" + this.numero + "\n" +
                 /** sa ligne et sa colonne**/
