@@ -6,9 +6,9 @@
             - FRANCK Marius  | (KussYT)
             - DU BOIS Eddy   | (Devil)
 
-diagram UML join au docier nome Terraria.mdj
+diagramme UML joint au dossier nommé Terraria.mdj
 
-Lors de ce projet nous allons develloper un jeu robot mineur :
+Lors de ce projet, nous allons developper un jeu robot mineur :
 
 
 Sujet :
