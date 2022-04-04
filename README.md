@@ -1,6 +1,6 @@
 # SAE2_01_02
     Project Terraria Groupe B
-    Groupe :  {Nom Prenom}   |{speudo}  
+    Groupe :  {Nom Prenom}   | {pseudo}  
             - LIBERT Quentin | (Hychion)
             - KOCHBATI Haron | (Haronman)
             - FRANCK Marius  | (KussYT)
