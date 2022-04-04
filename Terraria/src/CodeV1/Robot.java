@@ -2,23 +2,22 @@ package CodeV1;
 
 import java.util.*;
 
-/**
- *
- */
 public class Robot extends Local{
-    private final String type;
+
+    private static String type;
     private int soute;
-    private final int capacite;
-    private int minerai;
+    private static int capacite;
     private int[] coord;
     private int numero;
 
-    public Robot(String type, int[] coord, int numero){
+    public Robot(int abs,int ord, String type, int num){
+        super(abs,ord);
         this.type = type;
-        this.numero = numero;
-        this.minerai = 0;
+        this.numero = num;
         this.capacite =0;
         this.coord=new int[1];
+        this.coord[0]=abs;
+        this.coord[1]=ord;
     }
 
     @Override

@@ -8,12 +8,18 @@ public class Mine extends Local {
     private int min=0;
     private int max=50;
     private int stock;
+    private int[] coord;
 
-    public Mine(int numero, String type) {
+    public Mine(int abs,int ord , int numero, String type) {
+        super(abs,ord);
         /*super("Mine", "M" + type.charAt(0)); .... ok */
         this.numero = numero;
         this.type = type;
         this.capacite = (int) (max + Math.random() * ( max - min ));
+
+        this.coord=new int[1];
+        this.coord[0]=abs;
+        this.coord[0]=ord;
     }
 
     @Override
