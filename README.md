@@ -4,7 +4,7 @@
             - LIBERT Quentin | (Hychion)
             - KOCHBATI Haron | (Haronman)
             - FRANCK Marius  | (KussYT)
-            - DU BOIS Eddy   | (Devil)
+            - DU BOIS Eddy   | (ImAVanessaMain)
 
 diagramme UML joint au dossier nommé Terraria.mdj
 
