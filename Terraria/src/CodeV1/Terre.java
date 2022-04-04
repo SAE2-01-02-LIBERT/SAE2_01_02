@@ -18,8 +18,9 @@ public class Terre extends Secteur{
     public int getY() {
         return this.y;
     }
+
     @Override
     public String toString() {
-        return "T";
+        return this.locals.toString();
     }
 }
