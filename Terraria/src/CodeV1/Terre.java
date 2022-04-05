@@ -2,12 +2,10 @@ package CodeV1;
 
 public class Terre extends Secteur{
 
-    private int x;
-    private int y;
-
     private Local[][] locals;
 
     public Terre(int abs , int ord ) {
+        super(abs,ord);
         this.x = abs ;
         this.y = ord ;
         this.locals = new Local[1][1];
@@ -18,8 +16,14 @@ public class Terre extends Secteur{
     public int getY() {
         return this.y;
     }
+    public void ajouterR(Robot r){
+
+    }
+
     @Override
     public String toString() {
-        return "T";
+        return this.locals.toString();
     }
+
+
 }

@@ -46,7 +46,24 @@ public class Monde {
     }
 
     public void AfficherMonde(){
-       /*Ca vas commencer a étre dure enfaite*/
+       String[][]mapping  = new String[9][9];
+       for (int i = 0 ; i<9 ;i++){
+           for (int j =0;j<9;j++){
+                mapping[i][j] = this.secteurs[i][j].toString();
+           }
+       }
+        System.out.println(
+                affMatrice(mapping));
+    }
+    public String affMatrice(String[][] grille){
+        StringBuilder retour =new StringBuilder("");
+        for (String[] strings :grille){
+            retour.append("\n");
+            for (String string :strings){
+                retour.append(strings).append(" ");
+            }
+        }
+        return retour.toString();
     }
 
 }

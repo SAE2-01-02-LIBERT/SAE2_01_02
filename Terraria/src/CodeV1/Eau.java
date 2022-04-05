@@ -6,14 +6,19 @@ public class Eau extends Secteur {
     private String type ;
     private String[][] pos ;
 
+    public Eau(){
+        this.pos=new String[1][1];
+    }
+
     public Eau(int abs , int ord ) {
         this.type = "X";
         this.x =abs ;
         this.y = ord ;
-        this.pos = new String[1][1] ;
+        this.pos[0][0] = "X";
+        this.pos[0][1] = "X";
+        this.pos[1][0] = "X";
+        this.pos[1][1] = "X";
     }
-
-
 
     public String getType() {
         return this.type ;
@@ -29,6 +34,12 @@ public class Eau extends Secteur {
 
     @Override
     public String toString() {
-        return "X";
+        String affi = null;
+        for (int i=0;i< pos.length; i++){
+            for (int j=0;j<pos.length;i++){
+                affi += pos[i][j] + "|" ;
+            }
+        }
+        return affi;
     }
 }

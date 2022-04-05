@@ -1,14 +1,14 @@
 # SAE2_01_02
     Project Terraria Groupe B
-    Groupe :  {Nom Prenom}   |{speudo}  
+    Groupe :  {Nom Prenom}   | {pseudo}  
             - LIBERT Quentin | (Hychion)
             - KOCHBATI Haron | (Haronman)
             - FRANCK Marius  | (KussYT)
-            - DU BOIS Eddy   | (Devil)
+            - DU BOIS Eddy   | (ImAVanessaMain)
 
-diagram UML join au docier nome Terraria.mdj
+diagramme UML joint au dossier nommé Terraria.mdj
 
-Lors de ce projet nous allons develloper un jeu robot mineur :
+Lors de ce projet, nous allons developper un jeu robot mineur :
 
 
 Sujet :

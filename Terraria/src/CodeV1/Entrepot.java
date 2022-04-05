@@ -4,28 +4,28 @@ import java.util.*;
 
 
 public class Entrepot extends Local{
-    private int positionX;
-    private int positionY;
+    private int[] coordE;
     private int stock;
     private int numero;
     private String type;
-
     /**
      * Default constructor
      */
-    public Entrepot(String t ,int n ) {
+    public Entrepot(int abs ,int ord,String t ,int n ) {
+        super(abs,ord);
         /*super("Entrepot", "E", true); a quoi ca sert pour après?*/
         this.stock =0;
         this.type = t;
-        this.positionX = 0;
-        this.positionY = 0;
+        this.coordE=new int[1];
+        this.coordE[0] = abs;
+        this.coordE[1] = ord;
         this.numero = n;
     }
 
-    public Entrepot(int PX,int PY){
-        this.positionY=PY;
-        this.positionX=PX;
+    public Entrepot(int abs, int ord) {
+        super(abs, ord);
     }
+
     @Override
     public String getinfo(){
         return "" +
