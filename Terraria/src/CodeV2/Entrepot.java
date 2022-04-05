@@ -7,21 +7,27 @@ public class Entrepot {
     private int x;
     private int y;
 
-    private int get.monde(){
-        return idmonde;
-    }
-    private int get.idEntrepot(){
-        return idEntrepot;
-    }
-    private int get.x(){
-        return x;
-    }
-    private int get.y(){
-        return y;
-    }
-    private int get.stock(){
+    public int getStock() {
         return stock;
     }
-    private boolean depot{
+
+    public boolean isOr() {
+        return or;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getIdEntrepot() {
+        return idEntrepot;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
