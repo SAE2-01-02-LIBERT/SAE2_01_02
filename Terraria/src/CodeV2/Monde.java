@@ -1,4 +1,5 @@
 package CodeV2;
+import java.util.Random;
 
 public class Monde {
     private int idMonde;
@@ -9,16 +10,22 @@ public class Monde {
         terrain=new Object[10][10][2];
     }
 
-    public AfficherMonde{
+    public void AfficherMonde(){
 
     }
-    public get.Matrice{
-
+    public Objet[][][] get.terrain(){
+        return terrain;
     }
-    public get.Monde{
-
+    public int get.Monde(){
+        return idMonde;
     }
-    public get.Elemement{
-
+    public boolean get.element(){
+        return element;
+    }
+    public void Generation_Map{
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+            }
+        }
     }
 }
