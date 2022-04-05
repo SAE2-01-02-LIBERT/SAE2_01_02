@@ -103,6 +103,37 @@ public class Monde {
                 }
             }
         }
+        System.out.println("-------------------------------------------------");
+        for (int i=0;i<terrain.length;i++){
+            for (int k = 0; k < terrain[0][0].length; k++) {
+                for (int j = 0; j < terrain.length[0]; j++) {
+                    if(terrain[i][j][k] instanceof Eau){
+                        Eau e = Eau.class.cast(terrain[i][j][k]);
+                        if(e.getEau()==true){
+                            System.out.print("X X");
+                        }
+                        else{
+                            System.out.print("   ");
+                        }
+                    }
+                    else if(terrain[i][j][k] instanceof Robot){
+                        Robot r = Robot.class.cast(terrain[i][j][k]);
+                        System.out.print("R "+r.getidRobot());
+                    }
+                    else if(terrain[i][j][k] instanceof Mine){
+                        Mine m = Mine.class.cast(terrain[i][j][k]);
+                        System.out.print("M "+m.getidMine());
+                    }
+                    else if(terrain[i][j][k] instanceof Entrepot){
+                        Entrepot e = Entrepot.class.cast(terrain[i][j][k]);
+                        System.out.print("E "+e.getidEntrepot());
+                    }
 
+
+
+                }
+            }
+            System.out.println("-------------------------------------------------");
+        }
     }
 }
