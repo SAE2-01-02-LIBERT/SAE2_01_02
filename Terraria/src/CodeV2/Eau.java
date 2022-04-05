@@ -6,10 +6,26 @@ public class Eau {
     private boolean eau;
     private Monde monde;
 
-    public Eau(boolean eau, int x,int y, Monde){
+    public Eau(boolean eau, int x,int y, Monde m){
         this.eau=eau;
         this.x=x;
         this.y=y;
-        this.monde=Monde;
+        this.monde=m;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Monde getMonde() {
+        return monde;
+    }
+
+    public boolean getEau() {
+        return eau;
     }
 }
