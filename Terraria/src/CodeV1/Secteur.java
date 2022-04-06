@@ -4,6 +4,11 @@ public abstract class Secteur {
     protected int x;
     protected int y;
 
+    public Secteur() {
+        x = 0;
+        y = 0;
+    }
+
     public Secteur(int abs, int ord) {
         this.x=abs;
         this.y=ord;

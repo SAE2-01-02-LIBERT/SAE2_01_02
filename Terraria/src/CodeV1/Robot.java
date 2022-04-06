@@ -43,17 +43,21 @@ public class Robot extends Local{
      * Et que le robot ne sorte pas de la map sa serait problemeatique.
      */
     public void nord() {
-        // TODO implement here
+        this.coord[1] -= 1;
+        // non fini
     }
     public void sud() {
-        // TODO implement here
+        this.coord[1] += 1;
+        // non fini
     }
     public void est() {
-        // TODO implement here
+        this.coord[0] += 1;
+        // non fini
     }
 
     public void ouest() {
-        // TODO implement here
+        this.coord[0] -= 1;
+        // non fini
     }
 
     public void deposer() {
