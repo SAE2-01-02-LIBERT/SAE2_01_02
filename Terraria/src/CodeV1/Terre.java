@@ -2,7 +2,7 @@ package CodeV1;
 
 public class Terre extends Secteur{
 
-    private Local[][] locals;
+    protected Local[][] locals;
 
     public Terre(int abs , int ord ) {
         super(abs,ord);
@@ -16,9 +16,7 @@ public class Terre extends Secteur{
     public int getY() {
         return this.y;
     }
-    public void ajouterR(Robot r){
-
-    }
+public void ajouter(Robot r){}
 
     @Override
     public String toString() {

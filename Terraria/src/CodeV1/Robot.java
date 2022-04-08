@@ -27,21 +27,13 @@ public class Robot extends Local{
             /** sa ligne et sa colonne**/
             "\t"+ this.type + this.soute + "/" + this.capacite;
     }
-
-    public void recolter() {
-        while(this.soute<=this.capacite){
-            this.soute+=1;
-            /** ici il faudra decrepenter le stock de la mine qui est miner
-             * */
-        }
-    }
-
     /**
      *partie des deplacements
      * Attention on doit faire gaffe a ce que deux robot ne soit pas dans
      * le meme secteur
      * Et que le robot ne sorte pas de la map sa serait problemeatique.
      */
+
     public void nord() {
         this.coord[1] -= 1;
         // non fini
