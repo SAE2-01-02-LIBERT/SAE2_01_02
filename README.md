@@ -6,7 +6,8 @@
             - FRANCK Marius  | (KussYT)
             - DU BOIS Eddy   | (ImAVanessaMain)
 
-diagramme UML joint au dossier nommé Terraria.mdj
+diagramme UML :
+![Alt text](SAE2_01_02/Diagramme/Diagram V1_.PNG?raw=true "Title")
 
 Lors de ce projet, nous allons developper un jeu robot mineur :
 
