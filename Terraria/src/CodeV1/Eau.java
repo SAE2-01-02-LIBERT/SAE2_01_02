@@ -1,10 +1,20 @@
 package CodeV1;
 
-import java.util.*;
-
 public class Eau extends Secteur {
-    private String Type;
+    private String type;
 
     public Eau() {
+        this.type = "Eau";
+    }
+
+
+    @Override
+    public int[] getposition() {
+        return new int[0];
+    }
+
+    @Override
+    public String gettype() {
+        return this.type;
     }
 }
