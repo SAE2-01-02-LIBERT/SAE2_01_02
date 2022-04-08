@@ -1,16 +1,17 @@
 package CodeV1;
 
+import java.util.*;
+
 public class Game {
 
-    public Monde grille;
-
     public Game() {
-        this.grille = new Monde();
     }
 
     public void start() {
-        this.grille.Generation_Map();
-        this.grille.AfficherMonde();
+        // TODO implement here
     }
 
+    public void end() {
+        // TODO implement here
+    }
 }

@@ -1,22 +1,19 @@
 package CodeV1;
 
+import java.util.*;
+
 public abstract class Secteur {
-    protected int x;
-    protected int y;
+    private int[] coodonee;
 
     public Secteur() {
-        x = 0;
-        y = 0;
     }
 
-    public Secteur(int abs, int ord) {
-        this.x=abs;
-        this.y=ord;
+    public void getposition() {
+        // TODO implement here
     }
 
-    public abstract int getX();
-    public abstract int getY();
-
-    public abstract String toString();
+    public void getType() {
+        // TODO implement here
+    }
 
 }
