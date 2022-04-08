@@ -18,7 +18,7 @@ public class Entrepot extends Batiment {
     public String getInfo() {
         return "E " + this.numero + "\n\t" + this.type + this.stock + "/" ;
     }
-
+    @Override
     public int getStock() {
         return this.stock;
     }
