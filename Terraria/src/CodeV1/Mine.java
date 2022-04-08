@@ -1,23 +1,56 @@
 package CodeV1;
 
-import java.util.*;
+import java.util.concurrent.ExecutionException;
 
-public class Mine extends Batiment {
+public class Terre extends Secteur{
     private String type;
-    private int stock;
+    private Localisable[] locals;
 
-    public Mine() {
+    public Terre() {
+        this.type = "Terre";
+        this.locals = new Localisable[2];
     }
 
-    public void getstock() {
-        // TODO implement here
+    public void ajoutLocalR(Robot r)throws ExecutionException{
+        try {
+            if (this.locals[1] == null) {
+                r = new Robot(r, getposition());
+                this.locals[1] = r;
+            }
+        }
+        finally {
+            System.out.println("Deplacement impossible, un robot est deja dans le secteur !! en  / "+ this.getposition() );
+        }
     }
 
-    public void info() {
-        // TODO implement here
+    public void ajoutLocalM(Mine m) throws ExecutionException {
+        try {
+            if (this.locals[0] == null) {
+                this.locals[0] = m;
+            }
+        } finally {
+            System.out.println("Implementation Imposible de la Mine  un element du meme type deja present / " + this.getposition());
+        }
     }
 
-    public void getStock() {
-        // TODO implement here
+    public void ajoutLocalE(Entrepot emp) throws ExecutionException{
+        try {
+            if (this.locals[0] == null) {
+                this.locals[0] = emp;
+            }
+        }
+        finally{
+            System.out.println("Implementation Imposible de l'entrepot  un element du meme type deja present/ " + this.getposition());
+            }
+        }
+
+    @Override
+    public int[] getposition() {
+        return this.coodonee;
+    }
+
+    @Override
+    public String gettype(){
+        return this.type;
     }
 }
