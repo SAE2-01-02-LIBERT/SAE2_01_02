@@ -7,7 +7,7 @@
             - DU BOIS Eddy   | (ImAVanessaMain)
 
 diagramme UML :
-![Alt text](SAE2_01_02/Diagramme/Diagram V1_.PNG?raw=true "Title")
+<img src="Diagramme/Diagram V1_.PNG"/>
 
 Lors de ce projet, nous allons developper un jeu robot mineur :
 
