@@ -1,7 +1,5 @@
 package CodeV1;
 
-import java.util.*;
-
 public class Robot extends Batiment {
     private static String type;
     private int soute;
