@@ -46,7 +46,7 @@ public class Terre extends Secteur{
 
     @Override
     public int[] getposition() {
-        return this.coodonee;
+        return this.coodonnee;
     }
 
     @Override
