@@ -12,6 +12,10 @@ public class Mine extends Batiment {
         this.numero=num;
         this.capacite=(int)(50+Math.random() * (double)(50-0));
     }
+    @Override
+    public String afficher(){
+        return " M | "+ this.numero;
+    }
 
     @Override
     public String getInfo() {

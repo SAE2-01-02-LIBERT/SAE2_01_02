@@ -7,10 +7,10 @@ public class Monde {
     private Entrepot[] entrepotList;
 
     public Monde() {
-        this.entrepotList=new Entrepot[2];
-        this.mineList = new Mine[2];
-        this.roboList=new Robot[2];
-        this.monde = new Secteur[10][10];
+        this.entrepotList=new Entrepot[1];
+        this.mineList = new Mine[1];
+        this.roboList=new Robot[1];
+        this.monde = new Secteur[9][9];
     }
 
 
@@ -23,10 +23,10 @@ public class Monde {
                 coor[1]=j;
                 int valeur = (int)Math.random();
                 if (valeur == 1 || eau == 10){
-                    this.monde[i][j]= new Terre();
+                    this.monde[i][j] = new Terre();
                 }
                 else{
-                    this.monde[i][j]=new Eau();
+                    this.monde[i][j] = new Eau();
                     eau += 1;
                 }
             }
@@ -34,10 +34,22 @@ public class Monde {
 
     }
 
+    public StringBuilder affichermonde() {
+        StringBuilder mondeAfficher = new StringBuilder();
+        mondeAfficher.append("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "+"\n");
+        for (int i = 0 ; i < 9 ;i++ ) {
+            mondeAfficher.append("|");
+                for (int j = 0; j < 9; j++) {
+                    for (int k = 0 ; k < 1 ;k++){
+                        mondeAfficher.append(monde[i][j].afficher(k));
+                    }
+                }
+            mondeAfficher.append("|" + "\n");
+            }
+        mondeAfficher.append("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "+"\n");
+        return mondeAfficher;
+        }
 
-    public void affichermonde() {
-        // TODO implement here
-    }
 
     public void afficherObject() {
         // TODO implement here

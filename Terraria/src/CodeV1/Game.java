@@ -3,15 +3,18 @@ package CodeV1;
 import java.util.*;
 
 public class Game {
+    private Monde partie;
 
     public Game() {
+        partie = new Monde();
     }
 
     public void start() {
-        // TODO implement here
+        partie.creerMonde();
+        partie.affichermonde();
     }
 
     public void end() {
-        // TODO implement here
+        partie=null;
     }
 }

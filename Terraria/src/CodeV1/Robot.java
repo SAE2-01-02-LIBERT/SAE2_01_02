@@ -12,15 +12,15 @@ public class Robot extends Batiment {
         this.numero = num;
         this.soute = 0;
         this.capacitee = 0;
-        this.position[0]=coord[0];
-        this.position[1]=coord[1];
+        this.position[0] = coord[0];
+        this.position[1] = coord[1];
     }
     public Robot(Robot r,int[]Npos){
-        this.soute=r.soute;
-        this.position=Npos;
-        this.capacitee=r.capacitee;
-        this.numero=r.numero;
-        this.type=r.type;
+        this.soute = r.soute;
+        this.position = Npos;
+        this.capacitee = r.capacitee;
+        this.numero = r.numero;
+        this.type = r.type;
     }
 
     public void recolter() {
@@ -36,6 +36,12 @@ public class Robot extends Batiment {
      * Attention on doit faire gaffe a ce que deux robot ne soit pas dans
      * le meme secteur
      * Et que le robot ne sorte pas de la map sa serait problemeatique.
+     *
+     * Utilisation du constrcuteur par recopie en repassant de monde a secteur... c'est pour ca que Monde a une
+     * liste de Robot ,Mine et Entrepot.
+     *
+     * Bon courrage  =) !
+     *
      */
 
     public void nord() {
@@ -54,6 +60,10 @@ public class Robot extends Batiment {
         // TODO implement here
     }
 
+    @Override
+    public String afficher(){
+        return " R | "+ this.numero;
+    }
 
     @Override
     public String getInfo() {

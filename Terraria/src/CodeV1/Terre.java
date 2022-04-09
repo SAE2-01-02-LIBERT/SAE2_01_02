@@ -53,4 +53,22 @@ public class Terre extends Secteur{
     public String gettype(){
         return this.type;
     }
+    @Override
+    public StringBuilder afficher(int k) {
+        StringBuilder terrain = new StringBuilder();
+
+        if(locals[k].equals(Robot.class)){
+            terrain.append(locals[0].afficher());
+        }
+        if (locals[k].equals(Mine.class)||locals[k].equals(Entrepot.class)){ // probleme le monde vas afficher  ligne par ligne
+            terrain.append(locals[0].afficher());                     // mais un [][][] vas etre plus chiant a gèrais
+        }
+
+        else{
+            terrain.append("  |  ");
+        }
+        return terrain;
+
+
+    }
 }
