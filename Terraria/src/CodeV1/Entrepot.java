@@ -27,4 +27,9 @@ public class Entrepot extends Batiment {
     public int getStock() {
         return this.stock;
     }
+
+    @Override
+    public String getType(){
+        return this.type;
+    }
 }

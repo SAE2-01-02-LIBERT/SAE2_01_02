@@ -27,4 +27,9 @@ public class Mine extends Batiment {
         return this.stock;
     }
 
+    @Override
+    public String getType(){
+        return this.type;
+    }
+
 }

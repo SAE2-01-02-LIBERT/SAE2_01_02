@@ -1,5 +1,5 @@
 package CodeV1;
-
+import java.util.Random;
 public class Monde {
     private Secteur[][] monde;
     private Robot[] roboList;
@@ -16,13 +16,12 @@ public class Monde {
 
     public void creerMonde(){
         int eau = 0;
-        int[] coor = new int[1];
+
         for (int i = 0 ; i < 9 ;i++){
-            coor[0]=i;
             for (int j = 0 ; j < 9 ; j++){
-                coor[1]=j;
-                int valeur = (int)Math.random();
-                if (valeur == 1 || eau == 10){
+                Random valeur = new Random();
+                int x = valeur.nextInt(2); // faire en sorte que l'apparisiotn d'eau soit plus rare!
+                if (x == 0 || eau == 10){
                     this.monde[i][j] = new Terre();
                 }
                 else{
@@ -34,22 +33,23 @@ public class Monde {
 
     }
 
-    public StringBuilder affichermonde() {
+    public void affichermonde() {
         StringBuilder mondeAfficher = new StringBuilder();
-        mondeAfficher.append("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "+"\n");
-        for (int i = 0 ; i < 9 ;i++ ) {
-            mondeAfficher.append("|");
-                for (int j = 0; j < 9; j++) {
-                    for (int k = 0 ; k < 1 ;k++){
-                        mondeAfficher.append(monde[i][j].afficher(k));
-                    }
+        mondeAfficher.append(" --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- " + "\n");
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 2; j++) {
+                mondeAfficher.append("|");
+                for (int k=0 ; k<9 ; k++){
+                    mondeAfficher.append(monde[i][k].afficher(j)+"|");
                 }
-            mondeAfficher.append("|" + "\n");
+                mondeAfficher.append("\n");
+                mondeAfficher.append("  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  " + "\n");
             }
-        mondeAfficher.append("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "+"\n");
-        return mondeAfficher;
         }
+        mondeAfficher.append(" --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- " + "\n");
+        System.out.println(mondeAfficher);
 
+    }
 
     public void afficherObject() {
         // TODO implement here

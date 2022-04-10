@@ -9,6 +9,8 @@ public class Terre extends Secteur{
     public Terre() {
         this.type = "Terre";
         this.locals = new Localisable[2];
+        this.locals[0] = null;
+        this.locals[1] = null;
     }
 
     public void ajoutLocalR(Robot r)throws ExecutionException{
@@ -57,16 +59,20 @@ public class Terre extends Secteur{
     public StringBuilder afficher(int k) {
         StringBuilder terrain = new StringBuilder();
 
-        if(locals[k].equals(Robot.class)){
-            terrain.append(locals[0].afficher());
+        /*if(locals[k].getType() == "R"){
+            terrain.append(locals[k].afficher());
         }
-        if (locals[k].equals(Mine.class)||locals[k].equals(Entrepot.class)){ // probleme le monde vas afficher  ligne par ligne
-            terrain.append(locals[0].afficher());                     // mais un [][][] vas etre plus chiant a gèrais
+        if (locals[k].getType() == "M"){ // probleme le monde vas afficher  ligne par ligne
+            terrain.append(locals[k].afficher());                     // mais un [][][] vas etre plus chiant a gèrais
         }
-
+        if (locals[k].getType() == "E"){ // probleme le monde vas afficher  ligne par ligne
+            terrain.append(locals[k].afficher());                     // mais un [][][] vas etre plus chiant a gèrais
+        }
         else{
-            terrain.append("  |  ");
-        }
+
+         */
+            terrain.append("   |   ");
+
         return terrain;
 
 
