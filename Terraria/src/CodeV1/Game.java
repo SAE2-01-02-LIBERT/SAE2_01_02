@@ -15,8 +15,12 @@ public class Game {
         partie.affichermonde();
         partie.generationEntrepot();
         partie.generationRobot();
+        partie.generationMine();
         partie.ajoutElement();
         partie.affichermonde();
+        partie.ajoutMine();
+        partie.affichermonde();
+
         this.end();
     }
 
