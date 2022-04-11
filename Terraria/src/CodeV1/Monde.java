@@ -10,7 +10,7 @@ public class Monde {
 
     public Monde() {
         this.entrepotList=new Entrepot[2];
-        this.mineList = new Mine[2];
+        this.mineList = new Mine[4];
         this.roboList=new Robot[2];
         this.monde = new Secteur[9][9];
     }
@@ -45,17 +45,28 @@ public class Monde {
     }
 
     public void generationRobot(){
-        Robot R1 = new Robot("Nikel",1);
+        Robot R1 = new Robot("Nickel",1);
         Robot R2 = new Robot("Or",2);
         roboList[0] = R1;
         roboList[1] = R2;
     }
 
     public void generationEntrepot(){
-        Entrepot E1 = new Entrepot("Nikel",1);
+        Entrepot E1 = new Entrepot("Nickel",1);
         Entrepot E2 = new Entrepot("Or",2);
         entrepotList[0] = E1;
         entrepotList[1] = E2;
+    }
+
+    public void generationMine() {
+        Mine M1 = new Mine("Nickel",1);
+        Mine M2 = new Mine("Nickel",2);
+        Mine M3 = new Mine("Or",3);
+        Mine M4 = new Mine("Or",4);
+        mineList[0] = M1;
+        mineList[1] = M2;
+        mineList[2] = M3;
+        mineList[3] = M4;
     }
 
     public void ajoutElement () throws ExecutionException {
@@ -81,22 +92,22 @@ public class Monde {
     }
 
    public void ajoutMine () throws ExecutionException {
+       for (int k = 0 ; k<mineList.length; k++) {
 
+           Random x = new Random();
+           Random y = new Random();
+           int i = x.nextInt(10);
+           int j = y.nextInt(10);
+           while (monde[i][j].gettype() == "Eau" || monde[i][j].gettype() == "Mine" || monde[i][j].gettype() == "Entrepot") {
+               i = x.nextInt(10);
+               j = y.nextInt(10);
+           }
+           int[] pos=new int[2];
+           pos[0]=i; pos[1]=j;
 
-        Random x = new Random();
-        Random y = new Random();
-        int i = x.nextInt(10);
-        int j = y.nextInt(10);
-        while (monde[i][j].gettype()=="Eau"||monde[i][j].gettype()=="Robot"||monde[i][j].gettype()=="Mine") {
-            i = x.nextInt(10);
-            j = y.nextInt(10);
-        }
-        monde[i][j].ajoutLocalM(mine);
-        for (int k = 0;k<entrepotList.length;k++){
-            if(mineList[k]==null) {
-                this.mineList[k] = mine;
-            }
-        }
+           mineList[k]=new Mine(mineList[k],pos);
+           monde[i][j].ajoutLocalM(mineList[k]);
+       }
     }
 
     public void affichermonde() {
