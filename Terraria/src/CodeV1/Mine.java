@@ -14,7 +14,7 @@ public class Mine extends Batiment {
     }
     @Override
     public String afficher(){
-        return " M | "+ this.numero;
+        return " M | "+ this.numero+" ";
     }
 
     @Override

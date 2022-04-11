@@ -2,19 +2,24 @@ package CodeV1;
 
 public class Robot extends Batiment {
     private static String type;
+    private static String typeMine; // Or ou nickel
+
     private int soute;
     private int capacitee;
     private int numero;
     private int[] position;
 
-    public Robot(String type, int[] coord, int num) {
-        this.type = type;
+    public Robot(String typeMine, int num) {
+        this.type = "Robot";
+        this.typeMine = typeMine;
         this.numero = num;
         this.soute = 0;
         this.capacitee = 0;
-        this.position[0] = coord[0];
-        this.position[1] = coord[1];
+        this.position=new int[2];
+        this.position[0] = 0; // par default
+        this.position[1] = 0; // par default
     }
+
     public Robot(Robot r,int[]Npos){
         this.soute = r.soute;
         this.position = Npos;
@@ -62,7 +67,7 @@ public class Robot extends Batiment {
 
     @Override
     public String afficher(){
-        return " R | "+ this.numero;
+        return " R | "+ this.numero +" ";
     }
 
     @Override

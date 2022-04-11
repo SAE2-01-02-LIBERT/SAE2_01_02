@@ -9,9 +9,9 @@ public class Monde {
     private Entrepot[] entrepotList;
 
     public Monde() {
-        this.entrepotList=new Entrepot[1];
-        this.mineList = new Mine[1];
-        this.roboList=new Robot[1];
+        this.entrepotList=new Entrepot[2];
+        this.mineList = new Mine[2];
+        this.roboList=new Robot[2];
         this.monde = new Secteur[9][9];
     }
 
@@ -44,27 +44,45 @@ public class Monde {
         }
     }
 
-    public void ajoutElement (Entrepot e, Robot R) throws ExecutionException {
-        Random x = new Random();
-        Random y = new Random();
-        int i = x.nextInt(10);
-        int j = y.nextInt(10);
-        while (monde[i][j].gettype()=="Eau") {
-            i = x.nextInt(10);
-            j = y.nextInt(10);
-        }
-        monde[i][j].ajoutLocalE(e);
-        monde[i][j].ajoutLocalR(R);
+    public void generationRobot(){
+        Robot R1 = new Robot("Nikel",1);
+        Robot R2 = new Robot("Or",2);
+        roboList[0] = R1;
+        roboList[1] = R2;
+    }
 
-        for (int k = 0;k<entrepotList.length;k++){
-            if(entrepotList[k]==null){
-                this.entrepotList[k]=e;
-                this.roboList[k]=R;
+    public void generationEntrepot(){
+        Entrepot E1 = new Entrepot("Nikel",1);
+        Entrepot E2 = new Entrepot("Or",2);
+        entrepotList[0] = E1;
+        entrepotList[1] = E2;
+    }
+
+    public void ajoutElement () throws ExecutionException {
+        for (int k = 0 ; k<entrepotList.length; k++){
+
+            Random x = new Random();
+            Random y = new Random();
+            int i = x.nextInt(9);
+            int j = y.nextInt(9);
+
+            if (monde[i][j].gettype() == " Eau") {
+                i = x.nextInt(9);
+                j = y.nextInt(9);
             }
+            int[] pos=new int[2];
+               pos[0]=i; pos[1]=j;
+
+            roboList[k]=new Robot(roboList[k],pos);
+            entrepotList[k]= new Entrepot(entrepotList[k],pos);
+            monde[i][j].ajoutLocalE(entrepotList[k]);
+            monde[i][j].ajoutLocalR(roboList[k]);
         }
     }
 
-    public void ajoutMine (Mine mine) throws ExecutionException {
+   public void ajoutMine () throws ExecutionException {
+
+
         Random x = new Random();
         Random y = new Random();
         int i = x.nextInt(10);
@@ -91,16 +109,17 @@ public class Monde {
                     mondeAfficher.append(monde[i][k].afficher(j) + "||");
                 }
                 mondeAfficher.append("\n");
-                if ( Math.floorMod((j),2) == 0  ) {
+                if (Math.floorMod((j), 2) == 0) {
                     mondeAfficher.append("   -   -    -   -    -   -    -   -    -   -    -   -    -   -    -   -    -   -   " + "\n");
                 }
-                else{
+                else {
                     mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
                 }
             }
         }
+
+
+
         System.out.println(mondeAfficher);
-
-
     }
 }

@@ -1,4 +1,4 @@
-package CodeV2;
+/*package CodeV2;
 
 public class Robot {
     private boolean or;
@@ -32,4 +32,4 @@ public class Robot {
         return stock;
     }
     }
-}
+}*/

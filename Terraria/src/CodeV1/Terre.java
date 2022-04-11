@@ -1,5 +1,7 @@
 package CodeV1;
 
+import jdk.jshell.spi.ExecutionControl;
+
 import java.util.concurrent.ExecutionException;
 
 public class Terre extends Secteur {
@@ -19,7 +21,9 @@ public class Terre extends Secteur {
                 r = new Robot(r, getposition());
                 this.locals[1] = r;
             }
-        } finally {
+        }
+        catch (Exception e){
+            System.out.println(e);
             System.out.println("Deplacement impossible, un robot est deja dans le secteur !! en  / " + this.getposition());
         }
     }
@@ -29,7 +33,9 @@ public class Terre extends Secteur {
             if (this.locals[0] == null) {
                 this.locals[0] = m;
             }
-        } finally {
+        }
+        catch(Exception e) {
+            System.out.println(e);
             System.out.println("Implementation Imposible de la Mine  un element du meme type deja present / " + this.getposition());
         }
     }
@@ -39,7 +45,9 @@ public class Terre extends Secteur {
             if (this.locals[0] == null) {
                 this.locals[0] = emp;
             }
-        } finally {
+        }
+        catch (Exception e){
+            System.out.println(e);
             System.out.println("Implementation Imposible de l'entrepot  un element du meme type deja present/ " + this.getposition());
         }
     }
