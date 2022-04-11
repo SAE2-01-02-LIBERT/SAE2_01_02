@@ -12,7 +12,7 @@ public class Game {
     public void start() {
         partie.creerMonde();
         partie.affichermonde();
-        end();
+        this.end();
     }
 
     public void end() {
