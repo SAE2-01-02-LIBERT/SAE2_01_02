@@ -15,18 +15,30 @@ public class Monde {
         this.monde = new Secteur[9][9];
     }
 
-    public void creerMonde(){
+    public void creerMonde() {
         int eau = 0;
-        for (int i = 0 ; i < 9 ;i++){
-            for (int j = 0 ; j < 9 ; j++){
-                Random valeur = new Random();
-                int x = valeur.nextInt(11); // faire en sorte que l'apparisiotn d'eau soit plus rare!
-                if (x == 1 && eau<10){
-                    this.monde[i][j] = new Eau();
-                    eau += 1;
-                }
-                else{
-                    this.monde[i][j] = new Terre();
+        while (eau < 10) {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (monde[i][j] == null) {
+                        Random valeur = new Random();
+                        int x = valeur.nextInt(11); // faire en sorte que l'apparisiotn d'eau soit plus rare!
+                        if (x == 1 ) {
+                            this.monde[i][j] = new Eau();
+                            eau += 1;
+                        }
+                        else {
+                            this.monde[i][j] = new Terre();
+                        }
+                    }
+                    else{
+                        Random valeur = new Random();
+                        int x = valeur.nextInt(11); // faire en sorte que l'apparisiotn d'eau soit plus rare!
+                        if (x == 1 && eau <10) {
+                            this.monde[i][j] = new Eau();
+                            eau += 1;
+                        }
+                    }
                 }
             }
         }
