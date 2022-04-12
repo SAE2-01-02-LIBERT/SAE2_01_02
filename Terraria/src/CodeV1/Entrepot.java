@@ -30,10 +30,6 @@ public class Entrepot extends Batiment {
     public String afficher(){
         return " E | "+ this.numero+" ";
     }
-    @Override
-    public String getInfo() {
-        return "E " + this.numero + "\n\t" + this.type + this.stock + "/" ;
-    }
 
     @Override
     public int getStock() {
@@ -43,5 +39,10 @@ public class Entrepot extends Batiment {
     @Override
     public String getType(){
         return this.type;
+    }
+
+    @Override
+    public String getInfo() {
+        return "| "+ "E" + this.numero + "  " + " [ "+this.position[0]+", "+this.position[1]+" ]  "+this.typeEntrepot +"  "+ this.stock +"\t     |" ;
     }
 }

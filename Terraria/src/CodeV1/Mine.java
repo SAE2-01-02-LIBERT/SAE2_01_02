@@ -10,32 +10,27 @@ public class Mine extends Batiment {
 
 
     public Mine(String typ, int num){
-        this.type = typ;
-        this.stock=capacite;
+        this.type = "Mine";
         this.numero=num;
-        this.typeMine = "Mine";
+        this.typeMine =typ ;
         this.capacite=(int)(50+Math.random() * (double)(50-0));
         this.position = new int[2];
+        this.stock=capacite;
     }
 
     public Mine(Mine mine, int[] pos) {
-            this.type = mine.type;
-            this.stock = mine.capacite;
-            this.numero = mine.numero;
-            this.typeMine = mine.typeMine;
-            this.capacite = mine.capacite;
-            this.position = pos;
+        this.type = mine.type;
+        this.numero = mine.numero;
+        this.typeMine = mine.typeMine;
+        this.capacite = mine.capacite;
+        this.position = pos;
+        this.stock = mine.capacite;
     }
 
 
     @Override
     public String afficher(){
         return " M | "+ this.numero+" ";
-    }
-
-    @Override
-    public String getInfo() {
-        return "M " + this.numero +"\n\t" +this.stock +"/" +this.capacite;
     }
 
     @Override
@@ -48,4 +43,8 @@ public class Mine extends Batiment {
         return this.type;
     }
 
+    @Override
+    public String getInfo() {
+        return "| " + "M" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.stock + " / " + this.capacite+" |";
+    }
 }

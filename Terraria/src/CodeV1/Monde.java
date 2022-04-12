@@ -46,24 +46,24 @@ public class Monde {
 
 
     public void generationRobot(){
-        Robot R1 = new Robot("Nikel",1);
-        Robot R2 = new Robot("Or",2);
+        Robot R1 = new Robot("NI",1);
+        Robot R2 = new Robot("OR",2);
         roboList[0] = R1;
         roboList[1] = R2;
     }
 
     public void generationEntrepot(){
-        Entrepot E1 = new Entrepot("Nikel",1);
-        Entrepot E2 = new Entrepot("Or",2);
+        Entrepot E1 = new Entrepot("NI",1);
+        Entrepot E2 = new Entrepot("OR",2);
         entrepotList[0] = E1;
         entrepotList[1] = E2;
     }
 
     public void generationMine() {
-        Mine M1 = new Mine("Nickel",1);
-        Mine M2 = new Mine("Nickel",2);
-        Mine M3 = new Mine("Or",3);
-        Mine M4 = new Mine("Or",4);
+        Mine M1 = new Mine("NI",1);
+        Mine M2 = new Mine("NI",2);
+        Mine M3 = new Mine("OR",3);
+        Mine M4 = new Mine("OR",4);
         mineList[0] = M1;
         mineList[1] = M2;
         mineList[2] = M3;
@@ -129,6 +129,19 @@ public class Monde {
                 }
             }
         }
+        mondeAfficher.append("\n");
+        mondeAfficher.append(" ____________________________"+"\n");
+        for(Mine m: mineList){
+            mondeAfficher.append(m.getInfo() + "\n");
+        }
+        for(Entrepot e: entrepotList){
+            mondeAfficher.append(e.getInfo() + "\n");
+        }
+        for(Robot r: roboList){
+            mondeAfficher.append(r.getInfo() + "\n");
+        }
+        mondeAfficher.append(" ____________________________"+"\n");
+        System.out.println(mondeAfficher);
 
         System.out.println(mondeAfficher);
     }

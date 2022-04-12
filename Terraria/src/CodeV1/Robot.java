@@ -15,12 +15,12 @@ public class Robot extends Batiment {
         this.numero = num;
         this.soute = 0;
         this.capacitee = 0;
-        this.position=new int[2];
-        this.position[0] = 0; // par default
-        this.position[1] = 0; // par default
+        this.position = new int[2];
+        this.position[0] = 0; // par defaut
+        this.position[1] = 0; // par defaut
     }
 
-    public Robot(Robot r,int[]Npos){
+    public Robot(Robot r, int[] Npos) {
         this.soute = r.soute;
         this.position = Npos;
         this.capacitee = r.capacitee;
@@ -37,16 +37,15 @@ public class Robot extends Batiment {
     }
 
     /**
-     *partie des deplacements
-     * Attention on doit faire gaffe a ce que deux robot ne soit pas dans
+     * partie des deplacements
+     * Attention on doit faire gaffe a ce que deux robot ne soient pas dans
      * le meme secteur
-     * Et que le robot ne sorte pas de la map sa serait problemeatique.
-     *
-     * Utilisation du constrcuteur par recopie en repassant de monde a secteur... c'est pour ca que Monde a une
-     * liste de Robot ,Mine et Entrepot.
-     *
-     * Bon courrage  =) !
-     *
+     * Et que le robot ne sorte pas de la map, ça serait problematique.
+     * <p>
+     * Utilisation du constructeur par recopie en repassant de monde a secteur... c'est pour ca que Monde a une
+     * liste de Robot, Mine et Entrepot.
+     * <p>
+     * Bon courage  =) !
      */
 
     public void nord() {
@@ -66,13 +65,8 @@ public class Robot extends Batiment {
     }
 
     @Override
-    public String afficher(){
-        return " R | "+ this.numero +" ";
-    }
-
-    @Override
-    public String getInfo() {
-        return "" + "R" + this.numero + "\n" +"\t"+ this.type + this.soute + "/" + this.soute;
+    public String afficher() {
+        return " R | " + this.numero + " ";
     }
 
     @Override
@@ -81,7 +75,12 @@ public class Robot extends Batiment {
     }
 
     @Override
-    public String getType(){
+    public String getType() {
         return this.type;
+    }
+
+    @Override
+    public String getInfo() {
+        return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
 }

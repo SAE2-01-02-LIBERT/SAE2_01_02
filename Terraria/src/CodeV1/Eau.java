@@ -1,7 +1,6 @@
 package CodeV1;
 
 import jdk.jshell.spi.ExecutionControl;
-
 import java.util.concurrent.ExecutionException;
 
 public class Eau extends Secteur {
@@ -30,7 +29,7 @@ public class Eau extends Secteur {
 
     @Override
     public void ajoutLocalR(Robot r) throws ExecutionException {
-            System.out.println("Impossible vous esseillez de faire floter votre Robot ");
+            System.out.println("Impossible vous essayez de faire flotter votre Robot ");
     }
 
     @Override
@@ -40,8 +39,6 @@ public class Eau extends Secteur {
 
     @Override
     public void ajoutLocalE(Entrepot e) throws ExecutionException {
-        System.out.println("Votre entreprot est sous l'eau !!! ou presque ");
+        System.out.println("Votre entrepot est sous l'eau !!! Ou presque...");
     }
-
-
 }

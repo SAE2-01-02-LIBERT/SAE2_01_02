@@ -24,7 +24,7 @@ public class Terre extends Secteur {
         }
         catch (Exception e){
             System.out.println(e);
-            System.out.println("Deplacement impossible, un robot est deja dans le secteur !! en  / " + this.getposition());
+            System.out.println("Déplacement impossible, un robot est déjà dans le secteur !! en  / " + this.getposition());
         }
     }
     @Override
@@ -36,7 +36,7 @@ public class Terre extends Secteur {
         }
         catch(Exception e) {
             System.out.println(e);
-            System.out.println("Implementation Imposible de la Mine  un element du meme type deja present / " + this.getposition());
+            System.out.println("Implémentation impossible de la mine, un élément du même type déjà présent / " + this.getposition());
         }
     }
     @Override
@@ -48,7 +48,7 @@ public class Terre extends Secteur {
         }
         catch (Exception e){
             System.out.println(e);
-            System.out.println("Implementation Imposible de l'entrepot  un element du meme type deja present/ " + this.getposition());
+            System.out.println("Implémentation impossible de l'entrepôt', un élément du même type déjà présent / " + this.getposition());
         }
     }
 
