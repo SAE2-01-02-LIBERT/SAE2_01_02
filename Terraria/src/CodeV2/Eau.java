@@ -1,33 +1,33 @@
-/*package CodeV2;
+package CodeV2;
 
 public class Eau {
-    private int x;
-    private int y;
-    private boolean eau;
-    private Monde monde;
+    private final Monde monde;
+    private final int x;
+    private final int y;
+    private final boolean eau;
 
-    public Eau(boolean eau, int x,int y, Monde m){
-        this.eau=eau;
-        this.x=x;
-        this.y=y;
-        this.monde=m;
+
+    public Eau(Monde m, int i, int j, boolean b) {
+        this.monde = m;
+        this.x = i;
+        this.y = j;
+        this.eau = b;
     }
 
-    public int getX() {
-        return x;
+
+    public Monde get_monde() {
+        return this.monde;
     }
 
-    public int getY() {
-        return y;
+    public int get_x() {
+        return this.x;
     }
 
-    public Monde getMonde() {
-        return monde;
+    public int get_y() {
+        return this.y;
     }
 
-    public boolean getEau() {
-        return eau;
+    public boolean get_eau() {
+        return this.eau;
     }
 }
-
- */

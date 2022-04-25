@@ -1,140 +1,186 @@
-/*package CodeV2;
+package CodeV2;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
+
 public class Monde {
-    private int idMonde;
-    private Object[][][] terrain;
+    private int id_monde;
+    private Object[][][] matrice;
 
-    public Monde(int i){
-        idMonde=i;
-        terrain=new Object[10][10][2];
+    public Monde(int i) {
+        this.id_monde = i;
+        this.matrice = new Object[10][10][2];
     }
 
-    public void AfficherMonde(){
 
+    public int get_id_monde() {
+        return this.id_monde;
     }
-    public Objet[][][] get.terrain(){
-        return terrain;
+
+    public Object[][][] get_matrice() {
+        return this.matrice;
     }
-    public int get.Monde(){
-        return idMonde;
+
+    public Object get_element(int i, int j, int k) {
+        return this.matrice[i][j][k];
     }
-    public boolean get.element(){
-        return element;
-    }
-    public void Generation_Map{
-        Random ran= new Random();
-        int water=1;
-        int entr=1;
-        int rob=1;
-        int m=1;
-        boolean b;
-        int[] tab=new int[6];
-        tab[0]=ran.nextInt(11);
-        tab[1]=ran.nextInt(5)+1;
-        tab[2]=ran.nextInt(5)+1;
-        tab[3]=ran.nextInt(2)+1;
-        tab[4]=ran.nextInt(2)+1;
-        tab[5]=2;
-        for (int i=0; i< tab.length; i++){
-            if (i=0){
-                for (j=0;j<=tab[i];j++){
-                    int px=ran.nextInt(11);
-                    int py=ran.nextInt(11);
-                    terrain[px][py][0]=new Eau(true,px,py,this);
-                    terrain[px][py][1]=new Eau(true,px,py,this);
-                }
-            }
-            else if (i=1){
-                for (j=0;j<=tab[i];j++){
-                    int px=ran.nextInt(11);
-                    int py=ran.nextInt(11);
-                    terrain[px][py][0]=new Eau(false,px,py,this);
-                    terrain[px][py][1]=new Robot(true,px,py,this);
-                }
-            }
-            else if (i=2){
-                for (j=0;j<=tab[i];j++){
-                    int px=ran.nextInt(11);
-                    int py=ran.nextInt(11);
-                    terrain[px][py][0]=new Eau(false,px,py,this);
-                    terrain[px][py][1]=new Robot(false,px,py,this);
-                }
-            }
-            else if (i=3){
-                for (j=0;j<=tab[i];j++){
-                    int px=ran.nextInt(11);
-                    int py=ran.nextInt(11);
-                    terrain[px][py][0]=new Mine(true,px,py,this);
-                    terrain[px][py][1]=new Eau(false,px,py,this);
-                }
-            }
-            else if (i=4){
-                for (j=0;j<=tab[i];j++){
-                    int px=ran.nextInt(11);
-                    int py=ran.nextInt(11);
-                    terrain[px][py][0]=new Mine(false,px,py,this);
-                    terrain[px][py][1]=new Eau(false,px,py,this);
-                }
-            }
-            else if (i=5){
-                for (j=0;j<=tab[i];j++){
-                    if(j=0) {
-                        int px = ran.nextInt(11);
-                        int py = ran.nextInt(11);
-                        terrain[px][py][0] = new Entrepot(true, px, py, this);
-                        terrain[px][py][1] = new Eau(false, px, py, this);
+
+    public void creer_monde() {
+        Random ran = new Random();
+        int[] nb_el = new int[4];
+        nb_el[0] = ran.nextInt(10);
+        nb_el[1] = ran.nextInt(2) + 2;
+        nb_el[2] = ran.nextInt(8) + 2;
+        nb_el[3] = 2;
+        int i;
+        for (i = 0; i < nb_el.length; i++) {
+            for (int k = 0; k < nb_el[i]; k++) {
+                boolean place = false;
+                while (!place) {
+                    int x = ran.nextInt(10);
+                    int y = ran.nextInt(10);
+                    if (i == 0 && this.matrice[x][y][0] == null && this.matrice[x][y][1] == null) {
+                        this.matrice[x][y][0] = new Eau(this, x, y, true);
+                        this.matrice[x][y][1] = new Eau(this, x, y, true);
+                        place = true;
                     }
-                    else{
-                        int px = ran.nextInt(11);
-                        int py = ran.nextInt(11);
-                        terrain[px][py][0] = new Entrepot(false, px, py, this);
-                        terrain[px][py][1] = new Eau(false, px, py, this);
+                    if (i == 1 && this.matrice[x][y][0] == null && this.matrice[x][y][1] == null) {
+                        this.matrice[x][y][1] = new Eau(this, x, y, false);
+                        int q = ran.nextInt(51) + 100;
+                        if ((k+1)%2 == 0) {
+                            this.matrice[x][y][0] = new Mine(this, x, y, false, q, k + 1);
+                        } else {
+                            this.matrice[x][y][0] = new Mine(this, x, y, true, q, k + 1);
+                        }
+                        place = true;
+                    }
+                    if (i == 2 && this.matrice[x][y][0] == null && this.matrice[x][y][1] == null) {
+                        int max = ran.nextInt(5) + 5;
+                        int cm = ran.nextInt(2) + 3;
+                        this.matrice[x][y][0] = new Eau(this, x, y, false);
+                        if ((k+1)%2 == 0) {
+                            this.matrice[x][y][1] = new Robot(this, x, y, false, max, cm, k + 1);
+                        } else {
+                            this.matrice[x][y][1] = new Robot(this, x, y, true, max, cm, k + 1);
+                        }
+                        place = true;
+                    }
+                    if (i == 3 && this.matrice[x][y][0] == null && this.matrice[x][y][1] == null) {
+                        this.matrice[x][y][1] = new Eau(this, x, y, false);
+                        if ((k+1)%2 == 0) {
+                            this.matrice[x][y][0] = new Entrepot(this, x, y, false, k + 1);
+                        } else {
+                            this.matrice[x][y][0] = new Entrepot(this, x, y, true, k + 1);
+                        }
+                        place = true;
                     }
                 }
             }
         }
-        for (int i=0;i<terrain.length;i++){
-            for (int j=0;j<terrain.length[0];j++) {
-                for (int k = 0; k < terrain[0][0].length; k++) {
-                    if(terrain[i][j][k]==null){
-                        terrain[i][j][k]==new Eau(false,i,j,this)
-                    }
+        for (i = 0; i < this.matrice.length; i++) {
+            for (int j = 0; j < (this.matrice[0]).length; j++) {
+                for (int k = 0; k < (this.matrice[0][0]).length; k++) {
+                    if (this.matrice[i][j][k] == null)
+                        this.matrice[i][j][k] = new Eau(this, i, j, false);
                 }
             }
         }
-        System.out.println("-------------------------------------------------");
-        for (int i=0;i<terrain.length;i++){
-            for (int k = 0; k < terrain[0][0].length; k++) {
-                for (int j = 0; j < terrain.length[0]; j++) {
-                    if(terrain[i][j][k] instanceof Eau){
-                        Eau e = Eau.class.cast(terrain[i][j][k]);
-                        if(e.getEau()==true){
-                            System.out.print("X X");
-                        }
-                        else{
-                            System.out.print("   ");
-                        }
-                    }
-                    else if(terrain[i][j][k] instanceof Robot){
-                        Robot r = Robot.class.cast(terrain[i][j][k]);
-                        System.out.print("R "+r.getidRobot());
-                    }
-                    else if(terrain[i][j][k] instanceof Mine){
-                        Mine m = Mine.class.cast(terrain[i][j][k]);
-                        System.out.print("M "+m.getidMine());
-                    }
-                    else if(terrain[i][j][k] instanceof Entrepot){
-                        Entrepot e = Entrepot.class.cast(terrain[i][j][k]);
-                        System.out.print("E "+e.getidEntrepot());
-                    }
+    }
 
-
-
+    public void afficher_console(int tour) {
+        ArrayList<Entrepot> entr = new ArrayList<>();
+        ArrayList<Robot> rob = new ArrayList<>();
+        ArrayList<Mine> min = new ArrayList<>();
+        System.out.println();
+        for (int j = 0; j < (this.matrice[0]).length; j++)
+            System.out.print("   | " + (j + 1));
+        System.out.print("  |");
+        System.out.println();
+        System.out.println("_______________________________________________________________|");
+        System.out.print("\n");
+        int i;
+        for (i = 0; i < this.matrice.length; i++) {
+            for (int k = 0; k < (this.matrice[0][0]).length; k++) {
+                if (k == 0) {
+                    if (i + 1 == 10) {
+                        System.out.print(1 + i);
+                    } else {
+                        System.out.print(" " + (1 + i));
+                    }
+                } else {
+                    System.out.print("  ");
                 }
+                for (int m = 0; m < (this.matrice[0]).length; m++) {
+                    if (this.matrice[i][m][k] instanceof Eau) {
+                        Eau e = Eau.class.cast(this.matrice[i][m][k]);
+                        if (e.get_eau()==true) {
+                            System.out.print(" | X X");
+                        } else {
+                            System.out.print(" |    ");
+                        }
+                    } else if (this.matrice[i][m][k] instanceof Mine) {
+                        Mine mine = Mine.class.cast(this.matrice[i][m][k]);
+                        System.out.print(" | M " + mine.get_numero());
+                        min.add(mine);
+                    } else if (this.matrice[i][m][k] instanceof Entrepot) {
+                        Entrepot e = Entrepot.class.cast(this.matrice[i][m][k]);
+                        System.out.print(" | E " + e.get_numero());
+                        entr.add(e);
+                    } else if (this.matrice[i][m][k] instanceof Robot) {
+                        Robot r = Robot.class.cast(this.matrice[i][m][k]);
+                        System.out.print(" | R " + r.get_numero());
+                        rob.add(r);
+                    }
+                }
+                System.out.print(" |");
+                System.out.println();
             }
-            System.out.println("-------------------------------------------------");
+            System.out.println("_______________________________________________________________|");
+            if (i == this.matrice.length - 1) {
+                System.out.println();
+            } else {
+                System.out.println("                                                               |");
+            }
+        }
+        Collections.sort(entr);
+        Collections.sort(rob);
+        Collections.sort(min);
+        System.out.println();
+        System.out.println("Tours :" + tour);
+        System.out.println();
+        for (Mine mine : min) {
+            System.out.print("M" + mine.get_numero());
+            System.out.print("  " + mine.get_x() + " " + mine.get_y());
+            if (mine.get_nickel()==true) {
+                System.out.print("  NI ");
+            } else {
+                System.out.print("  OR ");
+            }
+            System.out.print("  " + mine.get_quantite() + " / " + mine.get_max());
+            System.out.println();
+        }
+        for (Entrepot entrepot : entr) {
+            System.out.print("E" + entrepot.get_numero());
+            System.out.print("  " + entrepot.get_x() + " " + entrepot.get_y());
+            if (entrepot.get_nickel()==true) {
+                System.out.print("  NI ");
+            } else {
+                System.out.print("  OR ");
+            }
+            System.out.print("  " + entrepot.get_stockage());
+            System.out.println();
+        }
+        for (Robot robot : rob) {
+            System.out.print("R" + robot.get_numero());
+            System.out.print("  " + robot.get_x() + " " + robot.get_y());
+            if (robot.get_nickel()==true) {
+                System.out.print("  NI ");
+            } else {
+                System.out.print("  OR ");
+            }
+            System.out.print("  " + robot.get_stockage() + " / " + robot.get_max());
+            System.out.println();
         }
     }
 }
- */
