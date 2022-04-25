@@ -111,7 +111,7 @@ public class Monde {
         }
     }
 
-    public void affichermonde() {
+    public void affichermonde(int cpt) {
         StringBuilder mondeAfficher = new StringBuilder();
         mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
         for (int i = 0; i < 10; i++) {
@@ -130,6 +130,7 @@ public class Monde {
             }
         }
         mondeAfficher.append("\n");
+        mondeAfficher.append("Tour : "+cpt+"\n");
         mondeAfficher.append(" ____________________________"+"\n");
         for(Mine m: mineList){
             mondeAfficher.append(m.getInfo() + "\n");
@@ -144,5 +145,63 @@ public class Monde {
         System.out.println(mondeAfficher);
 
         System.out.println(mondeAfficher);
+        System.out.println(" ");
+        System.out.println(" ");
     }
+    public void actionRobot(Robot robot, String Da) throws ExecutionException {
+
+        //Interaction
+        if (Da.equals("R")){
+            if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
+                if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Mine){
+                    robot.recolter();
+                }
+            }
+        }
+        else if (Da == "D"){
+            if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
+                if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Entrepot){
+                    robot.deposer();
+                }
+            }
+        }
+
+        else if (Da.equals("N")){
+            Robot rb = robot.nord(robot);
+            this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+            ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+            roboList[rb.getnum()-1] = rb;
+        }
+
+        else if (Da.equals("S")){
+            Robot rb = robot.sud(robot);
+            this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+            ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+            roboList[rb.getnum()-1] = rb;
+        }
+
+        else if (Da.equals("E")){
+            Robot rb = robot.est(robot);
+            this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+            ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+            roboList[rb.getnum()-1] = rb;
+        }
+        else if (Da.equals("O")){
+            Robot rb = robot.ouest(robot);
+            this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+            ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+            roboList[rb.getnum()-1] = rb;
+        }
+    }
+
+    public Mine[] getMineList() {
+        return mineList;
+    }
+    public Entrepot[] getEntrepotList(){
+        return entrepotList;
+    }
+    public Robot[] getRoboList() {
+        return roboList;
+    }
+
 }

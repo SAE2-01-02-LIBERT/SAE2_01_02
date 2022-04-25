@@ -1,9 +1,8 @@
 package CodeV1;
 
 public class Robot extends Batiment {
-    private static String type;
-    private static String typeMine; // Or ou nickel
-
+    private String type;
+    private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
     private int numero;
@@ -48,20 +47,37 @@ public class Robot extends Batiment {
      * Bon courage  =) !
      */
 
-    public void nord() {
-        // TODO implement here
+    public Robot nord(Robot d) {//nouvelle coordonnee
+        int[] Nwpos = new int[2];
+        Nwpos[0] = position[0]-1;
+        Nwpos[1] = position[1];
+        System.out.println("Deplacement vers le nord");
+        return new Robot(d,Nwpos);
+    }
+    public Robot sud(Robot d) {
+        int[] Nwpos = new int[2];
+        Nwpos[0] = position[0]+1;
+        Nwpos[1] = position[1];
+        return new Robot(d,Nwpos);
+    }
+    public Robot est(Robot d) {
+        int[] Nwpos = new int[2];
+        Nwpos[0] = position[0];
+        Nwpos[1] =position[1]+1;
+        return  new Robot(d,Nwpos);
+    }
+    public Robot ouest(Robot d) {
+        int[] Nwpos = new int[2];
+        Nwpos[0] = position[0];
+        Nwpos[1] =position[1]-1;
+        return new Robot(d,Nwpos);
     }
 
-    public void sud() {
-        // TODO implement here
+    public int[] getPosition() {
+        return position;
     }
-
-    public void est() {
-        // TODO implement here
-    }
-
-    public void ouest() {
-        // TODO implement here
+    public int getnum(){
+        return this.numero;
     }
 
     @Override

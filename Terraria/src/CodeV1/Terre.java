@@ -51,7 +51,9 @@ public class Terre extends Secteur {
             System.out.println("Implémentation impossible de l'entrepôt', un élément du même type déjà présent / " + this.getposition());
         }
     }
-
+    public Localisable[] getLocals(){
+        return this.locals;
+    }
     @Override
     public int[] getposition() {
         return this.coodonnee;
