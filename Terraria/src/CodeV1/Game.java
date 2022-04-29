@@ -23,7 +23,13 @@ public class Game {
             try {
                 Scanner selectRobot = new Scanner(System.in);
                 System.out.println("Veuilliez selectionner le Robot à deplacer 1 ou 2");
-                int num = selectRobot.nextInt();
+                int num = 0;
+                while (num < 1 || num > 2) {
+                    num = selectRobot.nextInt();
+                    if(num < 1 || num > 2){
+                        System.out.println("Sélectionnez un robot existant!");
+                    }
+                }
                 System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
 
 
