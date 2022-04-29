@@ -6,8 +6,8 @@ public class Mine implements Comparable<Mine>{
     private int y;
     private boolean nickel;
     private int quantite;
-    private int max;
-    private int numero;
+    private final int max;
+    private final int numero;
 
     public Mine(Monde m, int i, int j, boolean b, int q, int n) {
         monde = m;

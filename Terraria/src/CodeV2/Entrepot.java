@@ -1,12 +1,12 @@
 package CodeV2;
 
 public class Entrepot implements Comparable<Entrepot>{
-    private Monde monde;
-    private boolean nickel;
+    private final Monde monde;
+    private final boolean nickel;
     private int stockage;
-    private int numero;
-    private int x;
-    private int y;
+    private final int numero;
+    private final int x;
+    private final int y;
 
 
     public Entrepot(Monde m, int i, int j, boolean b, int n) {
