@@ -7,9 +7,22 @@ public class Robot extends Batiment {
     private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
+
     private int capaciteeExtraction;
     private int numero;
     private int[] position;
+
+    public Robot() {
+        this.type = "Robot";
+        this.typeMine = "OR";
+        this.soute = 0;
+        this.capacitee = 0;
+        this.capaciteeExtraction = 0;
+        this.numero = 1;
+        this.position = new int[2];
+        this.position[0] = 0; // par defaut
+        this.position[1] = 0; // par defaut
+    }
 
     public Robot(String typeMine, int num) {
         Random random = new Random();
@@ -25,7 +38,6 @@ public class Robot extends Batiment {
     }
 
     public Robot(Robot r, int[] Npos) {
-        Random random = new Random();
         this.soute = r.soute;
         this.position = Npos;
         this.capacitee = r.capacitee;
@@ -36,11 +48,11 @@ public class Robot extends Batiment {
     }
 
     public void recolter() {
-        if (capacitee >= soute){
+        int extrait = capaciteeExtraction;
+        if (capacitee == soute){
             System.out.println("Impossible");
         }
         else{
-            int extrait = capaciteeExtraction;
             if(soute+capaciteeExtraction > capacitee) {
                 extrait = capacitee-soute;
             }
@@ -107,6 +119,9 @@ public class Robot extends Batiment {
         return this.soute;
     }
 
+    public int getCapaciteeExtraction() {
+        return capaciteeExtraction;
+    }
     @Override
     public String getType() {
         return this.type;
@@ -116,7 +131,34 @@ public class Robot extends Batiment {
     public String getInfo() {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
-}
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setTypeMine(String typeMine) {
+        this.typeMine = typeMine;
+    }
+
+    public void setSoute(int soute) {
+        this.soute = soute;
+    }
+
+    public void setCapacitee(int capacitee) {
+        this.capacitee = capacitee;
+    }
+
+    public void setCapaciteeExtraction(int capaciteeExtraction) {
+        this.capaciteeExtraction = capaciteeExtraction;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
+    }
+}
 
 
