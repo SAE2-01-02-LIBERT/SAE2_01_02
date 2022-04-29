@@ -35,7 +35,7 @@ public class Robot extends Batiment {
     }
 
     public void recolter() {
-        if (capacitee == soute){
+        if (capacitee >= soute){
             System.out.println("Impossible");
         }
         else{
@@ -116,4 +116,5 @@ public class Robot extends Batiment {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
 }
+
 
