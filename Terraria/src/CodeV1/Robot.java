@@ -32,6 +32,7 @@ public class Robot extends Batiment {
         this.capaciteeExtraction = r.capaciteeExtraction;
         this.numero = r.numero;
         this.type = r.type;
+        this.typeMine = r.typeMine;
     }
 
     public void recolter() {
@@ -116,5 +117,6 @@ public class Robot extends Batiment {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
 }
+
 
 
