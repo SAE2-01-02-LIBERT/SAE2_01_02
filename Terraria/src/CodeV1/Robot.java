@@ -40,7 +40,7 @@ public class Robot extends Batiment {
         }
         else{
             int extrait = capaciteeExtraction;
-            if(soute+capacitee > capacitee) {
+            if(soute+capaciteeExtraction > capacitee) {
                 extrait = capacitee-soute;
             }
             soute += extrait;
