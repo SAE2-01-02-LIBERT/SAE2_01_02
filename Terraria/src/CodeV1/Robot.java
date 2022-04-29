@@ -1,39 +1,54 @@
 package CodeV1;
 
+import java.util.Random;
+
 public class Robot extends Batiment {
     private String type;
     private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
+    private int capaciteeExtraction;
     private int numero;
     private int[] position;
 
     public Robot(String typeMine, int num) {
+        Random random = new Random();
         this.type = "Robot";
         this.typeMine = typeMine;
         this.numero = num;
         this.soute = 0;
-        this.capacitee = 0;
+        this.capacitee = 5 + random.nextInt(11);
+        this.capaciteeExtraction = 1 + random.nextInt(4);
         this.position = new int[2];
         this.position[0] = 0; // par defaut
         this.position[1] = 0; // par defaut
     }
 
     public Robot(Robot r, int[] Npos) {
+        Random random = new Random();
         this.soute = r.soute;
         this.position = Npos;
         this.capacitee = r.capacitee;
+        this.capaciteeExtraction = r.capaciteeExtraction;
         this.numero = r.numero;
         this.type = r.type;
-        this.typeMine = r.typeMine;
     }
 
     public void recolter() {
-        // TODO implement here
+        if (capacitee == soute){
+            System.out.println("Impossible");
+        }
+        else{
+            int extrait = capaciteeExtraction;
+            if(soute+capacitee > capacitee) {
+                extrait = capacitee-soute;
+            }
+            soute += extrait;
+        }
     }
 
     public void deposer() {
-        // TODO implement here
+        soute = 0;
     }
 
     /**
@@ -70,7 +85,7 @@ public class Robot extends Batiment {
     public Robot ouest(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
-        Nwpos[1] = position[1]-1;
+        Nwpos[1] =position[1]-1;
         return new Robot(d,Nwpos);
     }
 
@@ -101,3 +116,4 @@ public class Robot extends Batiment {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
 }
+
