@@ -1,11 +1,10 @@
 package CodeV2;
 
 public class Eau {
-    private final Monde monde;
-    private final int x;
-    private final int y;
-    private final boolean eau;
-
+    private Monde monde;
+    private int x;
+    private int y;
+    private boolean eau;
 
     public Eau(Monde m, int i, int j, boolean b) {
         this.monde = m;
