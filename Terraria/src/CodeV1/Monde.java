@@ -151,16 +151,29 @@ public class Monde {
         if (Da.equals("R")){
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Mine){
-                    robot.recolter();
-                    ((Mine) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).estRecoltee();
+                    if(robot.getType() != (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0].getType()))
+                    {
+                        robot.recolter();
+                        ((Mine) ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).estRecoltee();
+                    }
+                    else{
+                        System.out.println("Impossible");
+                    }
                 }
             }
         }
         else if (Da == "D"){
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Entrepot){
-                    ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).depot(robot);
-                    robot.deposer();
+                    if(robot.getType() != ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).getType())
+                    {
+                        ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).depot(robot);
+                        robot.deposer();
+                    }
+                    else{
+                        System.out.println("Impossible");
+                    }
+
                 }
             }
         }
