@@ -22,6 +22,11 @@ public class Entrepot extends Batiment {
         this.typeEntrepot=e1.typeEntrepot;
 
     }
+
+    public void depot(Robot r){
+        this.stock += r.getStock();
+    }
+
     public int getstock() {
         return this.stock;
     }
@@ -46,3 +51,4 @@ public class Entrepot extends Batiment {
         return "| "+ "E" + this.numero + "  " + " [ "+this.position[0]+", "+this.position[1]+" ]  "+this.typeEntrepot +"  "+ this.stock +"\t     |" ;
     }
 }
+
