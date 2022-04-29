@@ -146,9 +146,8 @@ public class Monde {
         System.out.println(" ");
     }
     public void actionRobot(Robot robot, String Da) throws ExecutionException {
-
         //Interaction
-        if (Da.equals("R")){
+        if (Da.toUpperCase().equals("R")){
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Mine){
                     if(robot.getType() != (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0].getType()))
@@ -162,7 +161,7 @@ public class Monde {
                 }
             }
         }
-        else if (Da == "D"){
+        else if (Da.toUpperCase().equals("D")){
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Entrepot){
                     if(robot.getType() != ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).getType())
@@ -178,48 +177,70 @@ public class Monde {
             }
         }
 
-        else if (Da.equals("N")){
-            Robot rb = robot.nord(robot);
-            if ((monde[robot.getPosition()[0]-1][robot.getPosition()[1]]) instanceof Terre) {
-                this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
-                ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
-                roboList[rb.getnum()-1] = rb;
-            } else {
-                this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+        else if (Da.toUpperCase().equals("N")){
+            try {
+                Robot rb = robot.nord(robot);
+                if ((monde[robot.getPosition()[0] - 1][robot.getPosition()[1]]) instanceof Terre) {
+                    this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+                    ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+                    roboList[rb.getnum() - 1] = rb;
+                } else {
+                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+                }
+            }
+            catch(Exception e){
+                System.out.println("Vous ne pouvez sortir des limites de la carte!");
             }
         }
 
-        else if (Da.equals("S")){
-            Robot rb = robot.sud(robot);
-            if ((monde[robot.getPosition()[0]+1][robot.getPosition()[1]]) instanceof Terre) {
-                this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
-                ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
-                roboList[rb.getnum()-1] = rb;
-            } else {
-                this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+        else if (Da.toUpperCase().equals("S")){
+            try {
+                Robot rb = robot.sud(robot);
+                if ((monde[robot.getPosition()[0] + 1][robot.getPosition()[1]]) instanceof Terre) {
+                    this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+                    ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+                    roboList[rb.getnum() - 1] = rb;
+                } else {
+                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+                }
             }
-
-        }
-
-        else if (Da.equals("E")){
-            Robot rb = robot.est(robot);
-            if ((monde[robot.getPosition()[0]][robot.getPosition()[1]+1]) instanceof Terre) {
-                this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
-                ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
-                roboList[rb.getnum()-1] = rb;
-            } else {
-                this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+            catch(Exception e){
+                System.out.println("Vous ne pouvez sortir des limites de la carte!");
             }
         }
-        else if (Da.equals("O")){
-            Robot rb = robot.ouest(robot);
-            if ((monde[robot.getPosition()[0]][robot.getPosition()[1]-1]) instanceof Terre) {
-                this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
-                ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
-                roboList[rb.getnum()-1] = rb;
-            } else {
-                this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+
+        else if (Da.toUpperCase().equals("E")){
+            try {
+                Robot rb = robot.est(robot);
+                if ((monde[robot.getPosition()[0]][robot.getPosition()[1] + 1]) instanceof Terre) {
+                    this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+                    ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+                    roboList[rb.getnum() - 1] = rb;
+                } else {
+                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+                }
             }
+            catch(Exception e){
+                System.out.println("Vous ne pouvez sortir des limites de la carte!");
+            }
+        }
+        else if (Da.toUpperCase().equals("O")){
+            try {
+                Robot rb = robot.ouest(robot);
+                if ((monde[robot.getPosition()[0]][robot.getPosition()[1] - 1]) instanceof Terre) {
+                    this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
+                    ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
+                    roboList[rb.getnum() - 1] = rb;
+                } else {
+                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
+                }
+            }
+            catch(Exception e){
+                System.out.println("Vous ne pouvez sortir des limites de la carte!");
+            }
+        }
+        else {
+            System.out.println("Entrez une commande valide!");
         }
     }
 
