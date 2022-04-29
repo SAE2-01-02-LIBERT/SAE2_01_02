@@ -25,6 +25,7 @@ public class Robot extends Batiment {
         this.capacitee = r.capacitee;
         this.numero = r.numero;
         this.type = r.type;
+        this.typeMine = r.typeMine;
     }
 
     public void recolter() {
@@ -69,7 +70,7 @@ public class Robot extends Batiment {
     public Robot ouest(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
-        Nwpos[1] =position[1]-1;
+        Nwpos[1] = position[1]-1;
         return new Robot(d,Nwpos);
     }
 

@@ -24,7 +24,7 @@ public class Game {
                 Scanner selectRobot = new Scanner(System.in);
                 System.out.println("Veuilliez selectionner le Robot à deplacer 1 ou 2");
                 int num = selectRobot.nextInt();
-                System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en ssorte qu'il ne puisse selectionner que 1 ou 2
+                System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
 
 
                 Scanner action = new Scanner(System.in);
