@@ -2,10 +2,10 @@ package CodeV2;
 
 public class Robot implements Comparable<Robot>{
     private final Monde monde;
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
     private final boolean nickel;
-    private final int stockage;
+    private int stockage;
     private final int max;
     private final int capacite_minage;
     private final int numero;

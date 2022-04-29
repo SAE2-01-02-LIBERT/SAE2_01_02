@@ -1,10 +1,10 @@
 package CodeV2;
 
 public class Mine implements Comparable<Mine>{
-    private final Monde monde;
-    private final int x;
-    private final int y;
-    private final boolean nickel;
+    private Monde monde;
+    private int x;
+    private int y;
+    private boolean nickel;
     private int quantite;
     private final int max;
     private final int numero;

@@ -6,7 +6,6 @@ public class Eau {
     private final int y;
     private final boolean eau;
 
-
     public Eau(Monde m, int i, int j, boolean b) {
         this.monde = m;
         this.x = i;

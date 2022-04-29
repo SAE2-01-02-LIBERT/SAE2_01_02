@@ -5,8 +5,8 @@ import java.util.Random;
 
 
 public class Monde {
-    private int id_monde;
-    private Object[][][] matrice;
+    private final int id_monde;
+    private final Object[][][] matrice;
 
     public Monde(int i) {
         this.id_monde = i;
@@ -113,22 +113,22 @@ public class Monde {
                 }
                 for (int m = 0; m < (this.matrice[0]).length; m++) {
                     if (this.matrice[i][m][k] instanceof Eau) {
-                        Eau e = Eau.class.cast(this.matrice[i][m][k]);
-                        if (e.get_eau()==true) {
+                        Eau e = (Eau) this.matrice[i][m][k];
+                        if (e.get_eau()) {
                             System.out.print(" | X X");
                         } else {
                             System.out.print(" |    ");
                         }
                     } else if (this.matrice[i][m][k] instanceof Mine) {
-                        Mine mine = Mine.class.cast(this.matrice[i][m][k]);
+                        Mine mine = (Mine) this.matrice[i][m][k];
                         System.out.print(" | M " + mine.get_numero());
                         min.add(mine);
                     } else if (this.matrice[i][m][k] instanceof Entrepot) {
-                        Entrepot e = Entrepot.class.cast(this.matrice[i][m][k]);
+                        Entrepot e = (Entrepot) this.matrice[i][m][k];
                         System.out.print(" | E " + e.get_numero());
                         entr.add(e);
                     } else if (this.matrice[i][m][k] instanceof Robot) {
-                        Robot r = Robot.class.cast(this.matrice[i][m][k]);
+                        Robot r = (Robot) this.matrice[i][m][k];
                         System.out.print(" | R " + r.get_numero());
                         rob.add(r);
                     }
@@ -152,7 +152,7 @@ public class Monde {
         for (Mine mine : min) {
             System.out.print("M" + mine.get_numero());
             System.out.print("  " + mine.get_x() + " " + mine.get_y());
-            if (mine.get_nickel()==true) {
+            if (mine.get_nickel()) {
                 System.out.print("  NI ");
             } else {
                 System.out.print("  OR ");
@@ -163,7 +163,7 @@ public class Monde {
         for (Entrepot entrepot : entr) {
             System.out.print("E" + entrepot.get_numero());
             System.out.print("  " + entrepot.get_x() + " " + entrepot.get_y());
-            if (entrepot.get_nickel()==true) {
+            if (entrepot.get_nickel()) {
                 System.out.print("  NI ");
             } else {
                 System.out.print("  OR ");
@@ -174,7 +174,7 @@ public class Monde {
         for (Robot robot : rob) {
             System.out.print("R" + robot.get_numero());
             System.out.print("  " + robot.get_x() + " " + robot.get_y());
-            if (robot.get_nickel()==true) {
+            if (robot.get_nickel()) {
                 System.out.print("  NI ");
             } else {
                 System.out.print("  OR ");
