@@ -27,6 +27,14 @@ public class Mine extends Batiment {
         this.stock = mine.capacite;
     }
 
+    public void estRecoltee(){
+        if(stock > 0) {
+            this.stock--;
+        }
+        else{
+            System.out.println("Mine épuisée");
+        }
+    }
 
     @Override
     public String afficher(){
