@@ -4,7 +4,7 @@ public class Eau {
     private final Monde monde;
     private final int x;
     private final int y;
-    private boolean eau;
+    private final boolean eau;
 
     public Eau(Monde m, int i, int j, boolean b) {
         this.monde = m;
