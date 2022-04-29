@@ -1,8 +1,8 @@
 package CodeV2;
 
 public class Eau {
-    private Monde monde;
-    private int x;
+    private final Monde monde;
+    private final int x;
     private int y;
     private boolean eau;
 
