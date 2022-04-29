@@ -83,7 +83,7 @@ public class Monde {
                 j = y.nextInt(10);
             }
             int[] pos=new int[2];
-               pos[0]=i; pos[1]=j;
+            pos[0]=i; pos[1]=j;
 
             roboList[k]=new Robot(roboList[k],pos);
             entrepotList[k]= new Entrepot(entrepotList[k],pos);
@@ -152,12 +152,14 @@ public class Monde {
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Mine){
                     robot.recolter();
+                    ((Mine) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).estRecoltee();
                 }
             }
         }
         else if (Da == "D"){
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Entrepot){
+                    ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).depot(robot);
                     robot.deposer();
                 }
             }
