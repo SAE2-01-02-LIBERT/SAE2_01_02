@@ -29,5 +29,4 @@ class RobotTest {
 
         assertEquals(val+cpE, Rb.getStock());
         }
-
     }

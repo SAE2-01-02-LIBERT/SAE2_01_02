@@ -85,8 +85,8 @@ public class Monde {
             int[] pos=new int[2];
             pos[0]=i; pos[1]=j;
 
-            roboList[k]=new Robot(roboList[k],pos);
-            entrepotList[k]= new Entrepot(entrepotList[k],pos);
+            roboList[k] = new Robot(roboList[k],pos);
+            entrepotList[k] = new Entrepot(entrepotList[k],pos);
             monde[i][j].ajoutLocalE(entrepotList[k]);
             monde[i][j].ajoutLocalR(roboList[k]);
         }
