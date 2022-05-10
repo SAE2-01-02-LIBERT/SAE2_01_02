@@ -60,10 +60,5 @@ public class Mine implements Comparable<Mine>{
         return (numero - m.numero);
     }
 
-    public int getStockTotal(){
-        for (){
 
-
-        }
-    }
 }

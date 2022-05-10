@@ -203,4 +203,13 @@ public class Monde {
         return entrepotList;
     }
     public Robot[] getRoboList() {return roboList;}
+
+    public int getStockTotal(){
+        int i;
+        int total = 0;
+        for (i = 0;i<mineList.length();i++){
+            total+=mineList[i].get_quantite();
+        }
+        return total;
+    }
 }
