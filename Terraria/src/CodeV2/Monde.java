@@ -207,7 +207,7 @@ public class Monde {
     public int getStockTotal(){
         int i;
         int total = 0;
-        for (i = 0;i<mineList.length();i++){
+        for (i = 0;i<mineList.length;i++){
             total+=mineList[i].get_quantite();
         }
         return total;

@@ -54,6 +54,9 @@ public class Robot implements Comparable<Robot>{
     public int get_numero() {
         return this.numero;
     }
+    public String afficher() {
+        return " R | " + this.numero + " ";
+    }
 
     @Override
     public int compareTo(Robot r) {
