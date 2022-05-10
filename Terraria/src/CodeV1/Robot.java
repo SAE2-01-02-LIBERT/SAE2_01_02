@@ -1,19 +1,37 @@
 package CodeV1;
 
+import java.util.Random;
+
 public class Robot extends Batiment {
     private String type;
     private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
+
+    private int capaciteeExtraction;
     private int numero;
     private int[] position;
 
+    public Robot() {
+        this.type = "Robot";
+        this.typeMine = "OR";
+        this.soute = 0;
+        this.capacitee = 0;
+        this.capaciteeExtraction = 0;
+        this.numero = 1;
+        this.position = new int[2];
+        this.position[0] = 0; // par defaut
+        this.position[1] = 0; // par defaut
+    }
+
     public Robot(String typeMine, int num) {
+        Random random = new Random();
         this.type = "Robot";
         this.typeMine = typeMine;
         this.numero = num;
         this.soute = 0;
-        this.capacitee = 0;
+        this.capacitee = 5 + random.nextInt(11);
+        this.capaciteeExtraction = 1 + random.nextInt(4);
         this.position = new int[2];
         this.position[0] = 0; // par defaut
         this.position[1] = 0; // par defaut
@@ -23,16 +41,27 @@ public class Robot extends Batiment {
         this.soute = r.soute;
         this.position = Npos;
         this.capacitee = r.capacitee;
+        this.capaciteeExtraction = r.capaciteeExtraction;
         this.numero = r.numero;
         this.type = r.type;
+        this.typeMine = r.typeMine;
     }
 
     public void recolter() {
-        // TODO implement here
+        int extrait = capaciteeExtraction;
+        if (capacitee == soute){
+            System.out.println("Impossible");
+        }
+        else{
+            if(soute+capaciteeExtraction > capacitee) {
+                extrait = capacitee-soute;
+            }
+            soute += extrait;
+        }
     }
 
     public void deposer() {
-        // TODO implement here
+        soute = 0;
     }
 
     /**
@@ -90,6 +119,9 @@ public class Robot extends Batiment {
         return this.soute;
     }
 
+    public int getCapaciteeExtraction() {
+        return capaciteeExtraction;
+    }
     @Override
     public String getType() {
         return this.type;
@@ -99,4 +131,34 @@ public class Robot extends Batiment {
     public String getInfo() {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setTypeMine(String typeMine) {
+        this.typeMine = typeMine;
+    }
+
+    public void setSoute(int soute) {
+        this.soute = soute;
+    }
+
+    public void setCapacitee(int capacitee) {
+        this.capacitee = capacitee;
+    }
+
+    public void setCapaciteeExtraction(int capaciteeExtraction) {
+        this.capaciteeExtraction = capaciteeExtraction;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
+    }
 }
+
+

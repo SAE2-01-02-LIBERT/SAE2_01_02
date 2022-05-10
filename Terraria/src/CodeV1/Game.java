@@ -23,8 +23,24 @@ public class Game {
             try {
                 Scanner selectRobot = new Scanner(System.in);
                 System.out.println("Veuilliez selectionner le Robot à deplacer 1 ou 2");
-                int num = selectRobot.nextInt();
-                System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en ssorte qu'il ne puisse selectionner que 1 ou 2
+                int num = 0;
+                String saisie = "";
+                while (true) {
+                    saisie = selectRobot.nextLine();
+                    try{
+                        num = Integer.parseInt(saisie);
+                        if (num < 1 || num > 2) {
+                            System.out.println("Sélectionnez un robot existant!");
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    catch (Exception e){
+                        System.out.println("Entrez un entier!");
+                    }
+                }
+                System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
 
 
                 Scanner action = new Scanner(System.in);
