@@ -1,13 +1,16 @@
 package CodeV2;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
 public class Monde {
+    private Robot[] roboList;
+    private Mine[] mineList;
+    private Entrepot[] entrepotList;
     private final int id_monde;
     private final Object[][][] matrice;
-
     public Monde(int i) {
         this.id_monde = i;
         this.matrice = new Object[10][10][2];
@@ -27,6 +30,9 @@ public class Monde {
     }
 
     public void creer_monde() {
+        this.entrepotList=new Entrepot[2];
+        this.mineList = new Mine[4];
+        this.roboList=new Robot[10];
         Random ran = new Random();
         int[] nb_el = new int[4];
         nb_el[0] = ran.nextInt(10);
@@ -50,8 +56,10 @@ public class Monde {
                         int q = ran.nextInt(51) + 100;
                         if ((k+1)%2 == 0) {
                             this.matrice[x][y][0] = new Mine(this, x, y, false, q, k + 1);
+                            this.mineList[k] = (Mine) this.matrice[x][y][1];
                         } else {
                             this.matrice[x][y][0] = new Mine(this, x, y, true, q, k + 1);
+                            this.mineList[k] = (Mine) this.matrice[x][y][1];
                         }
                         place = true;
                     }
@@ -61,8 +69,10 @@ public class Monde {
                         this.matrice[x][y][0] = new Eau(this, x, y, false);
                         if ((k+1)%2 == 0) {
                             this.matrice[x][y][1] = new Robot(this, x, y, false, max, cm, k + 1);
+                            this.roboList[k] = (Robot) this.matrice[x][y][1];
                         } else {
                             this.matrice[x][y][1] = new Robot(this, x, y, true, max, cm, k + 1);
+                            this.roboList[k] = (Robot) this.matrice[x][y][1];
                         }
                         place = true;
                     }
@@ -70,13 +80,16 @@ public class Monde {
                         this.matrice[x][y][1] = new Eau(this, x, y, false);
                         if ((k+1)%2 == 0) {
                             this.matrice[x][y][0] = new Entrepot(this, x, y, false, k + 1);
+                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][1];
                         } else {
                             this.matrice[x][y][0] = new Entrepot(this, x, y, true, k + 1);
+                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][1];
                         }
                         place = true;
                     }
                 }
             }
+
         }
         for (i = 0; i < this.matrice.length; i++) {
             for (int j = 0; j < (this.matrice[0]).length; j++) {
@@ -183,4 +196,11 @@ public class Monde {
             System.out.println();
         }
     }
+    public Mine[] getMineList() {
+        return mineList;
+    }
+    public Entrepot[] getEntrepotList(){
+        return entrepotList;
+    }
+    public Robot[] getRoboList() {return roboList;}
 }

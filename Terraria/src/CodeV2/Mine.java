@@ -59,4 +59,11 @@ public class Mine implements Comparable<Mine>{
     public int compareTo(Mine m) {
         return (numero - m.numero);
     }
+
+    public int getStockTotal(){
+        for (){
+
+
+        }
+    }
 }
