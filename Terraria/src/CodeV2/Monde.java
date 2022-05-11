@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 
 public class Monde {
@@ -56,10 +57,10 @@ public class Monde {
                         int q = ran.nextInt(51) + 100;
                         if ((k+1)%2 == 0) {
                             this.matrice[x][y][0] = new Mine(this, x, y, false, q, k + 1);
-                            this.mineList[k] = (Mine) this.matrice[x][y][1];
+                            this.mineList[k] = (Mine) this.matrice[x][y][0];
                         } else {
                             this.matrice[x][y][0] = new Mine(this, x, y, true, q, k + 1);
-                            this.mineList[k] = (Mine) this.matrice[x][y][1];
+                            this.mineList[k] = (Mine) this.matrice[x][y][0];
                         }
                         place = true;
                     }
@@ -80,10 +81,10 @@ public class Monde {
                         this.matrice[x][y][1] = new Eau(this, x, y, false);
                         if ((k+1)%2 == 0) {
                             this.matrice[x][y][0] = new Entrepot(this, x, y, false, k + 1);
-                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][1];
+                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][0];
                         } else {
                             this.matrice[x][y][0] = new Entrepot(this, x, y, true, k + 1);
-                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][1];
+                            this.entrepotList[k] = (Entrepot) this.matrice[x][y][0];
                         }
                         place = true;
                     }
@@ -208,8 +209,12 @@ public class Monde {
         int i;
         int total = 0;
         for (i = 0;i<mineList.length;i++){
-            total+=mineList[i].get_quantite();
+            if (mineList[i]!=null){
+                Mine m = mineList[i];
+                total+=m.get_quantite();
+            }
         }
         return total;
     }
+
 }

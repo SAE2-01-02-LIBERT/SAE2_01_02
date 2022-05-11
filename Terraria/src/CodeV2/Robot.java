@@ -64,11 +64,15 @@ public class Robot implements Comparable<Robot>{
     }
 
     public boolean nord() {
+        System.out.println("0");
         if (this.x - 1 >= 0) {
+            System.out.println("1");
             Object s = this.monde.get_element(this.x - 1, this.y, 0);
             if (s instanceof Eau) {
+                System.out.println("2");
                 Eau sol = Eau.class.cast(s);
                 if (!sol.get_eau()) {
+                    System.out.println("3");
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x - 1][this.y][1] = this;
                     m[this.x][this.y][1] = null;
