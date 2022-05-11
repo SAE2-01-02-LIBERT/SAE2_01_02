@@ -8,25 +8,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RobotTest {
     protected Robot Rb;
 
-    @BeforeAll
+    @BeforeEach
     void setUp() throws Exception{
-      Robot Rb = new Robot();
+        Rb = new Robot();
     }
-    @AfterAll
+    @AfterEach
     public void tearDown() throws Exception{
         Rb = null;
     }
 
     @Test
     void test1c (){
-        Robot Rb = new Robot(); // la c'est bizare
         Rb.setCapacitee(5);
         Rb.setSoute(0);
         Rb.setCapaciteeExtraction(1);
         int val = Rb.getStock();
         int cpE = Rb.getCapaciteeExtraction();
         Rb.recolter();
-
         assertEquals(val+cpE, Rb.getStock());
-        }
     }
+
+    @Test
+    void test2c (){
+        Rb.setCapacitee(5);
+        Rb.setSoute(4);
+        Rb.setCapaciteeExtraction(2);
+        int val = Rb.getStock();
+        int cpE = Rb.getCapaciteeExtraction();
+        Rb.recolter();
+        assertEquals(val+cpE, Rb.getStock());
+    }
+}
