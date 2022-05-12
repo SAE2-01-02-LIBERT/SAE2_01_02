@@ -15,21 +15,20 @@ public class Game {
         partie.generationEntrepot();
         partie.generationRobot();
         partie.generationMine();
-        partie.ajoutElement();
-        partie.ajoutMine();
+        partie.ajoutElements();
         partie.affichermonde(0);
         int cpt = 0;
         while (partie.getMineList()[0].getStock() != 0 && partie.getMineList()[1].getStock() != 0 && partie.getMineList()[2].getStock() != 0 && partie.getMineList()[3].getStock() != 0) {
             try {
                 Scanner selectRobot = new Scanner(System.in);
-                System.out.println("Veuilliez selectionner le Robot à deplacer 1 ou 2");
+                System.out.println("Veuillez selectionner le Robot à deplacer (de 1 a "+partie.getNbrRobot()+")");
                 int num = 0;
                 String saisie = "";
                 while (true) {
                     saisie = selectRobot.nextLine();
                     try{
                         num = Integer.parseInt(saisie);
-                        if (num < 1 || num > 2) {
+                        if (num < 1 || num > partie.getNbrRobot()) {
                             System.out.println("Sélectionnez un robot existant!");
                         }
                         else{
@@ -40,7 +39,7 @@ public class Game {
                         System.out.println("Entrez un entier!");
                     }
                 }
-                System.out.println("Vous avez selectionner " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
+                System.out.println("Vous avez selectionne " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
 
 
                 Scanner action = new Scanner(System.in);
