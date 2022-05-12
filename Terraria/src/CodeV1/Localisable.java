@@ -7,5 +7,6 @@ public interface Localisable {
     public String afficher();
     public int getStock();
     public String getType();
+    public String getTypeMateriau();
 
 }
