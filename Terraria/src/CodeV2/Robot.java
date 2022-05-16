@@ -64,18 +64,14 @@ public class Robot implements Comparable<Robot>{
     }
 
     public boolean nord() {
-        System.out.println("0");
         if (this.x - 1 >= 0) {
-            System.out.println("1");
-            Object s = this.monde.get_element(this.x - 1, this.y, 0);
+            Object s = this.monde.get_element(this.x - 1, this.y, 1);
             if (s instanceof Eau) {
-                System.out.println("2");
                 Eau sol = Eau.class.cast(s);
                 if (!sol.get_eau()) {
-                    System.out.println("3");
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x - 1][this.y][1] = this;
-                    m[this.x][this.y][1] = null;
+                    m[this.x][this.y][1] = new Eau(monde,this.x,this.y,false);
                     this.x-=1;
                     return true;
                 }else {
@@ -88,16 +84,15 @@ public class Robot implements Comparable<Robot>{
             return false;
         }
     }
-
     public boolean sud() {
         if (this.x + 1 <= 9) {
-            Object s = this.monde.get_element(this.x + 1, this.y, 0);
+            Object s = this.monde.get_element(this.x + 1, this.y, 1);
             if (s instanceof Eau) {
                 Eau sol = Eau.class.cast(s);
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x + 1][this.y][1] = this;
-                    m[this.x][this.y][1] = null;
+                    m[this.x][this.y][1] =new Eau(monde,this.x,this.y,false);
                     this.x+=1;
                     return true;
                 }else {
@@ -113,13 +108,13 @@ public class Robot implements Comparable<Robot>{
 
     public boolean ouest() {
         if (this.y - 1 >= 0) {
-            Object s = this.monde.get_element(this.x, this.y - 1, 0);
+            Object s = this.monde.get_element(this.x, this.y - 1, 1);
             if (s instanceof Eau) {
                 Eau sol = Eau.class.cast(s);
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x][this.y - 1][1] = this;
-                    m[this.x][this.y][1] = null;
+                    m[this.x][this.y][1] = new Eau(monde,this.x,this.y,false);
                     this.y-=1;
                     return true;
                 }else {
@@ -135,13 +130,13 @@ public class Robot implements Comparable<Robot>{
 
     public boolean est() {
         if (this.y + 1 <= 9) {
-            Object s = this.monde.get_element(this.x, this.y + 1, 0);
+            Object s = this.monde.get_element(this.x, this.y + 1, 1);
             if (s instanceof Eau) {
                 Eau sol = Eau.class.cast(s);
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x][this.y + 1][1] = this;
-                    m[this.x][this.y][1] = null;
+                    m[this.x][this.y][1] = new Eau(monde,this.x,this.y,false);
                     this.y+=1;
                     return true;
                 }else {
@@ -156,7 +151,7 @@ public class Robot implements Comparable<Robot>{
     }
 
     public boolean mine() {
-        Object m = this.monde.get_element(this.x, this.y, 0);
+        Object m = this.monde.get_element(this.x, this.y, 1);
         if (m instanceof Mine) {
             Mine mine = Mine.class.cast(m);
             if (mine.get_nickel() == this.nickel) {
@@ -176,7 +171,7 @@ public class Robot implements Comparable<Robot>{
     }
 
     public boolean vider() {
-        Object e = this.monde.get_element(this.x, this.y + 1, 0);
+        Object e = this.monde.get_element(this.x, this.y + 1, 1);
         if (e instanceof Entrepot) {
             Entrepot entr = Entrepot.class.cast(e);
             if (entr.get_nickel() == this.nickel) {
