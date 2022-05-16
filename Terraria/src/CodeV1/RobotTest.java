@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RobotTest {
+class RobotTest { //converture de condition de Robot pour la methode recolter
     private Robot Rbor;
     private Mine mine;
 

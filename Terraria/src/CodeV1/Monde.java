@@ -18,27 +18,24 @@ public class Monde {
 
     public void creerMonde() {
         Random valeur = new Random();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                this.monde[i][j] = new Terre();
+            }
+        }
+
         int eau = 0;
-        int obstacle = 0;
-        obstacle = valeur.nextInt(11);
+        int obstacle = valeur.nextInt(11);
         while (eau < obstacle) {
-            int x = valeur.nextInt(11);
-            int y = valeur.nextInt(11);
-            if (monde[x][y].gettype().equals("Eau")) {
-                continue;
-            } else {
+            int x = valeur.nextInt(10);
+            int y = valeur.nextInt(10);
+            if (monde[x][y].gettype()=="Terre") {
                 this.monde[x][y] = new Eau();
                 eau++;
             }
         }
-        
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (monde[i][j] == null) {
-                    this.monde[i][j] = new Terre();
-                }
-            }
-        }
+
     }
 
 
