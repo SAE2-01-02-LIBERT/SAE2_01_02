@@ -18,19 +18,17 @@ public class Monde {
 
     public void creerMonde() {
         Random valeur = new Random();
-
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 this.monde[i][j] = new Terre();
             }
         }
-
         int eau = 0;
         int obstacle = valeur.nextInt(11);
         while (eau < obstacle) {
             int x = valeur.nextInt(10);
             int y = valeur.nextInt(10);
-            if (monde[x][y].gettype()=="Terre") {
+            if (monde[x][y].gettype().equals("Terre")) {
                 this.monde[x][y] = new Eau();
                 eau++;
             }
@@ -39,17 +37,34 @@ public class Monde {
     }
 
 
-    public void generationRobot(){
-        Robot R1 = new Robot("NI",1);
-        Robot R2 = new Robot("OR",2);
-        Robot R3 = new Robot("NI",3);
-        Robot R4 = new Robot("OR",4);
-        Robot R5 = new Robot("NI",5);
-        roboList[0] = R1;
-        roboList[1] = R2;
-        roboList[2] = R3;
-        roboList[3] = R4;
-        roboList[4] = R5;
+    public void generationRobot() {
+        Random inta = new Random();
+        int cpt = 2 ;
+        int num = 3 ;
+
+        roboList[0]   =   new Robot("OR",1);
+        roboList[1]   =   new Robot("NI",2);
+
+        int nbROr = inta.nextInt(4);
+
+        if(nbROr!=0) {
+            for (int i = 0; i < nbROr; i++) {
+                roboList[cpt] = new Robot("OR", num);
+                cpt++;
+                num++;
+            }
+        }
+
+        int nbRNi =inta.nextInt(4);
+
+        if(nbRNi!=0){
+            for (int i=0 ;i<nbRNi ;i++){
+                roboList[cpt]   =   new Robot("NI",num);
+                cpt++;
+                num++;
+            }
+        }
+        this.nbrRobot = 2 + nbRNi +nbROr;
     }
 
     public void generationEntrepot(){
@@ -99,19 +114,23 @@ public class Monde {
     public void ajoutRobot() throws ExecutionException {
         Random x = new Random();
         Random y = new Random();
-        Random num = new Random();
-        int nbr = 2 + num.nextInt(5);
-        this.nbrRobot = nbr;
-        for (int k = 0 ; k<nbr; k++) {
+        //Random num = new Random();
+        //int nbr = 2 + num.nextInt(5);
+        //this.nbrRobot = nbr;
+
+        for (int k = 0 ; k<this.nbrRobot; k++) {
+            int[] pos = new int[2];
+
             int i = x.nextInt(10);
             int j = y.nextInt(10);
+
             while (monde[i][j].gettype().equals("Eau") || monde[i][j].gettype().equals("Mine")) {
                 i = x.nextInt(10);
                 j = y.nextInt(10);
             }
-            int[] pos=new int[2];
-            pos[0]=i; pos[1]=j;
 
+
+            pos[0]=i; pos[1]=j;
             roboList[k] = new Robot(roboList[k],pos);
             monde[i][j].ajoutLocalR(roboList[k]);
         }
