@@ -7,7 +7,6 @@ public class Robot extends Batiment {
     private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
-
     private int capaciteeExtraction;
     private int numero;
     private int[] position;
@@ -30,8 +29,8 @@ public class Robot extends Batiment {
         this.typeMine = typeMine;
         this.numero = num;
         this.soute = 0;
-        this.capacitee = 5 + random.nextInt(11);
-        this.capaciteeExtraction = 1 + random.nextInt(4);
+        this.capacitee = 5 + random.nextInt(5);
+        this.capaciteeExtraction = 1 + random.nextInt(3);
         this.position = new int[2];
         this.position[0] = 0; // par defaut
         this.position[1] = 0; // par defaut
@@ -47,16 +46,21 @@ public class Robot extends Batiment {
         this.typeMine = r.typeMine;
     }
 
-    public void recolter() {
+    public void recolter(Mine m) {
         int extrait = capaciteeExtraction;
-        if (capacitee == soute){
-            System.out.println("Impossible");
+        if (m.getTypeMateriau().equals(this.getTypeMateriau())) {
+            if (capacitee == soute) {
+                System.out.println("Impossible, votre robot est plein");
+            } else {
+                if (soute + capaciteeExtraction > capacitee) {
+                    extrait = capacitee - soute;
+                }
+                soute += extrait;
+                m.estRecoltee(extrait);
+            }
         }
         else{
-            if(soute+capaciteeExtraction > capacitee) {
-                extrait = capacitee-soute;
-            }
-            soute += extrait;
+            System.out.println("Impossible, votre robot ne peut recolter ce minerai");
         }
     }
 
@@ -122,6 +126,12 @@ public class Robot extends Batiment {
     public int getCapaciteeExtraction() {
         return capaciteeExtraction;
     }
+
+    @Override
+    public String getTypeMateriau(){
+        return typeMine;
+    }
+
     @Override
     public String getType() {
         return this.type;
@@ -160,5 +170,7 @@ public class Robot extends Batiment {
         this.position = position;
     }
 }
+
+
 
 

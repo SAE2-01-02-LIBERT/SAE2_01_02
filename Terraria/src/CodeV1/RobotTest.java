@@ -3,30 +3,55 @@ package CodeV1;
 import CodeV1.Robot;
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
-    protected Robot Rb;
+    private Robot Rbor;
+    private Mine mine;
 
-    @BeforeAll
+    @BeforeEach
     void setUp() throws Exception{
-      Robot Rb = new Robot();
+        Rbor = new Robot("OR",1);
+        mine = new Mine("OR",1);
     }
-    @AfterAll
+    @AfterEach
     public void tearDown() throws Exception{
-        Rb = null;
+        Rbor = null;
+        mine = null;
     }
 
     @Test
-    void test1c (){
-        Robot Rb = new Robot(); // la c'est bizare
-        Rb.setCapacitee(5);
-        Rb.setSoute(0);
-        Rb.setCapaciteeExtraction(1);
-        int val = Rb.getStock();
-        int cpE = Rb.getCapaciteeExtraction();
-        Rb.recolter();
-
-        assertEquals(val+cpE, Rb.getStock());
-        }
+    void test1 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(0);
+        Rbor.setCapaciteeExtraction(1);
+        Rbor.recolter(mine);
+        assertEquals(1, Rbor.getStock());
     }
+
+    @Test
+    void test2 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(4);
+        Rbor.setCapaciteeExtraction(2);
+        Rbor.recolter(mine);
+        assertNotEquals(5, Rbor.getStock());
+    }
+
+    @Test
+    void test3 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(5);
+        Rbor.setCapaciteeExtraction(3);
+        Rbor.recolter(mine);
+        assertEquals(6, Rbor.getStock());
+    }
+    @Test
+    void test4 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(6);
+        Rbor.setCapaciteeExtraction(3);
+        Rbor.recolter(mine);
+        assertEquals(6, Rbor.getStock());
+    }
+}

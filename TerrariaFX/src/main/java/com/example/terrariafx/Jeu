@@ -1,0 +1,31 @@
+package com.example.terrariafx;
+
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class Jeu extends Stage{
+
+    private GestionEvent gestionEvent;
+
+    public Jeu(){
+        super();
+        this.setTitle("Robot Mineur");
+
+        Button quitter = new Button("Quitter");
+
+        quitter.setOnAction(gestionEvent);
+
+        VBox vbox = new VBox();
+        vbox.getChildren().add(quitter);
+
+        Scene scene = new Scene(vbox, 300, 300);
+        this.setScene(scene);
+    }
+
+    public void setGestionEvent(GestionEvent g){
+        gestionEvent = g;
+    }
+
+}

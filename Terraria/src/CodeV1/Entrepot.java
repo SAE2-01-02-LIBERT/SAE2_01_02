@@ -25,12 +25,17 @@ public class Entrepot extends Batiment {
 
     public void depot(Robot r){
         this.stock += r.getStock();
+        r.deposer();
     }
 
     public int getstock() {
         return this.stock;
     }
 
+    @Override
+    public String getTypeMateriau(){
+        return typeEntrepot;
+    }
     @Override
     public String afficher(){
         return " E | "+ this.numero+" ";
@@ -51,4 +56,6 @@ public class Entrepot extends Batiment {
         return "| "+ "E" + this.numero + "  " + " [ "+this.position[0]+", "+this.position[1]+" ]  "+this.typeEntrepot +"  "+ this.stock +"\t     |" ;
     }
 }
+
+
 

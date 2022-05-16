@@ -27,15 +27,19 @@ public class Mine extends Batiment {
         this.stock = mine.capacite;
     }
 
-    public void estRecoltee(){
+    public void estRecoltee(int r){
         if(stock > 0) {
-            this.stock--;
+            this.stock -= r;
         }
         else{
             System.out.println("Mine épuisée");
         }
     }
 
+    @Override
+    public String getTypeMateriau(){
+        return typeMine;
+    }
     @Override
     public String afficher(){
         return " M | "+ this.numero+" ";
