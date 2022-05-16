@@ -17,29 +17,25 @@ public class Monde {
     }
 
     public void creerMonde() {
+        Random valeur = new Random();
         int eau = 0;
-        while (eau < 10) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (monde[i][j] == null) {
-                        Random valeur = new Random();
-                        int x = valeur.nextInt(11);
-                        if (x == 1 ) {
-                            this.monde[i][j] = new Eau();
-                            eau += 1;
-                        }
-                        else {
-                            this.monde[i][j] = new Terre();
-                        }
-                    }
-                    else{
-                        Random valeur = new Random();
-                        int x = valeur.nextInt(11); // faire en sorte que l'apparisiotn d'eau soit plus rare!
-                        if (x == 1 && eau <10) {
-                            this.monde[i][j] = new Eau();
-                            eau += 1;
-                        }
-                    }
+        int obstacle = 0;
+        obstacle = valeur.nextInt(11);
+        while (eau < obstacle) {
+            int x = valeur.nextInt(11);
+            int y = valeur.nextInt(11);
+            if (monde[x][y].gettype().equals("Eau")) {
+                continue;
+            } else {
+                this.monde[x][y] = new Eau();
+                eau++;
+            }
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (monde[i][j] == null) {
+                    this.monde[i][j] = new Terre();
                 }
             }
         }
