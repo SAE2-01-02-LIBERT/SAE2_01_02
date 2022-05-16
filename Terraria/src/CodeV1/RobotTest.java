@@ -6,46 +6,52 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
-    protected Robot Rb;
+    private Robot Rbor;
+    private Mine mine;
 
     @BeforeEach
     void setUp() throws Exception{
-        Rb = new Robot();
+        Rbor = new Robot("OR",1);
+        mine = new Mine("OR",1);
     }
     @AfterEach
     public void tearDown() throws Exception{
-        Rb = null;
+        Rbor = null;
+        mine = null;
     }
 
     @Test
-    void InfCapacite (){
-        Rb.setCapacitee(5);
-        Rb.setSoute(0);
-        Rb.setCapaciteeExtraction(1);
-        int val = Rb.getStock();
-        int cpE = Rb.getCapaciteeExtraction();
-        Rb.recolter();
-        assertEquals(val+cpE, Rb.getStock());
+    void test1 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(0);
+        Rbor.setCapaciteeExtraction(1);
+        Rbor.recolter(mine);
+        assertEquals(1, Rbor.getStock());
     }
 
     @Test
-    void SupCapacite (){
-        Rb.setCapacitee(5);
-        Rb.setSoute(4);
-        Rb.setCapaciteeExtraction(2);
-        int val = Rb.getStock();
-        int cpE = Rb.getCapaciteeExtraction();
-        Rb.recolter();
-        assertNotEquals(val+cpE, Rb.getStock());
+    void test2 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(4);
+        Rbor.setCapaciteeExtraction(2);
+        Rbor.recolter(mine);
+        assertNotEquals(5, Rbor.getStock());
     }
 
     @Test
-    void CapSouteEgal (){
-        Rb.setCapacitee(5);
-        Rb.setSoute(5);
-        Rb.setCapaciteeExtraction(1);
-        int val = Rb.getStock();
-        Rb.recolter();
-        assertEquals(val, Rb.getStock());
+    void test3 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(5);
+        Rbor.setCapaciteeExtraction(3);
+        Rbor.recolter(mine);
+        assertEquals(6, Rbor.getStock());
+    }
+    @Test
+    void test4 (){
+        Rbor.setCapacitee(6);
+        Rbor.setSoute(6);
+        Rbor.setCapaciteeExtraction(3);
+        Rbor.recolter(mine);
+        assertEquals(6, Rbor.getStock());
     }
 }
