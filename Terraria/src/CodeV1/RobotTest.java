@@ -19,7 +19,6 @@ class RobotTest { //converture de condition de Robot pour la methode recolter
         Rbor = null;
         mine = null;
     }
-
     @Test
     void test1 (){
         Rbor.setCapacitee(6);
@@ -28,7 +27,6 @@ class RobotTest { //converture de condition de Robot pour la methode recolter
         Rbor.recolter(mine);
         assertEquals(1, Rbor.getStock());
     }
-
     @Test
     void test2 (){
         Rbor.setCapacitee(6);
@@ -37,7 +35,6 @@ class RobotTest { //converture de condition de Robot pour la methode recolter
         Rbor.recolter(mine);
         assertEquals(6, Rbor.getStock());
     }
-
     @Test
     void test3 (){
         Rbor.setCapacitee(6);
