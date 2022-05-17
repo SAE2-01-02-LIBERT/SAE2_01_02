@@ -1,38 +1,31 @@
 package com.example.terrariafx;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
-public class MondeGUI {
+public class MondeGUI extends GridPane {
     private Monde world;
 
-    public void MondeGui(){
-         world = new Monde();
-         world.creerMonde();
-         setGrille();
+    public MondeGUI() {
+        this.world = new Monde();
+        world.creerMonde();
     }
 
-    public GridPane setGrille(){
+    public GridPane setGrille() {
+
         GridPane grille = new GridPane();
 
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
-                Rectangle rec = new Rectangle(60, 60);
-                if((i % 2 == 0 && j % 2 == 0) || (i % 2 !=0 && j % 2 !=0)){
-                    rec.setFill(Color.GREY);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                SecteurGUI sec = new SecteurGUI(world.getMonde()[i][j]);
+
+                if (sec.getsecteurtype().equals("Terre")) {
+                    sec.setStyle("file:Sprites/terre.png");
+                    grille.getChildren().add(sec);
+                } else {
+                    sec.setStyle("file:Sprites/eau.png");
+                    grille.getChildren().add(sec);
                 }
-                else{
-                    rec.setFill(Color.BLACK);
-                }
-                GridPane.setRowIndex(rec, i);
-                GridPane.setColumnIndex(rec, j);
-                grille.getChildren().add(rec);
             }
-        }
-        return grille;
+        } return grille;
     }
-
-
-
 }

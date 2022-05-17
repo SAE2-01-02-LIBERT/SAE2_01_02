@@ -12,16 +12,12 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Jeu extends Stage{
-
     private Menu menu;
     private GestionEvent gestionEvent;
-
     public Jeu(){
         super();
         this.setTitle("Robot Mineur");
-
         Button end = new Button("Fin");
-
         Stage temp = this;
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -31,9 +27,8 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
-
-        GridPane grille = new MondeGUI().setGrille();
-
+        MondeGUI grille = new MondeGUI();
+        grille.setGrille();
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
@@ -45,14 +40,10 @@ public class Jeu extends Stage{
         this.sizeToScene();
         this.setScene(scene);
     }
-
     public void setGestionEvent(GestionEvent g){
         gestionEvent = g;
     }
-
     public void setMenu(Menu menu){
         this.menu = menu;
     }
-
-
 }
