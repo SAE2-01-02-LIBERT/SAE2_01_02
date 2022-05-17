@@ -15,7 +15,6 @@ public class Monde {
         this.roboList=new Robot[10];
         this.monde = new Secteur[10][10];
     }
-
     public void creerMonde() {
         Random valeur = new Random();
         for (int i = 0; i < 10; i++) {
@@ -33,20 +32,14 @@ public class Monde {
                 eau++;
             }
         }
-
     }
-
-
     public void generationRobot() {
         Random inta = new Random();
         int cpt = 2 ;
         int num = 3 ;
-
         roboList[0]   =   new Robot("OR",1);
         roboList[1]   =   new Robot("NI",2);
-
         int nbROr = inta.nextInt(4);
-
         if(nbROr!=0) {
             for (int i = 0; i < nbROr; i++) {
                 roboList[cpt] = new Robot("OR", num);
@@ -54,9 +47,7 @@ public class Monde {
                 num++;
             }
         }
-
         int nbRNi =inta.nextInt(4);
-
         if(nbRNi!=0){
             for (int i=0 ;i<nbRNi ;i++){
                 roboList[cpt]   =   new Robot("NI",num);
@@ -66,7 +57,6 @@ public class Monde {
         }
         this.nbrRobot = 2 + nbRNi +nbROr;
     }
-
     public void generationEntrepot(){
         Entrepot E1 = new Entrepot("NI",1);
         Entrepot E2 = new Entrepot("OR",2);
@@ -89,12 +79,10 @@ public class Monde {
         ajoutMine();
         ajoutEntrepot();
         ajoutRobot();
-
     }
 
     public void ajoutMine () throws ExecutionException {
         for (int k = 0 ; k<mineList.length; k++) {
-
             Random x = new Random();
             Random y = new Random();
             int i = x.nextInt(10);
@@ -117,25 +105,19 @@ public class Monde {
         //Random num = new Random();
         //int nbr = 2 + num.nextInt(5);
         //this.nbrRobot = nbr;
-
         for (int k = 0 ; k<this.nbrRobot; k++) {
             int[] pos = new int[2];
-
             int i = x.nextInt(10);
             int j = y.nextInt(10);
-
             while (monde[i][j].gettype().equals("Eau") || monde[i][j].gettype().equals("Mine")) {
                 i = x.nextInt(10);
                 j = y.nextInt(10);
             }
-
-
             pos[0]=i; pos[1]=j;
             roboList[k] = new Robot(roboList[k],pos);
             monde[i][j].ajoutLocalR(roboList[k]);
         }
     }
-
     public void ajoutEntrepot() throws ExecutionException {
         Random x = new Random();
         Random y = new Random();
@@ -148,7 +130,6 @@ public class Monde {
             }
             int[] pos=new int[2];
             pos[0]=i; pos[1]=j;
-
             entrepotList[k] = new Entrepot(entrepotList[k],pos);
             monde[i][j].ajoutLocalE(entrepotList[k]);
         }
@@ -190,7 +171,7 @@ public class Monde {
     }
     public void actionRobot(Robot robot, String Da) throws ExecutionException {
         //Interaction
-        if (Da.toUpperCase().equals("R")){
+        if (Da.toUpperCase().equals("R")){  //recolter
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Mine){
                     if(robot.getTypeMateriau() == ((Mine)((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).getTypeMateriau())
@@ -204,7 +185,7 @@ public class Monde {
                 }
             }
         }
-        else if (Da.toUpperCase().equals("D")){
+        else if (Da.toUpperCase().equals("D")){ // deposer pour vider sont stock
             if (monde[robot.getPosition()[0]][robot.getPosition()[1]] instanceof Terre ){
                 if (((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0] instanceof Entrepot){
                     if(robot.getTypeMateriau() == ((Entrepot) ((Terre)monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).getTypeMateriau())
@@ -214,12 +195,10 @@ public class Monde {
                     else{
                         System.out.println("Impossible, cet entrepot ne stocke pas le bon type de mine");
                     }
-
                 }
             }
         }
-
-        else if (Da.toUpperCase().equals("N")){
+        else if (Da.toUpperCase().equals("N")){ // deplacement vers le nord
             try {
                 Robot rb = robot.nord(robot);
                 if ((monde[robot.getPosition()[0] - 1][robot.getPosition()[1]]) instanceof Terre) {
@@ -235,8 +214,7 @@ public class Monde {
                 System.out.println("Vous ne pouvez sortir des limites de la carte!");
             }
         }
-
-        else if (Da.toUpperCase().equals("S")){
+        else if (Da.toUpperCase().equals("S")){// deplacement vers le sud
             try {
                 Robot rb = robot.sud(robot);
                 if ((monde[robot.getPosition()[0] + 1][robot.getPosition()[1]]) instanceof Terre) {
@@ -252,8 +230,7 @@ public class Monde {
                 System.out.println("Vous ne pouvez sortir des limites de la carte!");
             }
         }
-
-        else if (Da.toUpperCase().equals("E")){
+        else if (Da.toUpperCase().equals("E")){// deplacement vers l'est
             try {
                 Robot rb = robot.est(robot);
                 if ((monde[robot.getPosition()[0]][robot.getPosition()[1] + 1]) instanceof Terre) {
@@ -269,7 +246,7 @@ public class Monde {
                 System.out.println("Vous ne pouvez sortir des limites de la carte!");
             }
         }
-        else if (Da.toUpperCase().equals("O")){
+        else if (Da.toUpperCase().equals("O")){// deplacement vers l'ouest
             try {
                 Robot rb = robot.ouest(robot);
                 if ((monde[robot.getPosition()[0]][robot.getPosition()[1] - 1]) instanceof Terre) {
@@ -289,7 +266,6 @@ public class Monde {
             System.out.println("Entrez une commande valide!");
         }
     }
-
     public Mine[] getMineList() {
         return mineList;
     }

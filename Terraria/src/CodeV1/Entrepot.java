@@ -20,7 +20,6 @@ public class Entrepot extends Batiment {
         this.numero=e1.numero;
         this.type=e1.type;
         this.typeEntrepot=e1.typeEntrepot;
-
     }
 
     public void depot(Robot r){

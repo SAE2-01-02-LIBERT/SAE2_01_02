@@ -26,12 +26,10 @@ public class Eau extends Secteur {
         X.append( " X " +"|"+" X ");
         return X;
     }
-
     @Override
     public void ajoutLocalR(Robot r) throws ExecutionException {
             System.out.println("Impossible vous essayez de faire flotter votre Robot ");
     }
-
     @Override
     public void ajoutLocalM(Mine m) throws ExecutionException {
         System.out.println("Il vous sera impossible de trouver les minerais sous l'eau");

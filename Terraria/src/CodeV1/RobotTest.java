@@ -35,7 +35,7 @@ class RobotTest { //converture de condition de Robot pour la methode recolter
         Rbor.setSoute(4);
         Rbor.setCapaciteeExtraction(2);
         Rbor.recolter(mine);
-        assertNotEquals(5, Rbor.getStock());
+        assertEquals(6, Rbor.getStock());
     }
 
     @Test
