@@ -1,4 +1,5 @@
 package com.example.terrariafx;
 
-public class SecteurGUI {
+public class SecteurGUI  {
+
 }

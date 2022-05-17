@@ -32,19 +32,15 @@ public class Jeu extends Stage{
             }
         });
 
-        GridPane grille = setGrille();
+        GridPane grille = new MondeGUI().setGrille();
 
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
-
         gauche.getChildren().add(grille);
-
         droite.getChildren().add(end);
-
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
-
         Scene scene = new Scene(hbox);
         this.sizeToScene();
         this.setScene(scene);
@@ -58,22 +54,5 @@ public class Jeu extends Stage{
         this.menu = menu;
     }
 
-    public GridPane setGrille(){
-        GridPane grille = new GridPane();
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
-                Rectangle rec = new Rectangle(60, 60);
-                if((i % 2 == 0 && j % 2 == 0) || (i % 2 !=0 && j % 2 !=0)){
-                    rec.setFill(Color.GREY);
-                }
-                else{
-                    rec.setFill(Color.BLACK);
-                }
-                GridPane.setRowIndex(rec, i);
-                GridPane.setColumnIndex(rec, j);
-                grille.getChildren().add(rec);
-            }
-        }
-        return grille;
-    }
+
 }

@@ -11,9 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Menu extends Stage{
-
     private Jeu jeu;
-
     public Menu() {
         super();
         this.setTitle("Robot Mineur");
