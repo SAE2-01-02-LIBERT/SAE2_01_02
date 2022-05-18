@@ -5,7 +5,6 @@ import java.util.concurrent.ExecutionException;
 public class Terre extends Secteur {
     private String type;
     private Localisable[] locals;
-
     public Terre() {
         this.type = "Terre";
         this.locals = new Localisable[2];
