@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RobotTest {
+class RobotTest { //converture de condition de Robot pour la methode recolter
     private Robot Rbor;
     private Mine mine;
 
@@ -19,7 +19,6 @@ class RobotTest {
         Rbor = null;
         mine = null;
     }
-
     @Test
     void test1 (){
         Rbor.setCapacitee(6);
@@ -28,16 +27,14 @@ class RobotTest {
         Rbor.recolter(mine);
         assertEquals(1, Rbor.getStock());
     }
-
     @Test
     void test2 (){
         Rbor.setCapacitee(6);
         Rbor.setSoute(4);
         Rbor.setCapaciteeExtraction(2);
         Rbor.recolter(mine);
-        assertNotEquals(5, Rbor.getStock());
+        assertEquals(6, Rbor.getStock());
     }
-
     @Test
     void test3 (){
         Rbor.setCapacitee(6);

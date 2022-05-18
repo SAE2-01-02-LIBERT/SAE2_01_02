@@ -1,8 +1,10 @@
-package CodeV1;
-import java.util.*;
+package com.example.terrariafx;
+
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class Monde {
+
     private Secteur[][] monde;
     private Robot[] roboList;
     private Mine[] mineList;
@@ -10,9 +12,9 @@ public class Monde {
     private int nbrRobot;
 
     public Monde() {
-        this.entrepotList=new Entrepot[2];
+        this.entrepotList = new Entrepot[2];
         this.mineList = new Mine[4];
-        this.roboList=new Robot[10];
+        this.roboList = new Robot[10];
         this.monde = new Secteur[10][10];
     }
     public void creerMonde() {
@@ -301,4 +303,8 @@ public class Monde {
     public int getNbrRobot(){
         return nbrRobot;
     }
+    public Secteur[][] getMonde() {
+        return monde;
+    }
+
 }

@@ -1,4 +1,4 @@
-package CodeV1;
+package com.example.terrariafx;
 
 public class Mine extends Batiment {
     private int numero;

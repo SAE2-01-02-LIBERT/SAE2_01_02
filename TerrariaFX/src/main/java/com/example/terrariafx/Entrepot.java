@@ -1,4 +1,4 @@
-package CodeV1;
+package com.example.terrariafx;
 
 public class Entrepot extends Batiment {
     private int stock;

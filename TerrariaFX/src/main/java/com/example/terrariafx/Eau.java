@@ -1,6 +1,5 @@
-package CodeV1;
+package com.example.terrariafx;
 
-import jdk.jshell.spi.ExecutionControl;
 import java.util.concurrent.ExecutionException;
 
 public class Eau extends Secteur {
