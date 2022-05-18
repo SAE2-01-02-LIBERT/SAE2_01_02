@@ -38,22 +38,22 @@ public class Main {
                 String Act = action.nextLine();
                 Robot r = world.getRoboList()[(Integer.parseInt(saisie))-1];
                 System.out.println(r);
-                if(Objects.equals(Act, "Z")){
+                if(Objects.equals(Act, "z")){
                     r.nord();
                 }
-                if(Objects.equals(Act, "Q")){
+                if(Objects.equals(Act, "q")){
                     r.ouest();
                 }
-                if(Objects.equals(Act, "S")){
+                if(Objects.equals(Act, "s")){
                     r.sud();
                 }
-                if(Objects.equals(Act, "D")){
+                if(Objects.equals(Act, "d")){
                     r.est();
                 }
-                if(Objects.equals(Act, "E")){
+                if(Objects.equals(Act, "e")){
                     r.vider();
                 }
-                if(Objects.equals(Act, "F")){
+                if(Objects.equals(Act, "f")){
                     r.mine();
                 }
 
