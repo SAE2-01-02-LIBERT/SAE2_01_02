@@ -9,10 +9,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ExecutionException;
+
 public class Jeu extends Stage{
     private Menu menu;
     private GestionEvent gestionEvent;
-    public Jeu(){
+    public Jeu() throws ExecutionException {
         super();
         this.setTitle("Robot Mineur");
         Button end = new Button("Fin");
@@ -30,8 +32,8 @@ public class Jeu extends Stage{
         VBox droite = new VBox();
         HBox hbox = new HBox();
         MondeGUI grille = new MondeGUI();
-        grille.setGrille();
 
+        grille.setGrille();
         droite.getChildren().add(end);
         gauche.getChildren().add(grille.getGrille());
         hbox.getChildren().add(gauche);
@@ -41,6 +43,7 @@ public class Jeu extends Stage{
         this.sizeToScene();
         this.setScene(scene);
     }
+
 
     public void setGestionEvent(GestionEvent g){
         gestionEvent = g;
