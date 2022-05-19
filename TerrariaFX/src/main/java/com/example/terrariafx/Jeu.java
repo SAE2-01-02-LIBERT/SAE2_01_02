@@ -1,6 +1,7 @@
 package com.example.terrariafx;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -24,26 +25,23 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
+
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
-
         MondeGUI grille = new MondeGUI();
         grille.setGrille();
 
-
-
         droite.getChildren().add(end);
         gauche.getChildren().add(grille.getGrille());
-
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
-
-
+        hbox.setPadding(new Insets(30,30,30,30));
         Scene scene = new Scene(hbox);
         this.sizeToScene();
         this.setScene(scene);
     }
+
     public void setGestionEvent(GestionEvent g){
         gestionEvent = g;
     }

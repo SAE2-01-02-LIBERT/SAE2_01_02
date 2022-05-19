@@ -13,7 +13,7 @@ public class SecteurGUI extends Rectangle {
 
         public SecteurGUI(Secteur s){
                 this.secteur = s;
-                this.rectangle = new Rectangle(50,50);
+                this.rectangle = new Rectangle(60,60);
         }
         public Secteur getSecteur() {
                 return secteur;
@@ -21,7 +21,6 @@ public class SecteurGUI extends Rectangle {
         public String getsecteurtype(){
                 return secteur.gettype();
         }
-
         public Rectangle getRectangle(){
                 return this.rectangle;
         }
