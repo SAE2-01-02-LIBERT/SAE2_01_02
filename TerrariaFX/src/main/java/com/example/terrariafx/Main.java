@@ -13,6 +13,5 @@ public class Main extends Application {
         jeu.setGestionEvent(gestionEvent);
         menu.show();
     }
-
     public static void main(String[] args){launch(args);}
 }

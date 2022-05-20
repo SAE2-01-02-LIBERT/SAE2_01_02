@@ -1,10 +1,16 @@
-package com.example.terrariafx;
+package CodeS2_02;
+
+import CodeV1.Entrepot;
+import CodeV1.Localisable;
+import CodeV1.Secteur;
+import jdk.jshell.spi.ExecutionControl;
 
 import java.util.concurrent.ExecutionException;
 
 public class Terre extends Secteur {
     private String type;
     private Localisable[] locals;
+
     public Terre() {
         this.type = "Terre";
         this.locals = new Localisable[2];

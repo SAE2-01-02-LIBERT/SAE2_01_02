@@ -1,6 +1,8 @@
-package com.example.terrariafx;
+package CodeS2_02;
 
-import java.util.Scanner;
+import CodeV1.Monde;
+
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class Game {
@@ -17,9 +19,6 @@ public class Game {
         partie.generationMine();
         partie.ajoutElements();
         partie.affichermonde(0);
-
-    }
-    public void lancerpartie(){
         int cpt = 0;
         while (partie.getMineList()[0].getStock() != 0 && partie.getMineList()[1].getStock() != 0 && partie.getMineList()[2].getStock() != 0 && partie.getMineList()[3].getStock() != 0) {
             try {
@@ -43,7 +42,6 @@ public class Game {
                     }
                 }
                 System.out.println("Vous avez selectionne " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
-
 
                 Scanner action = new Scanner(System.in);
                 System.out.println("Interaction : `R` Récolter ; `D`  Déposer ;");

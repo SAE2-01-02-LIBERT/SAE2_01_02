@@ -41,7 +41,6 @@ public class Game {
                 }
                 System.out.println("Vous avez selectionne " + partie.getRoboList()[num - 1].getInfo()); // faire en sorte qu'il ne puisse selectionner que 1 ou 2
 
-
                 Scanner action = new Scanner(System.in);
                 System.out.println("Interaction : `R` Récolter ; `D`  Déposer ;");
                 System.out.println("Déplacement : `N`aller au Nord de 1  ; `S` aller au Sud de 1 ;" +
