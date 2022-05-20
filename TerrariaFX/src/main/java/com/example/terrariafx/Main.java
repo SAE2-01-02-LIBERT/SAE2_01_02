@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public void start(Stage stage) throws Exception {
+
         Jeu jeu = new Jeu();
         Menu menu = new Menu();
         menu.setJeu(jeu);

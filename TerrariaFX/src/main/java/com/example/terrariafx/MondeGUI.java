@@ -18,19 +18,21 @@ public class MondeGUI extends GridPane {
     public MondeGUI() throws ExecutionException {
         this.grille =new GridPane(); ;
         this.world = new Monde();
+        this.genererMonde();
+    }
+    public void genererMonde() throws ExecutionException {
         world.creerMonde();
         world.generationEntrepot();
         world.generationRobot();
         world.generationMine();
         world.ajoutElements();
         world.affichermonde(0);
-
     }
-
     public void setGrille() {
         Image terre = new Image("terre.png");
         Image eau =new Image("eau.png");
         GridPane grille = new GridPane();
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 SecteurGUI sec = new SecteurGUI(world.getMonde()[i][j]);
@@ -93,8 +95,6 @@ public class MondeGUI extends GridPane {
             }
         }
     }
-
-
     public GridPane getGrille(){
         return this.grille;
     }
