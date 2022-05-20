@@ -16,13 +16,9 @@ public class GestionEvent implements EventHandler {
     }
 
     public void handle(Event event){
-        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            if(event.getSource() instanceof Button) {
-                if (event.getSource().toString().contains("Quitter")) {
-                    jeu.close();
-                    menu.show();
-                }
-            }
+        if (event.getEventType() == MouseEvent.MOUSE_CLICKED && event.getSource() instanceof Button && event.getSource().toString().contains("Quitter")){
+            jeu.close();
+            menu.show();
         }
     }
 }
