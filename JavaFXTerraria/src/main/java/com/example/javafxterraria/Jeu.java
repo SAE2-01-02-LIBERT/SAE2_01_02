@@ -99,7 +99,7 @@ public class Jeu extends Stage {
                     Image img = new Image(j);
                     ImageView view = new ImageView(img);
                     view.setFitHeight(100);
-                    view.setPreserveRatio(true); //
+                    view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                     view.setFitHeight(30);
                     b.setGraphic(view);
 
