@@ -95,14 +95,12 @@ public class Jeu extends Stage {
                 b.setPrefSize(50,50);
                 b.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
                 if(!j.equals("")){
-
                     Image img = new Image(j);
                     ImageView view = new ImageView(img);
                     view.setFitHeight(100);
                     view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                     view.setFitHeight(30);
                     b.setGraphic(view);
-
                 }
                     grille.getChildren().add(b);
                 x=x+50;
