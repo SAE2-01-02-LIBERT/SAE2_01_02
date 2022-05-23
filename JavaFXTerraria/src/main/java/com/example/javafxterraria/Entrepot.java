@@ -44,7 +44,6 @@ public class Entrepot implements Comparable<Entrepot>{
     }
 
     public void ajouter(int i) {
-        System.out.println("bite2");
         this.stockage += i;
     }
 

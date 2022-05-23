@@ -21,9 +21,7 @@ public class Fenetre extends Stage {
         quit.setFill(Color.TRANSPARENT);
 
         Group root = new Group();
-        root.getChildren().add(bg);
-        root.getChildren().add(play);
-        root.getChildren().add(quit);
+        root.getChildren().addAll(bg,play,quit);
         Scene scene = new Scene(root);
         this.setScene(scene);
         this.setResizable(false);

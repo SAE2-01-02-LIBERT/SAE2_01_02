@@ -7,15 +7,15 @@ import javafx.scene.input.MouseEvent;
 
 public class GestionEvent implements EventHandler {
 
-    private Fenetre fenetre;
+    private final Fenetre fenetre;
 
-    public GestionEvent(Fenetre fenetre){
+    public GestionEvent(Fenetre fenetre) {
         this.fenetre = fenetre;
     }
 
-    public void handle(Event event){
+    public void handle(Event event) {
         if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            if(event.getSource() instanceof Button) {
+            if (event.getSource() instanceof Button) {
                 if (event.getSource().toString().contains("Quitter")) {
                     fenetre.show();
                 }

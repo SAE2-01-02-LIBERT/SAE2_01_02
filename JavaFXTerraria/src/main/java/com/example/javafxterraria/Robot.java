@@ -172,12 +172,9 @@ public class Robot implements Comparable<Robot>{
 
     public boolean vider() {
         Object e = this.monde.get_element(this.x, this.y, 0);
-        System.out.println("bite0");
         if (e instanceof Entrepot) {
-            System.out.println("bite");
             Entrepot entr = Entrepot.class.cast(e);
             if (entr.get_nickel() == this.nickel) {
-                System.out.println("bite1");
                 entr.ajouter(this.stockage);
                 this.stockage = 0;
                 return true;
