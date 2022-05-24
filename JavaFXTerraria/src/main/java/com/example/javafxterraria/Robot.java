@@ -156,8 +156,13 @@ public class Robot implements Comparable<Robot>{
             Mine mine = Mine.class.cast(m);
             if (mine.get_nickel() == this.nickel) {
                 if (this.max - this.stockage >= this.capacite_minage) {
+                    int a = mine.miner(this.capacite_minage);
                     mine.miner(this.capacite_minage);
-                    this.stockage += this.capacite_minage;
+                    this.stockage += a;
+                    return true;
+                }else if(this.max>this.stockage){
+                    int a =mine.miner(this.max-this.stockage);
+                    this.stockage+=a;
                     return true;
                 }else {
                     return false;

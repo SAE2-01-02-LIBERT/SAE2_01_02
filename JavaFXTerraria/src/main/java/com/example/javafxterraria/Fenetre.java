@@ -19,12 +19,13 @@ public class Fenetre extends Stage {
         Rectangle quit = new Rectangle(315, 546, 167, 72);
         play.setFill(Color.TRANSPARENT);
         quit.setFill(Color.TRANSPARENT);
-
         Group root = new Group();
         root.getChildren().addAll(bg,play,quit);
         Scene scene = new Scene(root);
         this.setScene(scene);
         this.setResizable(false);
         this.show();
+        play.setOnMouseClicked(new GestionEventMenu(monde, this, 1));
+        quit.setOnMouseClicked(new GestionEventMenu(monde, this, 2));
     }
 }

@@ -47,12 +47,13 @@ public class Mine implements Comparable<Mine>{
         return numero;
     }
 
-    public void miner(int i) {
+    public int miner(int i) {
         if(quantite - i >=0) {
             quantite -= i;
         }else {
             quantite=0;
         }
+        return i;
     }
 
     @Override
