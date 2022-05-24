@@ -48,6 +48,12 @@ public class Mine extends Batiment {
     public String getTypeMateriau(){
         return typeMine;
     }
+
+    @Override
+    public int[] getPos() {
+        return this.position;
+    }
+
     @Override
     public String afficher(){
         return " M | "+ this.numero+" ";

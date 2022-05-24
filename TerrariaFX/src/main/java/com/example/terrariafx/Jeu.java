@@ -33,7 +33,6 @@ public class Jeu extends Stage{
         HBox hbox = new HBox();
         MondeGUI grille = new MondeGUI();
 
-        grille.setGrille();
         droite.getChildren().add(end);
         gauche.getChildren().add(grille.getGrille());
         hbox.getChildren().add(gauche);
