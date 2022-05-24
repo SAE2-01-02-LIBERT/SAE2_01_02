@@ -41,16 +41,8 @@ public class MondeGUI extends GridPane {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 SecteurGUI sec = new SecteurGUI(world.getMonde()[i][j]);
-                int cpt=0;
                 if (sec.getsecteurtype().equals("Terre")) {
-                    if (cpt<8) {
-                        cpt+=1;
-                        sec.getRectangle().setFill(new ImagePattern(terre));
-                    }
-                    else{
-                        sec.getRectangle().setFill(new ImagePattern(herbe));
-                         cpt=0;
-                    }
+                    sec.getRectangle().setFill(new ImagePattern(terre));
 
                     for (int cptR=0 ; cptR<world.getNbrRobot() ; cptR++ ) {
                         if (world.getRoboList()[cptR].getPosition()[0] == i && world.getRoboList()[cptR].getPosition()[1] == j) {
@@ -78,6 +70,7 @@ public class MondeGUI extends GridPane {
         }
         this.grille = grille;
     }
+
 
     public GridPane getGrille(){
         return this.grille;

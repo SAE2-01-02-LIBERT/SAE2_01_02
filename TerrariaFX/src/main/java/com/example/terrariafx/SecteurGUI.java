@@ -54,7 +54,7 @@ public class SecteurGUI {
 
         public void setRb(Robot rb) {
                 this.rb = rb;
-                int num = rb.getnum();
+
                 if (rb.getTypeMateriau() == "OR") {
                         ImageView view =new ImageView(new Image("robot1or.png"));
                         view.setFitHeight(60);
