@@ -14,10 +14,10 @@ import java.util.Random;
 
 public class Jeu extends Stage {
     private Group grille = new Group();
-    private Monde monde;
+    private final Monde monde;
     private Robot rob;
     private Fenetre fenetre;
-    private int nbtour=1;
+    private final int nbtour=1;
     private Text tour;
     private Text tr;
     private final Group infoJeu = new Group();

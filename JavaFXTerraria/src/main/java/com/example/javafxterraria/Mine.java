@@ -1,10 +1,10 @@
 package com.example.javafxterraria;
 
 public class Mine implements Comparable<Mine>{
-    private Monde monde;
-    private int x;
-    private int y;
-    private boolean nickel;
+    private final Monde monde;
+    private final int x;
+    private final int y;
+    private final boolean nickel;
     private int quantite;
     private final int max;
     private final int numero;

@@ -67,7 +67,7 @@ public class Robot implements Comparable<Robot>{
         if (this.x - 1 >= 0) {
             Object s = this.monde.get_element(this.x - 1, this.y, 1);
             if (s instanceof Eau) {
-                Eau sol = Eau.class.cast(s);
+                Eau sol = (Eau) s;
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x - 1][this.y][1] = this;
@@ -88,7 +88,7 @@ public class Robot implements Comparable<Robot>{
         if (this.x + 1 <= 9) {
             Object s = this.monde.get_element(this.x + 1, this.y, 1);
             if (s instanceof Eau) {
-                Eau sol = Eau.class.cast(s);
+                Eau sol = (Eau) s;
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x + 1][this.y][1] = this;
@@ -110,7 +110,7 @@ public class Robot implements Comparable<Robot>{
         if (this.y - 1 >= 0) {
             Object s = this.monde.get_element(this.x, this.y - 1, 1);
             if (s instanceof Eau) {
-                Eau sol = Eau.class.cast(s);
+                Eau sol = (Eau) s;
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x][this.y - 1][1] = this;
@@ -132,7 +132,7 @@ public class Robot implements Comparable<Robot>{
         if (this.y + 1 <= 9) {
             Object s = this.monde.get_element(this.x, this.y + 1, 1);
             if (s instanceof Eau) {
-                Eau sol = Eau.class.cast(s);
+                Eau sol = (Eau) s;
                 if (!sol.get_eau()) {
                     Object[][][] m = this.monde.get_matrice();
                     m[this.x][this.y + 1][1] = this;
@@ -154,7 +154,9 @@ public class Robot implements Comparable<Robot>{
         Object m = this.monde.get_element(this.x, this.y, 0);
         if (m instanceof Mine) {
             Mine mine = (Mine) m;
-            if (mine.get_quantite() >= 0) {
+            if (mine.get_quantite() == 0) {
+                return false;}
+            else{
                 if (mine.get_nickel() == this.nickel) {
                     if (this.max - this.stockage >= this.capacite_minage) {
                         int a = mine.miner(this.capacite_minage);
@@ -172,8 +174,6 @@ public class Robot implements Comparable<Robot>{
                     return false;
                 }
             }
-            else {
-                return false;}
         } else {
             return false;
         }
@@ -182,7 +182,7 @@ public class Robot implements Comparable<Robot>{
     public boolean vider() {
         Object e = this.monde.get_element(this.x, this.y, 0);
         if (e instanceof Entrepot) {
-            Entrepot entr = Entrepot.class.cast(e);
+            Entrepot entr = (Entrepot) e;
             if (entr.get_nickel() == this.nickel) {
                 entr.ajouter(this.stockage);
                 this.stockage = 0;
