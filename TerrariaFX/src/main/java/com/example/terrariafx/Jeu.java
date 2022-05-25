@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Jeu extends Stage{
     private Menu menu;
+    private Information info;
     private GestionEvent gestionEvent;
     public Jeu() throws ExecutionException {
         super();
@@ -25,6 +26,7 @@ public class Jeu extends Stage{
                 FenetreScore score = new FenetreScore(menu,3, 10, 4, 20, 5);
                 score.show();
                 temp.close();
+                info.close();
             }
         });
 
@@ -49,4 +51,5 @@ public class Jeu extends Stage{
     public void setMenu(Menu menu){
         this.menu = menu;
     }
+    public void setInfo(Information info) {this.info = info;}
 }
