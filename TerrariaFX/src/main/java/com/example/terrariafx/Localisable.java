@@ -6,5 +6,6 @@ public interface Localisable {
     public int getStock();
     public String getType();
     public String getTypeMateriau();
+    public int[] getPos();
 
 }

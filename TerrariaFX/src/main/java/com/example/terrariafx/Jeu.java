@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Jeu extends Stage{
     private Menu menu;
+    private Information info;
     private GestionEvent gestionEvent;
     public Jeu() throws ExecutionException {
         super();
@@ -25,6 +26,7 @@ public class Jeu extends Stage{
                 FenetreScore score = new FenetreScore(menu,3, 10, 4, 20, 5);
                 score.show();
                 temp.close();
+                info.close();
             }
         });
 
@@ -32,8 +34,6 @@ public class Jeu extends Stage{
         VBox droite = new VBox();
         HBox hbox = new HBox();
         MondeGUI grille = new MondeGUI();
-
-        grille.setGrille();
         droite.getChildren().add(end);
         gauche.getChildren().add(grille.getGrille());
         hbox.getChildren().add(gauche);
@@ -51,4 +51,5 @@ public class Jeu extends Stage{
     public void setMenu(Menu menu){
         this.menu = menu;
     }
+    public void setInfo(Information info) {this.info = info;}
 }

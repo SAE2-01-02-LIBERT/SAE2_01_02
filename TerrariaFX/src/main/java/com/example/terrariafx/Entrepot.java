@@ -35,6 +35,11 @@ public class Entrepot extends Batiment {
     public String getTypeMateriau(){
         return typeEntrepot;
     }
+
+    @Override
+    public int[] getPos() {
+        return this.position;
+    }
     @Override
     public String afficher(){
         return " E | "+ this.numero+" ";

@@ -17,7 +17,6 @@ public class Game {
         partie.generationMine();
         partie.ajoutElements();
         partie.affichermonde(0);
-
     }
     public void lancerpartie(){
         int cpt = 0;

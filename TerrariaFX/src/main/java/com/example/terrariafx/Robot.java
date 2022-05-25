@@ -133,6 +133,11 @@ public class Robot extends Batiment {
     }
 
     @Override
+    public int[] getPos() {
+        return this.position;
+    }
+
+    @Override
     public String getType() {
         return this.type;
     }

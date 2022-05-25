@@ -39,8 +39,8 @@ public class Monde {
         Random inta = new Random();
         int cpt = 2 ;
         int num = 3 ;
-        roboList[0]   =   new Robot("OR",1);
-        roboList[1]   =   new Robot("NI",2);
+        roboList[0]  = new Robot("OR",1);
+        roboList[1]  = new Robot("NI",2);
         int nbROr = inta.nextInt(4);
         if(nbROr!=0) {
             for (int i = 0; i < nbROr; i++) {
@@ -89,7 +89,7 @@ public class Monde {
             Random y = new Random();
             int i = x.nextInt(10);
             int j = y.nextInt(10);
-            while (monde[i][j].gettype().equals("Eau") || monde[i][j].gettype().equals("Mine") || monde[i][j].gettype().equals("Entrepot")) {
+            while (monde[i][j].gettype().equals("Eau") || veriflocal0Mi(i,j)==true) {
                 i = x.nextInt(10);
                 j = y.nextInt(10);
             }
@@ -111,10 +111,11 @@ public class Monde {
             int[] pos = new int[2];
             int i = x.nextInt(10);
             int j = y.nextInt(10);
-            while (monde[i][j].gettype().equals("Eau") || monde[i][j].gettype().equals("Mine")) {
+            while (monde[i][j].gettype().equals("Eau") || veriflocal1(i,j)== true){
                 i = x.nextInt(10);
                 j = y.nextInt(10);
             }
+
             pos[0]=i; pos[1]=j;
             roboList[k] = new Robot(roboList[k],pos);
             monde[i][j].ajoutLocalR(roboList[k]);
@@ -126,7 +127,7 @@ public class Monde {
         for (int k = 0 ; k< entrepotList.length; k++) {
             int i = x.nextInt(10);
             int j = y.nextInt(10);
-            while (monde[i][j].gettype().equals("Eau") ||  monde[i][j].gettype().equals("Mine")) {
+            while (monde[i][j].gettype().equals("Eau") || veriflocal0En(i,j)==true) {
                 i = x.nextInt(10);
                 j = y.nextInt(10);
             }
@@ -305,6 +306,34 @@ public class Monde {
     }
     public Secteur[][] getMonde() {
         return monde;
+    }
+
+    public Boolean veriflocal1(int i,int j){
+        boolean pressence = false;
+        for(int cptR=0;cptR<nbrRobot;cptR++){
+            if (roboList[cptR].getPos()[0]==i &&  roboList[cptR].getPos()[1]==j) {
+                return true;
+            }
+        }
+        return pressence;
+    }
+    public Boolean veriflocal0En(int i,int j){
+        boolean pressence = false;
+        for(int cptE=0;cptE<2;cptE++){
+            if (entrepotList[cptE].getPos()[0]==i &&  entrepotList[cptE].getPos()[1]==j) {
+                return true;
+            }
+        }
+        return pressence;
+    }
+    public Boolean veriflocal0Mi(int i,int j){
+        boolean pressence = false;
+        for(int cptm=0;cptm<getMineList().length;cptm++){
+            if (mineList[cptm].getPos()[0]==i &&  mineList[cptm].getPos()[1]==j) {
+                return true;
+            }
+        }
+        return pressence;
     }
 
 }

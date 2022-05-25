@@ -9,9 +9,13 @@ public class Main extends Application {
 
         Jeu jeu = new Jeu();
         Menu menu = new Menu();
+        Information info = new Information();
+        menu.setInfo(info);
+        info.setMenu(menu);
         menu.setJeu(jeu);
         jeu.setMenu(menu);
-        GestionEvent gestionEvent = new GestionEvent(menu, jeu);
+        jeu.setInfo(info);
+        GestionEvent gestionEvent = new GestionEvent(menu, jeu,info);
         jeu.setGestionEvent(gestionEvent);
         menu.show();
     }
