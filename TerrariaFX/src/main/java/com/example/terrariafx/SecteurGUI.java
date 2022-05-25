@@ -75,13 +75,13 @@ public class SecteurGUI {
                 if (batiment instanceof Mine) {
                         if (batiment.getType() == "Mine") {
                                 if (batiment.getTypeMateriau() == "OR") {
-                                        ImageView view = new ImageView(new Image("mineor.png"));
+                                        ImageView view = new ImageView(new Image("mineor (1).png"));
                                         view.setFitHeight(60);
                                         view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                                         view.setFitHeight(30);
                                         this.batimentB.setGraphic(view);
                                 } else {
-                                        ImageView view = new ImageView(new Image("minenickel.png"));
+                                        ImageView view = new ImageView(new Image("minenickel (1).png"));
                                         view.setFitHeight(60);
                                         view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                                         view.setFitHeight(30);

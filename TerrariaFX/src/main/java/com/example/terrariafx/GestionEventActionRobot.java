@@ -7,12 +7,9 @@ public class GestionEventActionRobot implements EventHandler {
 
 
     @Override
-    public void handle(MondeGUI mondeGui,Event event) {
-
-    }
-
-    @Override
     public void handle(Event event) {
+
+
 
     }
 }
