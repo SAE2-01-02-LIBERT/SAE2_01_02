@@ -153,24 +153,28 @@ public class Robot implements Comparable<Robot>{
     public boolean mine() {
         Object m = this.monde.get_element(this.x, this.y, 0);
         if (m instanceof Mine) {
-            Mine mine = Mine.class.cast(m);
-            if (mine.get_nickel() == this.nickel) {
-                if (this.max - this.stockage >= this.capacite_minage) {
-                    int a = mine.miner(this.capacite_minage);
-                    mine.miner(this.capacite_minage);
-                    this.stockage += a;
-                    return true;
-                }else if(this.max>this.stockage){
-                    int a =mine.miner(this.max-this.stockage);
-                    this.stockage+=a;
-                    return true;
-                }else {
+            Mine mine = (Mine) m;
+            if (mine.get_quantite() >= 0) {
+                if (mine.get_nickel() == this.nickel) {
+                    if (this.max - this.stockage >= this.capacite_minage) {
+                        int a = mine.miner(this.capacite_minage);
+                        mine.miner(this.capacite_minage);
+                        this.stockage += a;
+                        return true;
+                    } else if (this.max > this.stockage) {
+                        int a = mine.miner(this.max - this.stockage);
+                        this.stockage += a;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
                     return false;
                 }
-            } else {
-                return false;
             }
-        }	else {
+            else {
+                return false;}
+        } else {
             return false;
         }
     }

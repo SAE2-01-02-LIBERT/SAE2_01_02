@@ -78,44 +78,44 @@ public class GestionEventGame implements EventHandler<KeyEvent> {
         } else if (k.getText().equals("z")) {
             boolean b = rob.nord();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         } else if (k.getText().equals("s")) {
             boolean b = rob.sud();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         } else if (k.getText().equals("q")) {
             boolean b = rob.ouest();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         } else if (k.getText().equals("d")) {
             boolean b = rob.est();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         } else if (k.getText().equals("e")) {
             boolean b = rob.vider();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         } else if (k.getText().equals("f")) {
             boolean b = rob.mine();
             if (b) {
-                jeu.nb_tour();
+                //jeu.nb_tour();
                 jeu.Matrice(147, 175);
-                jeu.get_infoJeu(950,250);
+                jeu.get_infoJeu(770,325);
             }
         }
     }
