@@ -51,6 +51,11 @@ public class Entrepot extends Batiment {
     }
 
     @Override
+    public int getNum() {
+        return this.numero;
+    }
+
+    @Override
     public String getType(){
         return this.type;
     }

@@ -2,7 +2,7 @@ package com.example.terrariafx;
 
 import java.util.Random;
 
-public class Robot extends Batiment {
+public class Robot implements Localisable{
     private String type;
     private String typeMine; // Or ou nickel
     private int soute;
@@ -84,25 +84,28 @@ public class Robot extends Batiment {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0]-1;
         Nwpos[1] = position[1];
-        System.out.println("Deplacement vers le nord");
+        System.out.println(d.getnum()+" Deplacement vers le nord");
         return new Robot(d,Nwpos);
     }
     public Robot sud(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0]+1;
         Nwpos[1] = position[1];
+        System.out.println(d.getnum()+" Deplacement vers le SUD");
         return new Robot(d,Nwpos);
     }
     public Robot est(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
         Nwpos[1] =position[1]+1;
+        System.out.println(d.getnum()+" Deplacement vers l'est");
         return  new Robot(d,Nwpos);
     }
     public Robot ouest(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
         Nwpos[1] =position[1]-1;
+        System.out.println(d.getnum()+" Deplacement vers l'OUEST");
         return new Robot(d,Nwpos);
     }
 

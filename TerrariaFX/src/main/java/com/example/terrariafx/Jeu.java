@@ -26,7 +26,7 @@ public class Jeu extends Stage{
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                FenetreScore score = new FenetreScore(menu,3, 10, 4, 20, 5);
+                FenetreScore score = new FenetreScore(menu,mondeGUI.getMonde().getEntrepotList()[0].getStock(), 10, mondeGUI.getMonde().getEntrepotList()[0].getStock(), 20, getTour());
                 score.show();
                 temp.close();
                 info.close();
@@ -45,7 +45,7 @@ public class Jeu extends Stage{
         hbox.getChildren().add(droite);
         hbox.setPadding(new Insets(30,30,30,30));
         Scene scene = new Scene(hbox);
-        this.rbch=mondeGUI.getWorld().getRoboList()[0];
+        this.rbch = mondeGUI.getWorld().getRoboList()[0];
         scene.setOnKeyPressed(new GestionEventActionRobot(mondeGUI.getMonde(),this,rbch));
         this.sizeToScene();
         this.setScene(scene);

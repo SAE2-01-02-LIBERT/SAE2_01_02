@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 
@@ -58,6 +59,7 @@ public class SecteurGUI {
                         view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                         view.setFitHeight(30);
                         this.robotB.setGraphic(view);
+
                 } else {
                         ImageView view =new ImageView(new Image("robot1nickel.png"));
                         view.setFitHeight(60);
@@ -65,6 +67,9 @@ public class SecteurGUI {
                         view.setFitHeight(30);
                         this.robotB.setGraphic(view);
                 }
+                this.robotB.setText("    "+rb.getnum());
+                robotB.setTextFill(Color.WHITE);
+                robotB.setStyle("-fx-font-weight: bold");
         }
         public void setBatiment(Batiment batiment) {
                 this.batiment = batiment;
@@ -93,22 +98,22 @@ public class SecteurGUI {
                                                 view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                                                 view.setFitHeight(30);
                                                 this.batimentB.setGraphic(view);
+                                                this.batimentB.setText("    "+batiment.getNum());
                                         } else {
                                                 ImageView view = new ImageView(new Image("entrepotniquel.png"));
                                                 view.setFitHeight(60);
                                                 view.setPreserveRatio(true); //permet de ne pas étirer les boutons
                                                 view.setFitHeight(30);
                                                 this.batimentB.setGraphic(view);
+
                                         }
                                 }
                         }
+
                 }
-        }
-        public void updateSecteur(){
-                if (rb.getPosition()[0]!= secteur.getposition()[0] || rb.getPosition()[1]!= secteur.getposition()[1]){
-                        this.robotB.setGraphic(null);
-                        this.rb = null;
-                }
+                this.batimentB.setText("    "+batiment.getNum());
+                this.batimentB.setTextFill(Color.WHITE);
+                batimentB.setStyle("-fx-font-weight: bold");
         }
 
 }

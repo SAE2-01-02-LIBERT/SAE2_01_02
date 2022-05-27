@@ -10,8 +10,10 @@ import java.util.concurrent.ExecutionException;
 public class MondeGUI {
     private Monde world;
     private SecteurGUI[][] grille;
+    private VBox grilleVb;
     public MondeGUI() throws ExecutionException {
         this.grille = new SecteurGUI[10][10]; ;
+        grilleVb = new VBox();
         this.world = new Monde();
         this.genererMonde();
     }
@@ -26,9 +28,9 @@ public class MondeGUI {
         world.affichermonde(0);
     }
     public Node setGrille() {
+        grilleVb.getChildren().clear();
         Image herbe = new Image("hautesHerbes.png");
         Image eau = new Image("eaucanard.png");
-        VBox grilleVb = new VBox();
         for (int i = 0; i < 10; i++) {
             HBox hBox = new HBox();
             hBox.setSpacing(1);
@@ -64,11 +66,12 @@ public class MondeGUI {
         return grilleVb;
     }
 
+    public VBox getGrilleVb(){
+        return this.grilleVb;
+    }
 
-
-
-    public SecteurGUI[][] getGrille(){
-        return this.grille;
+    public SecteurGUI getSecteurGui(int i, int j){
+        return this.grille[i][j];
     }
     public Monde getMonde() {
         return this.world;
