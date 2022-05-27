@@ -324,7 +324,7 @@ public class Monde {
     public Boolean veriflocal0Mi(int i,int j){
         boolean pressence = false;
         for(int cptm=0;cptm<getMineList().length;cptm++){
-            if (mineList[cptm].getPos()[0]==i &&  mineList[cptm].getPos()[1]==j) {
+            if (mineList[cptm].getPos()[0]==i &&  mineList[cptm].getPos()[1]==j || veriflocal0En(i,j).equals(true)) {
                 return true;
             }
         }
