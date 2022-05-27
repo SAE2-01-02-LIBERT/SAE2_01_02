@@ -123,6 +123,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                jeu.actualiserinfop();
 
             } catch(ExecutionException e){
                     throw new RuntimeException(e);
@@ -175,6 +176,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                jeu.actualiserinfop();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -226,6 +228,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                jeu.actualiserinfop();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -277,6 +280,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                jeu.actualiserinfop();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -328,6 +332,8 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                jeu.actualiserinfop();
+
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -379,6 +385,9 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 }
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
+                System.out.println(jeu.getTour());
+                jeu.actualiserinfop();
+
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }

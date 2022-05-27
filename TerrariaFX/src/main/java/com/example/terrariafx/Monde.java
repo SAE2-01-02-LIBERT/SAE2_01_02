@@ -149,28 +149,36 @@ public class Monde {
                 mondeAfficher.append("\n");
                 if (Math.floorMod((j), 2) == 0) {
                     mondeAfficher.append("   -   -    -   -    -   -    -   -    -   -    -   -    -   -    -   -    -   -    -   -   " + "\n");
-                }
-                else {
+                } else {
                     mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
                 }
             }
         }
         mondeAfficher.append("\n");
-        mondeAfficher.append("Tour : "+cpt+"\n");
-        mondeAfficher.append(" ____________________________"+"\n");
-        for(Mine m: mineList){
-            mondeAfficher.append(m.getInfo() + "\n");
-        }
-        for(Entrepot e: entrepotList){
-            mondeAfficher.append(e.getInfo() + "\n");
-        }
-        for(int y = 0 ; y < nbrRobot ; y++){
-            mondeAfficher.append(roboList[y].getInfo() + "\n");
-        }
-        mondeAfficher.append(" ____________________________"+"\n");
-        System.out.println(mondeAfficher);
-        System.out.println(" ");
+
     }
+    public String GetInfo(int cpt){
+
+        String Afficher = "\n Tour : "+cpt+"\n";
+        Afficher+=" ____________________________"+"\n";
+        Afficher+=" Les mines : \n";
+        for(Mine m: mineList){
+            Afficher+=m.getInfo() + "\n";
+        }
+        Afficher+=" ____________________________"+"\n";
+        Afficher+=" Les Entrepots : \n";
+        for(Entrepot e: entrepotList){
+            Afficher+= e.getInfo() + "\n";
+        }
+        Afficher+=" ____________________________"+"\n";
+        Afficher+="Les Robots : \n";
+        for(int y = 0 ; y < nbrRobot ; y++){
+            Afficher+=roboList[y].getInfo() + "\n";
+        }
+        Afficher += " ____________________________"+"\n";
+        return Afficher;
+    }
+
     public void actionRobot(Robot robot, String Da) throws ExecutionException {
         //Interaction
         if (Da.toUpperCase().equals("R")){  //recolter
