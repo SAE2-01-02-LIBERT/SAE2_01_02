@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class Monde {
-
     private Secteur[][] monde;
     private Robot[] roboList;
     private Mine[] mineList;
@@ -49,7 +48,7 @@ public class Monde {
                 num++;
             }
         }
-        int nbRNi =inta.nextInt(4);
+        int nbRNi = inta.nextInt(4);
         if(nbRNi!=0){
             for (int i=0 ;i<nbRNi ;i++){
                 roboList[cpt]   =   new Robot("NI",num);
@@ -183,7 +182,6 @@ public class Monde {
                     }
                     else{
                         System.out.println("Impossible");
-                        System.out.println(((Mine)((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[0]).getTypeMateriau());
                     }
                 }
             }
@@ -204,17 +202,17 @@ public class Monde {
         else if (Da.toUpperCase().equals("N")){ // deplacement vers le nord
             try {
                 Robot rb = robot.nord(robot);
-                if ((monde[robot.getPosition()[0] - 1][robot.getPosition()[1]]) instanceof Terre) {
-                    if (verifpresence(robot.getPosition()[0] - 1, robot.getPosition()[1]) == false) {
+                if ((Secteur)(monde[robot.getPosition()[0] - 1][robot.getPosition()[1]]) instanceof Terre) {
+                    if (veriflocal1(robot.getPosition()[0] - 1, robot.getPosition()[1]) == false) {
                         this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
                         ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
-                        roboList[rb.getnum() - 1] = rb;
-                    } else {
+                        roboList[rb.getnum() - 1] = rb; //copy du robot
+                    }
+                    else {
                         System.out.println("Un Robot et deja present dans le secteur");
                     }
                 } else {
                     System.out.println("Vous essayez d'aller sur l'eau!");
-                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
                 }
             }catch(Exception e){
                 System.out.println("Vous ne pouvez sortir des limites de la carte!");
@@ -223,8 +221,8 @@ public class Monde {
         else if (Da.toUpperCase().equals("S")){// deplacement vers le sud
             try {
                 Robot rb = robot.sud(robot);
-                if ((monde[robot.getPosition()[0] + 1][robot.getPosition()[1]]) instanceof Terre) {
-                    if(verifpresence(robot.getPosition()[0]+1,robot.getPosition()[1]) == false ){
+                if (((Secteur)monde[robot.getPosition()[0] + 1][robot.getPosition()[1]]) instanceof Terre) {
+                    if(veriflocal1(robot.getPosition()[0]+1,robot.getPosition()[1]) == false ){
                         this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
                         ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
                         roboList[rb.getnum() - 1] = rb;
@@ -233,7 +231,6 @@ public class Monde {
                     }
                 } else {
                     System.out.println("Vous essayez d'aller sur l'eau!");
-                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
                 }
             }catch(Exception e){
                 System.out.println("Vous ne pouvez sortir des limites de la carte!");
@@ -242,8 +239,8 @@ public class Monde {
         else if (Da.toUpperCase().equals("E")){// deplacement vers l'est
             try {
                 Robot rb = robot.est(robot);
-                if ((monde[robot.getPosition()[0]][robot.getPosition()[1] + 1]) instanceof Terre) {
-                    if(verifpresence(robot.getPosition()[0],robot.getPosition()[1]+1) == false ) {
+                if ((Secteur)(monde[robot.getPosition()[0]][robot.getPosition()[1] + 1]) instanceof Terre) {
+                    if(veriflocal1(robot.getPosition()[0],robot.getPosition()[1]+1) == false ) {
                         this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
                         ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
                         roboList[rb.getnum() - 1] = rb;
@@ -252,7 +249,6 @@ public class Monde {
                     }
                 } else {
                     System.out.println("Vous essayez d'aller sur l'eau!");
-                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
                 }
             }
             catch(Exception e){
@@ -263,7 +259,7 @@ public class Monde {
             try {
                 Robot rb = robot.ouest(robot);
                 if ((monde[robot.getPosition()[0]][robot.getPosition()[1] - 1]) instanceof Terre) {
-                    if(verifpresence(robot.getPosition()[0],robot.getPosition()[1]-1) == false ) {
+                    if(veriflocal1(robot.getPosition()[0],robot.getPosition()[1]-1) == false ) {
                         this.monde[rb.getPosition()[0]][rb.getPosition()[1]].ajoutLocalR(rb);
                         ((Terre) monde[robot.getPosition()[0]][robot.getPosition()[1]]).getLocals()[1] = null;
                         roboList[rb.getnum() - 1] = rb;}
@@ -272,7 +268,6 @@ public class Monde {
                     }
                 } else {
                     System.out.println("Vous essayez d'aller sur l'eau!");
-                    this.monde[robot.getPosition()[0]][robot.getPosition()[1]].ajoutLocalR(robot);
                 }
             }
             catch(Exception e){
@@ -280,16 +275,8 @@ public class Monde {
             }
         }
         else {
-            System.out.println("Entrez une commande valide!");
+            System.out.println("Entrez une commande valide !");
         }
-    }
-    public boolean verifpresence(int x, int y){
-        for (Robot robot : roboList ){
-            if(robot.getPosition()[0]==x &&robot.getPosition()[1]==y ){
-                return true;
-            }
-        }
-        return false;
     }
 
     public Mine[] getMineList() {

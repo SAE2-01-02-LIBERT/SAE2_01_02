@@ -1,22 +1,19 @@
 package com.example.terrariafx;
 
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 
 public class SecteurGUI {
 
         private Secteur secteur;
         private StackPane Bufferbutton;
         private Rectangle rectangle;
-
         private Button batimentB;
         private Button robotB;
         private Robot rb;
@@ -24,7 +21,6 @@ public class SecteurGUI {
 
         public SecteurGUI(Secteur s) {
                 this.secteur = s;
-
                 this.batimentB = new Button("    ");
                 batimentB.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
                 this.robotB = new Button("    ");
@@ -69,7 +65,6 @@ public class SecteurGUI {
                         this.robotB.setGraphic(view);
                 }
         }
-
         public void setBatiment(Batiment batiment) {
                 this.batiment = batiment;
                 if (batiment instanceof Mine) {
@@ -106,6 +101,12 @@ public class SecteurGUI {
                                         }
                                 }
                         }
+                }
+        }
+        public void updateSecteur(){
+                if (rb.getPosition()[0]!= secteur.getposition()[0] || rb.getPosition()[1]!= secteur.getposition()[1]){
+                        this.robotB.setGraphic(null);
+                        this.rb = null;
                 }
         }
 }

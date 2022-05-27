@@ -1,27 +1,19 @@
 package com.example.terrariafx;
 
-import javafx.geometry.BoundingBox;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
-
-import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 public class MondeGUI extends GridPane {
     private Monde world;
-    private GridPane grille;
-
+    private SecteurGUI[][] grille;
     public MondeGUI() throws ExecutionException {
-        this.grille =new GridPane(); ;
+        this.grille = new SecteurGUI[10][10]; ;
         this.world = new Monde();
         this.genererMonde();
     }
+
     public void genererMonde() throws ExecutionException {
         world.creerMonde();
         world.generationEntrepot();
@@ -30,20 +22,17 @@ public class MondeGUI extends GridPane {
         world.ajoutElements();
         setGrille();
         world.affichermonde(0);
-
     }
     public void setGrille() {
         Image herbe = new Image("hautesHerbes.png");
         Image eau = new Image("eaucanard.png");
-        GridPane grille = new GridPane();
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 SecteurGUI sec = new SecteurGUI(world.getMonde()[i][j]);
                 if (sec.getsecteurtype().equals("Terre")) {
                     sec.getRectangle().setFill(new ImagePattern(herbe));
-
-                    for (int cptR=0 ; cptR<world.getNbrRobot() ; cptR++ ) {
+                    for (int cptR = 0 ; cptR<world.getNbrRobot() ; cptR++ ) {
                         if (world.getRoboList()[cptR].getPosition()[0] == i && world.getRoboList()[cptR].getPosition()[1] == j) {
                             sec.setRb(world.getRoboList()[cptR]);
                         }
@@ -58,20 +47,29 @@ public class MondeGUI extends GridPane {
                             sec.setBatiment(m);
                         }
                     }
-
                 } else {
                     sec.getRectangle().setFill(new ImagePattern(eau));
                 }
-                GridPane.setRowIndex(sec.getBufferbutton(), i);
-                GridPane.setColumnIndex(sec.getBufferbutton(), j);
-                grille.getChildren().addAll(sec.getBufferbutton());
             }
         }
         this.grille = grille;
     }
 
+    public void updateGrille(){
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
 
-    public GridPane getGrille(){
+            }
+        }
+    }
+
+    public SecteurGUI[][] getGrille(){
         return this.grille;
+    }
+    public Monde getMonde() {
+        return this.world;
+    }
+    public Monde getWorld() {
+        return world;
     }
 }

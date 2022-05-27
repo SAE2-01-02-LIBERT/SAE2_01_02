@@ -15,6 +15,9 @@ public class Jeu extends Stage{
     private Menu menu;
     private Information info;
     private GestionEvent gestionEvent;
+    private MondeGUI mondeGUI;
+    private Robot rbch;
+    private int tour;
     public Jeu() throws ExecutionException {
         super();
         this.setTitle("Robot Mineur");
@@ -33,18 +36,18 @@ public class Jeu extends Stage{
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
-        MondeGUI grille = new MondeGUI();
+        this.mondeGUI = new MondeGUI();
         droite.getChildren().add(end);
-        gauche.getChildren().add(grille.getGrille());
+        gauche.getChildren().add(mondeGUI.getGrille());
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
         hbox.setPadding(new Insets(30,30,30,30));
         Scene scene = new Scene(hbox);
+        this.rbch=mondeGUI.getWorld().getRoboList()[0];
+        scene.setOnKeyPressed(new GestionEventActionRobot(mondeGUI.getMonde(),this,rbch));
         this.sizeToScene();
         this.setScene(scene);
     }
-
-
     public void setGestionEvent(GestionEvent g){
         gestionEvent = g;
     }
@@ -52,4 +55,22 @@ public class Jeu extends Stage{
         this.menu = menu;
     }
     public void setInfo(Information info) {this.info = info;}
+
+    public void setRbD(Robot rb){
+        this.rbch=rb;
+    }
+    public Robot getRbD(){
+        return rbch;
+    }
+    public MondeGUI getMondeGUI(){
+        return mondeGUI;
+    }
+
+    public int getTour(){
+        return this.tour;
+    }
+    public void setTour(){
+        tour+=1 ;
+    }
+
 }
