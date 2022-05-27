@@ -38,7 +38,9 @@ public class Jeu extends Stage{
         HBox hbox = new HBox();
         this.mondeGUI = new MondeGUI();
         droite.getChildren().add(end);
-        gauche.getChildren().add(mondeGUI.getGrille());
+
+        gauche.getChildren().add(mondeGUI.setGrille());
+
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
         hbox.setPadding(new Insets(30,30,30,30));

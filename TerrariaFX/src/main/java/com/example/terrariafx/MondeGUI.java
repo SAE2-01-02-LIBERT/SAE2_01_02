@@ -1,11 +1,13 @@
 package com.example.terrariafx;
 
+import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import java.util.concurrent.ExecutionException;
 
-public class MondeGUI extends GridPane {
+public class MondeGUI {
     private Monde world;
     private SecteurGUI[][] grille;
     public MondeGUI() throws ExecutionException {
@@ -23,13 +25,18 @@ public class MondeGUI extends GridPane {
         setGrille();
         world.affichermonde(0);
     }
-    public void setGrille() {
+    public Node setGrille() {
         Image herbe = new Image("hautesHerbes.png");
         Image eau = new Image("eaucanard.png");
-
+        VBox grilleVb = new VBox();
         for (int i = 0; i < 10; i++) {
+            HBox hBox = new HBox();
+            hBox.setSpacing(1);
             for (int j = 0; j < 10; j++) {
+
                 SecteurGUI sec = new SecteurGUI(world.getMonde()[i][j]);
+                grille[i][j] = sec;
+
                 if (sec.getsecteurtype().equals("Terre")) {
                     sec.getRectangle().setFill(new ImagePattern(herbe));
                     for (int cptR = 0 ; cptR<world.getNbrRobot() ; cptR++ ) {
@@ -47,21 +54,18 @@ public class MondeGUI extends GridPane {
                             sec.setBatiment(m);
                         }
                     }
-                } else {
-                    sec.getRectangle().setFill(new ImagePattern(eau));
                 }
+                else {sec.getRectangle().setFill(new ImagePattern(eau));}
+                hBox.getChildren().add(sec.getBufferbutton());
             }
+            grilleVb.getChildren().add(hBox);
         }
-        this.grille = grille;
+        grilleVb.setSpacing(1);
+        return grilleVb;
     }
 
-    public void updateGrille(){
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
 
-            }
-        }
-    }
+
 
     public SecteurGUI[][] getGrille(){
         return this.grille;

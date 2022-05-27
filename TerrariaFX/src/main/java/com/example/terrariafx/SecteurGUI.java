@@ -1,6 +1,7 @@
 package com.example.terrariafx;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -109,5 +110,6 @@ public class SecteurGUI {
                         this.rb = null;
                 }
         }
+
 }
 

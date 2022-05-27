@@ -67,37 +67,32 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
         } else if (k.getText().equals("z")) {
             try {
                 monde.actionRobot(jeu.getRbD(),"N");
-                jeu.getMondeGUI().updateGrille();
+                //jeu.getMondeGUI().updateGrille();
 
             } catch (ExecutionException e) {
-
                 throw new RuntimeException(e);
             }
-
         }
         else if (k.getText().equals("s")) {
             try {
                 monde.actionRobot(jeu.getRbD(), "S");
-                jeu.getMondeGUI().updateGrille();
-
+                //jeu.getMondeGUI().updateGrille();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
-
         }
         else if (k.getText().equals("q")) {
             try {
                 monde.actionRobot(jeu.getRbD(), "O");
-                jeu.getMondeGUI().updateGrille();
+               // jeu.getMondeGUI().updateGrille();
                 jeu.setTour();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
-
         } else if (k.getText().equals("d")) {
             try {
                 monde.actionRobot(jeu.getRbD(), "E");
-                jeu.getMondeGUI().updateGrille();
+                //jeu.getMondeGUI().updateGrille();
                 jeu.setTour();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
@@ -106,7 +101,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
         else if (k.getText().equals("e")) {
             try {
                 monde.actionRobot(jeu.getRbD(), "R");
-                jeu.getMondeGUI().updateGrille();
+                //jeu.getMondeGUI().updateGrille();
                 jeu.setTour();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
@@ -114,7 +109,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
         } else if (k.getText().equals("f")) {
             try {
                 monde.actionRobot(jeu.getRbD(), "R");
-                jeu.getMondeGUI().updateGrille();
+                //jeu.getMondeGUI().updateGrille();
                 jeu.setTour();
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
