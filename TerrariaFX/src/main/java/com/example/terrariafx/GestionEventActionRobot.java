@@ -125,6 +125,10 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setTour();
                 jeu.actualiserinfop();
 
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
+
             } catch(ExecutionException e){
                     throw new RuntimeException(e);
             }
@@ -177,6 +181,11 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
                 jeu.actualiserinfop();
+
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
+
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -229,6 +238,12 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
                 jeu.actualiserinfop();
+
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
+
+
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -281,6 +296,12 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
                 jeu.actualiserinfop();
+
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
+
+
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             }
@@ -333,6 +354,11 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setRbD(monde.getRoboList()[rbnum]);
                 jeu.setTour();
                 jeu.actualiserinfop();
+
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
+
 
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
@@ -387,6 +413,10 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                 jeu.setTour();
                 System.out.println(jeu.getTour());
                 jeu.actualiserinfop();
+
+                if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                    jeu.score();
+                }
 
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);

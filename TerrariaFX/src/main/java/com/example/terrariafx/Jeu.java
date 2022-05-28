@@ -38,12 +38,13 @@ public class Jeu extends Stage{
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                FenetreScore score = new FenetreScore(menu,mondeGUI.getMonde().getEntrepotList()[0].getStock(), 10, mondeGUI.getMonde().getEntrepotList()[0].getStock(), 20, getTour());
+                FenetreScore score = new FenetreScore(menu,mondeGUI.getMonde().getEntrepotList()[0].getStock(), mondeGUI.getMonde().getEntrepotList()[0].getStock(), getTour());
                 score.show();
                 temp.close();
                 info.close();
             }
         });
+
 
         VBox gauche = new VBox();
         VBox droite = new VBox();

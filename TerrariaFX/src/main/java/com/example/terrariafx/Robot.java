@@ -46,12 +46,17 @@ public class Robot implements Localisable{
         this.typeMine = r.typeMine;
     }
 
-    public void recolter(Mine m) {
+    public void recolter(Mine m) {//bug +refaire les tests
         int extrait = capaciteeExtraction;
         if (m.getTypeMateriau().equals(this.getTypeMateriau())) {
             if (capacitee == soute) {
                 System.out.println("Impossible, votre robot est plein");
-            } else {
+            }
+            else if (m.getStock() == 0) {
+                extrait=0;
+                System.out.println("Impossible, mine vide ");
+            }
+            else {
                 if (soute + capaciteeExtraction > capacitee) {
                     extrait = capacitee - soute;
                 }

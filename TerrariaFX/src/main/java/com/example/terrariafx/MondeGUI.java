@@ -79,4 +79,38 @@ public class MondeGUI {
     public Monde getWorld() {
         return world;
     }
+
+    public int stockRestantinmine(){
+        int stock = 0;
+        for(Mine mine : world.getMineList()){
+            stock+= mine.getStock();
+        }
+        return stock;
+    }
+    public int mineraisinRobot(){
+        int stock = 0;
+        for(Robot Rb: world.getRoboList()){
+            stock+=Rb.getStock();
+        }
+        return stock;
+    }
+    public int Orestant(){
+        int stock= 0;
+        for(Mine mine : world.getMineList()){
+            if (mine.getType().equals("OR")){
+                stock += mine.getStock();
+            }
+        }
+        return stock;
+    }
+    public int Niestant(){
+        int stock= 0;
+        for(Mine mine : world.getMineList()){
+            if (mine.getType().equals("NI")){
+                stock += mine.getStock();
+            }
+        }
+        return stock;
+    }
+
 }

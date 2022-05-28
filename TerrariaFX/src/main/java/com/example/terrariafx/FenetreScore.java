@@ -64,4 +64,10 @@ public class FenetreScore extends Stage {
         this.setScene(scene);
         this.sizeToScene();
     }
+
+    public FenetreScore(Menu menu, int stock, int stock1, int tour) {
+        this.menu = menu;
+
+
+    }
 }
