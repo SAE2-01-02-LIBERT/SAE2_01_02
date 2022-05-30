@@ -33,8 +33,7 @@ public class FenetreScore extends Stage {
 
         this.setTitle("Fin de partie");
         Label go = new Label("GAME OVER!!!\n\n");
-        Label sf = new Label("Score final : ");
-        Label score = new Label(""+(this.orRecup+this.niRecup-this.tours));
+        Label sf = new Label("Score final : "+(this.orRecup+this.niRecup-this.tours));
         Label or1 = new Label("Or récupéré : "+this.orRecup);
         Label or2 = new Label("Or restant : "+this.orRestant);
         Label ni1 = new Label("Nickel récupéré : "+this.niRecup);
@@ -42,14 +41,12 @@ public class FenetreScore extends Stage {
         Label t = new Label("Nombre de tours joué : "+this.tours);
         Button quit = new Button("Quitter");
 
-        sf.setWrapText(true);
         go.setFont(new Font("Arial", 21));
-        score.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        sf.setFont(Font.font("Arial", FontWeight.BOLD, 13));
 
         VBox vbox = new VBox();
         vbox.getChildren().add(go);
         vbox.getChildren().add(sf);
-        vbox.getChildren().add(score);
         vbox.getChildren().add(or1);
         vbox.getChildren().add(or2);
         vbox.getChildren().add(ni1);
