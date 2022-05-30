@@ -27,6 +27,8 @@ public class Jeu extends Stage{
     private Robot rbch;
     private VBox infogame;
     private int tour;
+    private Text afficherRobot;
+
     public Jeu() throws ExecutionException {
         super();
         this.setTitle("Robot Mineur");
@@ -59,6 +61,8 @@ public class Jeu extends Stage{
 
         this.infogame = new VBox();
 
+
+
         ArrayList<Text> txt = new ArrayList<Text>();
         txt.add(new Text("  Aller vers le Nord"));
         txt.add(new Text("  Aller vers le Sud"));
@@ -73,8 +77,12 @@ public class Jeu extends Stage{
             this.infogame.getChildren().add(cmd);
         }
 
+        this.rbch = mondeGUI.getWorld().getRoboList()[0];
+
         Text info  = new Text(mondeGUI.getMonde().GetInfo(tour));
+        afficherRobot = new Text("Robot selectionne : "+this.rbch.getnum());
         this.infogame.getChildren().add(info);
+        this.infogame.getChildren().add(afficherRobot);
 
         infogame.setLayoutX(820);
         infogame.setLayoutY(100);
@@ -82,8 +90,7 @@ public class Jeu extends Stage{
         root.getChildren().addAll(hbox,infogame);
 
         Scene scene = new Scene(root);
-        this.rbch = mondeGUI.getWorld().getRoboList()[0];
-        scene.setOnKeyPressed(new GestionEventActionRobot(mondeGUI.getMonde(),this,rbch));
+        scene.setOnKeyPressed(new GestionEventActionRobot(mondeGUI.getMonde(),this,rbch, afficherRobot));
         this.sizeToScene();
         this.setScene(scene);
     }
@@ -133,7 +140,9 @@ public class Jeu extends Stage{
         ArrayList<Text> didac = didacticiel();
         Text info = new Text();
         info.setText(mondeGUI.getMonde().GetInfo(tour));
+        Text robot = new Text("Robot selectionne : "+this.rbch.getnum());
         infogame.getChildren().add(info);
+        infogame.getChildren().add(robot);
         return infogame;
     }
     public void score() {
