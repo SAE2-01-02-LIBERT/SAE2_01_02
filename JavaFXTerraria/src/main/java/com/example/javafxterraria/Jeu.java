@@ -157,15 +157,13 @@ public class Jeu extends Stage {
                 b.setLayoutY(y);
                 b.setPrefSize(50,50);
                 b.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
-                if(!j.equals("")){
-                    Image img = new Image(j);
-                    ImageView view = new ImageView(img);
-                    view.setFitHeight(100);
-                    view.setPreserveRatio(true); //permet de ne pas étirer les boutons
-                    view.setFitHeight(30);
-                    b.setGraphic(view);
-                }
-                    grille.getChildren().add(b);
+                Image img = new Image(j);
+                ImageView view = new ImageView(img);
+                view.setFitHeight(100);
+                view.setPreserveRatio(true); //permet de ne pas étirer les boutons
+                view.setFitHeight(30);
+                b.setGraphic(view);
+                grille.getChildren().add(b);
                 x=x+50;
             }
             x=debutX;
@@ -181,7 +179,7 @@ public class Jeu extends Stage {
         this.monde=monde;
         Robot rob = monde.getRoboList()[0];
         this.setTitle("Jeu");
-        Image image = new Image("partie.png");
+        Image image = new Image("partiefinal.png");
         ImageView bg = new ImageView(image);
         Group g = new Group();
         Group root = new Group();
@@ -241,30 +239,31 @@ public class Jeu extends Stage {
         }
         y += 10;
         for (Robot robot : monde.getRoboList()) {
-            if (robot == null) {break;}
-            else{
-            t = ("R " + robot.get_numero() + "\t");
-            t += ("" + robot.get_x()  + "\t");
-            t += ("" + (robot.get_y()  + "\t"));
-            if (robot.get_nickel()) {
-                t += ("NI " + "\t");
+            if (robot == null) {
+                break;
             } else {
-                t += ("OR " + "\t");
+                t = ("R " + robot.get_numero() + "\t");
+                t += ("" + robot.get_x() + "\t");
+                t += ("" + (robot.get_y() + "\t"));
+                if (robot.get_nickel()) {
+                    t += ("NI " + "\t");
+                } else {
+                    t += ("OR " + "\t");
+                }
+                t += (" " + robot.get_stockage() + " / " + robot.get_max());
+                Text text = new Text(t);
+                text.setLayoutX(debut_x);
+                text.setLayoutY(y);
+                text.setFill(Color.BLACK);
+                text.setStyle("-fx-font: 16 arial");
+                infoJeu.getChildren().add(text);
+                y += 20;
             }
-            t += (" " + robot.get_stockage() + " / " + robot.get_max());
-            Text text = new Text(t);
-            text.setLayoutX(debut_x);
-            text.setLayoutY(y);
-            text.setFill(Color.BLACK);
-            text.setStyle("-fx-font: 16 arial");
-            infoJeu.getChildren().add(text);
-            y += 20;}
-
         }
     }
-        public void chosen_robot(){}
-            //tr.setText("SELECTED ROBOT : " +rob.get());
-        //}
+        public void chosen_robot(){
+            tr.setText("SELECTED ROBOT : " +rob.get_numero());
+        }
         //public void nb_tour(){nbtour+=1;tour.setText("TURN :" +(nbtour));}
         public void set_rob(Robot r) {rob=r;}
 }
