@@ -16,12 +16,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 
 public class Jeu extends Stage{
     private Menu menu;
-    private Information info;
     private GestionEvent gestionEvent;
     private MondeGUI mondeGUI;
     private Robot rbch;
@@ -38,10 +38,8 @@ public class Jeu extends Stage{
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                FenetreScore score = new FenetreScore(menu,mondeGUI.getMonde().getEntrepotList()[0].getStock(), mondeGUI.getMonde().getEntrepotList()[0].getStock(), getTour());
-                score.show();
+                score();
                 temp.close();
-                info.close();
             }
         });
 
@@ -56,15 +54,30 @@ public class Jeu extends Stage{
 
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
-        hbox.setPadding(new Insets(30,30,30,30));
+        hbox.setPadding(new Insets(30,30,0, 20));
         // ajouter des label || bouton pour les numero de secteur
 
+        this.infogame = new VBox();
+
+        ArrayList<Text> txt = new ArrayList<Text>();
+        txt.add(new Text("  Aller vers le Nord"));
+        txt.add(new Text("  Aller vers le Sud"));
+        txt.add(new Text("  Aller vers l'Ouest"));
+        txt.add(new Text("  Aller vers l'Est"));
+        txt.add(new Text("  Recolter"));
+        txt.add(new Text("  Deposer"));
+        for (int i = 1; i <= 6; i++) {
+            HBox cmd = new HBox();
+            cmd.getChildren().add(new ImageView(new Image("btn" + i + ".png")));
+            cmd.getChildren().add(txt.get(i - 1));
+            this.infogame.getChildren().add(cmd);
+        }
 
         Text info  = new Text(mondeGUI.getMonde().GetInfo(tour));
-        this.infogame = new VBox(info);
+        this.infogame.getChildren().add(info);
 
-        infogame.setLayoutX(800);
-        infogame.setLayoutY(300);
+        infogame.setLayoutX(820);
+        infogame.setLayoutY(100);
 
         root.getChildren().addAll(hbox,infogame);
 
@@ -80,7 +93,6 @@ public class Jeu extends Stage{
     public void setMenu(Menu menu){
         this.menu = menu;
     }
-    public void setInfo(Information info) {this.info = info;}
 
     public void setRbD(Robot rb){
         this.rbch=rb;
@@ -99,8 +111,26 @@ public class Jeu extends Stage{
         tour+=1 ;
     }
 
+    public ArrayList<Text> didacticiel() {
+        ArrayList<Text> txt = new ArrayList<Text>();
+        txt.add(new Text("  Aller vers le Nord"));
+        txt.add(new Text("  Aller vers le Sud"));
+        txt.add(new Text("  Aller vers l'Ouest"));
+        txt.add(new Text("  Aller vers l'Est"));
+        txt.add(new Text("  Recolter"));
+        txt.add(new Text("  Deposer"));
+        for (int i = 1; i <= 6; i++) {
+            HBox cmd = new HBox();
+            cmd.getChildren().add(new ImageView(new Image("btn" + i + ".png")));
+            cmd.getChildren().add(txt.get(i - 1));
+            this.infogame.getChildren().add(cmd);
+        }
+        return txt;
+    }
+
     public VBox actualiserinfop(){
         this.infogame.getChildren().clear();
+        ArrayList<Text> didac = didacticiel();
         Text info = new Text();
         info.setText(mondeGUI.getMonde().GetInfo(tour));
         infogame.getChildren().add(info);
@@ -108,11 +138,10 @@ public class Jeu extends Stage{
     }
     public void score() {
         if (mondeGUI.stockRestantinmine() == 0 && mondeGUI.mineraisinRobot() == 0) {
-            new FenetreScore(menu, mondeGUI.stockinEntrepot("OR"), 0, mondeGUI.stockinEntrepot("NI"), 0, tour);
+            new FenetreScore(mondeGUI.stockinEntrepot("OR"), 0, mondeGUI.stockinEntrepot("NI"), 0, tour);
         }
         else{
-            new FenetreScore(menu, mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR"), mondeGUI.Orestant(), mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI"), mondeGUI.Orestant(), tour);
+            new FenetreScore(mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR"), mondeGUI.Orestant(), mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI"), mondeGUI.Orestant(), tour);
         }
     }
 }
-
