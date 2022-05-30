@@ -60,7 +60,7 @@ public class Jeu extends Stage{
         this.infogame = new VBox();
         VBox boutons = new VBox();
 
-        boutons.setPadding(new Insets(0,20,100, 0));
+        boutons.setPadding(new Insets(0,20,10, 0));
 
         ArrayList<Text> txt = new ArrayList<Text>();
         txt.add(new Text("  Select robot"));
@@ -87,7 +87,7 @@ public class Jeu extends Stage{
         this.infogame.getChildren().add(end);
 
         infogame.setLayoutX(820);
-        infogame.setLayoutY(100);
+        infogame.setLayoutY(60);
 
         root.getChildren().addAll(hbox,infogame);
 
@@ -139,6 +139,15 @@ public class Jeu extends Stage{
     }
 
     public VBox actualiserinfop(){
+        Button end = new Button("Fin");
+        Stage temp = this;
+        end.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                score();
+                temp.close();
+            }
+        });
         this.infogame.getChildren().clear();
         ArrayList<Text> didac = didacticiel();
         Text info = new Text();
@@ -146,6 +155,7 @@ public class Jeu extends Stage{
         Text robot = new Text("Robot selectionne : "+this.rbch.getnum());
         infogame.getChildren().add(info);
         infogame.getChildren().add(robot);
+        this.infogame.getChildren().add(end);
         return infogame;
     }
     public void score() {
