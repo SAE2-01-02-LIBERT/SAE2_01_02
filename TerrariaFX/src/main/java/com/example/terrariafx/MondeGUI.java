@@ -80,6 +80,26 @@ public class MondeGUI {
         return world;
     }
 
+    public int stockinRobot(String type){
+        int stock = 0;
+        for(Robot r : world.getRoboList()){
+            if (r.getType().equals(type)) {
+                stock += r.getStock();
+            }
+        }
+        return stock;
+    }
+
+    public int stockinEntrepot(String type){
+        int stock = 0;
+        for(Entrepot e : world.getEntrepotList()){
+            if (e.getType().equals(type)) {
+                stock += e.getStock();
+            }
+        }
+        return stock;
+    }
+
     public int stockRestantinmine(){
         int stock = 0;
         for(Mine mine : world.getMineList()){
@@ -89,11 +109,13 @@ public class MondeGUI {
     }
     public int mineraisinRobot(){
         int stock = 0;
-        for(Robot Rb: world.getRoboList()){
+        for(int i = 0; i < world.getNbrRobot(); i++){
+            Robot Rb = world.getRoboList()[i];
             stock+=Rb.getStock();
         }
         return stock;
     }
+
     public int Orestant(){
         int stock= 0;
         for(Mine mine : world.getMineList()){
