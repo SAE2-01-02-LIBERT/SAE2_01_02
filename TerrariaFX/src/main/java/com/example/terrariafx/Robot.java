@@ -60,6 +60,11 @@ public class Robot implements Localisable{
                 if (soute + capaciteeExtraction > capacitee) {
                     extrait = capacitee - soute;
                 }
+                else{
+                    if(capaciteeExtraction > m.getStock()){
+                        extrait = m.getStock();
+                    }
+                }
                 soute += extrait;
                 m.estRecoltee(extrait);
             }
@@ -183,6 +188,7 @@ public class Robot implements Localisable{
         this.position = position;
     }
 }
+
 
 
 
