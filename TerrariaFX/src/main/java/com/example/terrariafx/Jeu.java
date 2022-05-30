@@ -45,44 +45,46 @@ public class Jeu extends Stage{
             }
         });
 
-
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
 
         this.mondeGUI = new MondeGUI();
-        droite.getChildren().add(end);
         gauche.getChildren().add(mondeGUI.setGrille());
 
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
-        hbox.setPadding(new Insets(30,30,0, 20));
+        hbox.setPadding(new Insets(30,20,0, 30));
         // ajouter des label || bouton pour les numero de secteur
 
         this.infogame = new VBox();
+        VBox boutons = new VBox();
 
-
+        boutons.setPadding(new Insets(0,20,100, 0));
 
         ArrayList<Text> txt = new ArrayList<Text>();
+        txt.add(new Text("  Select robot"));
         txt.add(new Text("  Aller vers le Nord"));
         txt.add(new Text("  Aller vers le Sud"));
         txt.add(new Text("  Aller vers l'Ouest"));
         txt.add(new Text("  Aller vers l'Est"));
         txt.add(new Text("  Recolter"));
         txt.add(new Text("  Deposer"));
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 0; i <= 6; i++) {
             HBox cmd = new HBox();
             cmd.getChildren().add(new ImageView(new Image("btn" + i + ".png")));
-            cmd.getChildren().add(txt.get(i - 1));
-            this.infogame.getChildren().add(cmd);
+            cmd.getChildren().add(txt.get(i));
+            boutons.getChildren().add(cmd);
         }
 
         this.rbch = mondeGUI.getWorld().getRoboList()[0];
 
         Text info  = new Text(mondeGUI.getMonde().GetInfo(tour));
         afficherRobot = new Text("Robot selectionne : "+this.rbch.getnum());
+        this.infogame.getChildren().add(boutons);
         this.infogame.getChildren().add(info);
         this.infogame.getChildren().add(afficherRobot);
+        this.infogame.getChildren().add(end);
 
         infogame.setLayoutX(820);
         infogame.setLayoutY(100);
@@ -120,16 +122,17 @@ public class Jeu extends Stage{
 
     public ArrayList<Text> didacticiel() {
         ArrayList<Text> txt = new ArrayList<Text>();
+        txt.add(new Text("  Select robot"));
         txt.add(new Text("  Aller vers le Nord"));
         txt.add(new Text("  Aller vers le Sud"));
         txt.add(new Text("  Aller vers l'Ouest"));
         txt.add(new Text("  Aller vers l'Est"));
         txt.add(new Text("  Recolter"));
         txt.add(new Text("  Deposer"));
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 0; i <= 6; i++) {
             HBox cmd = new HBox();
             cmd.getChildren().add(new ImageView(new Image("btn" + i + ".png")));
-            cmd.getChildren().add(txt.get(i - 1));
+            cmd.getChildren().add(txt.get(i));
             this.infogame.getChildren().add(cmd);
         }
         return txt;
