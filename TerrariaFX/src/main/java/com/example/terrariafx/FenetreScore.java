@@ -11,16 +11,14 @@ import javafx.stage.Stage;
 
 public class FenetreScore extends Stage {
 
-    private Menu menu;
     private int orRecup;
     private int orRestant;
     private int niRecup;
     private int niRestant;
     private int tours;
 
-    public FenetreScore(Menu menu, int orRecup, int orRestant, int niRecup, int niRestant, int tours){
+    public FenetreScore(int orRecup, int orRestant, int niRecup, int niRestant, int tours){
         super();
-        this.menu = menu;
         this.orRecup = orRecup;
         this.orRestant = orRestant;
         this.niRecup = niRecup;
@@ -56,18 +54,11 @@ public class FenetreScore extends Stage {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 temp.close();
-                menu.show();
             }
         });
 
-        Scene scene = new Scene(vbox, 120, 200);
+        Scene scene = new Scene(vbox, 160, 200);
         this.setScene(scene);
-        this.sizeToScene();
-    }
-
-    public FenetreScore(Menu menu, int stock, int stock1, int tour) {
-        this.menu = menu;
-
-
+        this.show();
     }
 }
