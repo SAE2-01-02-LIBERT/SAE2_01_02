@@ -185,6 +185,7 @@ public class Jeu extends Stage {
         Group root = new Group();
         Matrice(147,175);
         get_infoJeu(770,325);
+        chosen_robot(770,325);
         root.getChildren().addAll(bg,g);
         g.getChildren().addAll(grille,infoJeu);
         Scene scene =  new Scene(root,1000,800);
