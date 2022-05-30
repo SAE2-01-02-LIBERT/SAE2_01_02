@@ -106,5 +106,13 @@ public class Jeu extends Stage{
         infogame.getChildren().add(info);
         return infogame;
     }
-
+    public void score() {
+        if (mondeGUI.stockRestantinmine() == 0 && mondeGUI.mineraisinRobot() == 0) {
+            new FenetreScore(menu, mondeGUI.stockinEntrepot("OR"), 0, mondeGUI.stockinEntrepot("NI"), 0, tour);
+        }
+        else{
+            new FenetreScore(menu, mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR"), mondeGUI.Orestant(), mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI"), mondeGUI.Orestant(), tour);
+        }
+    }
 }
+
