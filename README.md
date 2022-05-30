@@ -6,7 +6,7 @@
             - FRANCK Marius  | (KussYT)
             - DU BOIS Eddy   | (ImAVanessaMain)
 
-diagramme UML :
+diagramme UML avec class JFX version final:
 <img src="Diagramme/Diagram V1_.PNG"/>
 
 
