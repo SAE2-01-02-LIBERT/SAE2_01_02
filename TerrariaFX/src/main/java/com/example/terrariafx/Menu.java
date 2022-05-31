@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Menu extends Stage{
     private Jeu jeu;
-    private Information info;
+
     public Menu() {
         super();
         this.setTitle("Robot Mineur");
@@ -33,7 +33,6 @@ public class Menu extends Stage{
             public void handle(MouseEvent mouseEvent) {
                 temp.close();
                 jeu.show();
-                info.show();
             }
         });
         quit.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -51,5 +50,5 @@ public class Menu extends Stage{
     public void setJeu(Jeu j){
         jeu = j;
     }
-    public void setInfo(Information i) {info = i;}
+
 }

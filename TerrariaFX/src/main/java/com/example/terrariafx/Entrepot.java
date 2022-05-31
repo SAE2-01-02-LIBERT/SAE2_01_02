@@ -65,6 +65,3 @@ public class Entrepot extends Batiment {
         return "| "+ "E" + this.numero + "  " + " [ "+this.position[0]+", "+this.position[1]+" ]  "+this.typeEntrepot +"  "+ this.stock +"\t     |" ;
     }
 }
-
-
-

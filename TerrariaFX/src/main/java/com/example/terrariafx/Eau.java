@@ -1,3 +1,4 @@
+
 package com.example.terrariafx;
 
 import java.util.concurrent.ExecutionException;
@@ -27,7 +28,7 @@ public class Eau extends Secteur {
     }
     @Override
     public void ajoutLocalR(Robot r) throws ExecutionException {
-            System.out.println("Impossible vous essayez de faire flotter votre Robot ");
+        System.out.println("Impossible vous essayez de faire flotter votre Robot ");
     }
     @Override
     public void ajoutLocalM(Mine m) throws ExecutionException {

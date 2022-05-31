@@ -1,3 +1,4 @@
+
 package com.example.terrariafx;
 
 public abstract class Batiment implements Localisable {
