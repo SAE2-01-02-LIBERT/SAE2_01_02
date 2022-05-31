@@ -12,7 +12,7 @@ public class MondeGUI {
     private SecteurGUI[][] grille;
     private VBox grilleVb;
     public MondeGUI() throws ExecutionException {
-        this.grille = new SecteurGUI[10][10]; ;
+        this.grille = new SecteurGUI[10][10];
         grilleVb = new VBox();
         this.world = new Monde();
         this.genererMonde();
@@ -82,9 +82,10 @@ public class MondeGUI {
 
     public int stockinRobot(String type){
         int stock = 0;
-        for(Robot r : world.getRoboList()){
-            if (r.getType().equals(type)) {
-                stock += r.getStock();
+        for(int i = 0; i < getWorld().getNbrRobot() ; i++){
+            Robot Rb = world.getRoboList()[i];
+            if (Rb.getType().equals(type)) {
+                stock += Rb.getStock();
             }
         }
         return stock;
