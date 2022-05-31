@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -54,13 +56,13 @@ public class Jeu extends Stage{
 
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
-        hbox.setPadding(new Insets(30,20,0, 30));
+        hbox.setPadding(new Insets(30,10,0, 30));
         // ajouter des label || bouton pour les numero de secteur
 
         this.infogame = new VBox();
         VBox boutons = new VBox();
 
-        boutons.setPadding(new Insets(0,20,10, 0));
+        boutons.setPadding(new Insets(0,20,15, 0));
 
         ArrayList<Text> txt = new ArrayList<Text>();
         txt.add(new Text("  Select robot"));
@@ -81,6 +83,8 @@ public class Jeu extends Stage{
 
         Text info  = new Text(mondeGUI.getMonde().GetInfo(tour));
         afficherRobot = new Text("Robot selectionne : "+this.rbch.getnum());
+        info.setFont(Font.font("Arial", 11));
+        afficherRobot.setFont(Font.font("Arial", 11));
         this.infogame.getChildren().add(boutons);
         this.infogame.getChildren().add(info);
         this.infogame.getChildren().add(afficherRobot);
@@ -153,6 +157,8 @@ public class Jeu extends Stage{
         Text info = new Text();
         info.setText(mondeGUI.getMonde().GetInfo(tour));
         Text robot = new Text("Robot selectionne : "+this.rbch.getnum());
+        info.setFont(Font.font("Arial", 11));
+        robot.setFont(Font.font("Arial", 11));
         infogame.getChildren().add(info);
         infogame.getChildren().add(robot);
         this.infogame.getChildren().add(end);
@@ -163,7 +169,7 @@ public class Jeu extends Stage{
             new FenetreScore(mondeGUI.stockinEntrepot("OR"), 0, mondeGUI.stockinEntrepot("NI"), 0, tour);
         }
         else{
-            new FenetreScore(mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR"), mondeGUI.Orestant(), mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI"), mondeGUI.Orestant(), tour);
+            new FenetreScore((mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR")), mondeGUI.Orestant(), (mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI")), mondeGUI.Niestant(), tour);
         }
     }
 }
