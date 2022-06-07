@@ -80,6 +80,7 @@ public class Monde {
         ajoutMine();
         ajoutEntrepot();
         ajoutRobot();
+        attenants();
     }
 
     public void ajoutMine () throws ExecutionException {
@@ -137,6 +138,45 @@ public class Monde {
         }
     }
 
+    public void attenants() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; i < 9; j++) {
+                int[] coord = {0, 0, 0, 0};
+                    if (monde[i][j] instanceof Terre) {
+                        try {
+                            if (monde[i - 1][j] instanceof Terre) { //Nord
+                                coord[0] = 1;
+                            }
+                        } catch (Exception e) {
+                            continue;
+                        }
+                        try {
+                            if (monde[i + 1][j] instanceof Terre) { //Sud
+                                coord[1] = 1;
+                            }
+                        } catch (Exception e) {
+                            continue;
+                        }
+                        try {
+                            if (monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
+                                coord[2] = 1;
+                            }
+                        } catch (Exception e) {
+                            continue;
+                        }
+                        try {
+                            if (monde[i][j + 1] instanceof Terre) { //Est
+                                coord[3] = 1;
+                            }
+                        } catch (Exception e) {
+                            continue;
+                        }
+                        ((Terre) monde[i][j]).setAtennant(coord);
+
+                    }
+            }
+        }
+    }
     public void affichermonde(int cpt) {
         StringBuilder mondeAfficher = new StringBuilder();
         mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
@@ -157,6 +197,7 @@ public class Monde {
         mondeAfficher.append("\n");
 
     }
+
     public String GetInfo(int cpt){
 
         String Afficher = "\n Tour : "+cpt+"\n";
