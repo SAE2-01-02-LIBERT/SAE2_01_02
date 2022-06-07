@@ -12,6 +12,10 @@
     <bytecodeTargetLevel>
       <module name="demo" target="11" />
       <module name="TerrariaFX" target="11" />
+      <module name="TerrariaFX (1)" target="11" />
+      <module name="TerrariaFX-ADV" target="11" />
+      <module name="TerrariaFX-ADV1" target="11" />
+      <module name="TerrariaTest" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

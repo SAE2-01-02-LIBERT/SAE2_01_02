@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 public class Menu extends Stage{
     private Jeu jeu;
-
     public Menu() {
         super();
         this.setTitle("Robot Mineur");
@@ -50,5 +49,4 @@ public class Menu extends Stage{
     public void setJeu(Jeu j){
         jeu = j;
     }
-
 }

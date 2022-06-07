@@ -1,8 +1,7 @@
 package CodeV1;
-
 import java.util.Random;
 
-public class Robot extends Batiment {
+public class Robot implements Localisable{
     private String type;
     private String typeMine; // Or ou nickel
     private int soute;
@@ -51,9 +50,19 @@ public class Robot extends Batiment {
         if (m.getTypeMateriau().equals(this.getTypeMateriau())) {
             if (capacitee == soute) {
                 System.out.println("Impossible, votre robot est plein");
-            } else {
+            }
+            else if (m.getStock() == 0) {
+                extrait=0;
+                System.out.println("Impossible, mine vide ");
+            }
+            else {
                 if (soute + capaciteeExtraction > capacitee) {
                     extrait = capacitee - soute;
+                }
+                else{
+                    if(capaciteeExtraction > m.getStock()){
+                        extrait = m.getStock();
+                    }
                 }
                 soute += extrait;
                 m.estRecoltee(extrait);
@@ -84,25 +93,28 @@ public class Robot extends Batiment {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0]-1;
         Nwpos[1] = position[1];
-        System.out.println("Deplacement vers le nord");
+        System.out.println(d.getnum()+" Deplacement vers le nord");
         return new Robot(d,Nwpos);
     }
     public Robot sud(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0]+1;
         Nwpos[1] = position[1];
+        System.out.println(d.getnum()+" Deplacement vers le SUD");
         return new Robot(d,Nwpos);
     }
     public Robot est(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
         Nwpos[1] =position[1]+1;
+        System.out.println(d.getnum()+" Deplacement vers l'est");
         return  new Robot(d,Nwpos);
     }
     public Robot ouest(Robot d) {
         int[] Nwpos = new int[2];
         Nwpos[0] = position[0];
         Nwpos[1] =position[1]-1;
+        System.out.println(d.getnum()+" Deplacement vers l'OUEST");
         return new Robot(d,Nwpos);
     }
 
@@ -130,6 +142,11 @@ public class Robot extends Batiment {
     @Override
     public String getTypeMateriau(){
         return typeMine;
+    }
+
+    @Override
+    public int[] getPos() {
+        return this.position;
     }
 
     @Override
@@ -170,6 +187,7 @@ public class Robot extends Batiment {
         this.position = position;
     }
 }
+
 
 
 

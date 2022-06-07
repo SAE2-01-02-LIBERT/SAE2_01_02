@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SAE2_01_02.iml" filepath="$PROJECT_DIR$/.idea/SAE2_01_02.iml" />
       <module fileurl="file://$PROJECT_DIR$/Terraria/Terraria.iml" filepath="$PROJECT_DIR$/Terraria/Terraria.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terraria-ADV/Terraria-ADV.iml" filepath="$PROJECT_DIR$/Terraria-ADV/Terraria-ADV.iml" />
       <module fileurl="file://$PROJECT_DIR$/TerrariaFX/TerrariaFX.iml" filepath="$PROJECT_DIR$/TerrariaFX/TerrariaFX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TerrariaFX-ADV/TerrariaFX (1).iml" filepath="$PROJECT_DIR$/TerrariaFX-ADV/TerrariaFX (1).iml" />
     </modules>
   </component>
 </project>

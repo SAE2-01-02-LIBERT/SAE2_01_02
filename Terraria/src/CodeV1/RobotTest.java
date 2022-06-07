@@ -24,31 +24,42 @@ class RobotTest { //converture de condition de Robot pour la methode recolter
         Rbor.setCapacitee(6);
         Rbor.setSoute(0);
         Rbor.setCapaciteeExtraction(1);
+        mine.setCapacite(1);
+        mine.setStock(1);
         Rbor.recolter(mine);
         assertEquals(1, Rbor.getStock());
+        System.out.println(Rbor.getStock());
     }
     @Test
     void test2 (){
-        Rbor.setCapacitee(6);
-        Rbor.setSoute(4);
-        Rbor.setCapaciteeExtraction(2);
+        Rbor.setCapacitee(9);
+        Rbor.setSoute(3);
+        Rbor.setCapaciteeExtraction(4);
+        mine.setCapacite(50);
+        mine.setStock(0);
         Rbor.recolter(mine);
-        assertEquals(6, Rbor.getStock());
+        assertEquals(3, Rbor.getStock());
     }
     @Test
     void test3 (){
-        Rbor.setCapacitee(6);
+        Rbor.setType("Ni");
+        Rbor.setCapacitee(5);
         Rbor.setSoute(5);
         Rbor.setCapaciteeExtraction(3);
+        mine.setCapacite(25);
+        mine.setStock(25);
         Rbor.recolter(mine);
-        assertEquals(6, Rbor.getStock());
+        assertEquals(5, Rbor.getStock());
     }
     @Test
     void test4 (){
         Rbor.setCapacitee(6);
-        Rbor.setSoute(6);
-        Rbor.setCapaciteeExtraction(3);
+        Rbor.setSoute(0);
+        Rbor.setCapaciteeExtraction(1);
+        mine.setStock(2);
+        mine.setCapacite(50);
         Rbor.recolter(mine);
-        assertEquals(6, Rbor.getStock());
+        assertEquals(1, Rbor.getStock());
+        System.out.println(Rbor.getStock());
     }
 }

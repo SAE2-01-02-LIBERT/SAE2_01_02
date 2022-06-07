@@ -315,7 +315,7 @@ public class Monde {
     public Boolean veriflocal0En(int i,int j){
         boolean pressence = false;
         for(int cptE=0;cptE<2;cptE++){
-            if (entrepotList[cptE].getPos()[0]==i &&  entrepotList[cptE].getPos()[1]==j) {
+            if (entrepotList[cptE].getPos()[0]==i &&  entrepotList[cptE].getPos()[1]==j && veriflocal0Mi(i,j) ==true) {
                 return true;
             }
         }

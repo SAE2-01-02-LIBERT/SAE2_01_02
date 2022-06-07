@@ -56,6 +56,12 @@ public class Mine extends Batiment {
     public int getStock() {
         return this.stock;
     }
+
+    @Override
+    public int[] getPos() {
+        return new int[0];
+    }
+
     @Override
     public String getType(){
         return this.type;

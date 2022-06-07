@@ -27,6 +27,7 @@ public class MIneTest {
         Rbor.setCapaciteeExtraction(0);
         mine.setStock(55);
         assertEquals(55,mine.getStock());
+        System.out.println(mine.getStock());
     }
     @Test
     void test2(){
@@ -34,6 +35,7 @@ public class MIneTest {
         mine.setStock(55);
         mine.estRecoltee(Rbor.getCapaciteeExtraction());
         assertEquals(55-3,mine.getStock());
+        System.out.println(mine.getStock());
     }
 
     @Test
@@ -42,6 +44,7 @@ public class MIneTest {
         mine.setStock(0);
         mine.estRecoltee(Rbor.getCapaciteeExtraction());
         assertEquals(0,mine.getStock());
+        System.out.println(mine.getStock());
     }
 }
 

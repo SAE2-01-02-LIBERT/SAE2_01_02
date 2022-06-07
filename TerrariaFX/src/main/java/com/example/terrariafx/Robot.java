@@ -46,7 +46,7 @@ public class Robot implements Localisable{
         this.typeMine = r.typeMine;
     }
 
-    public void recolter(Mine m) {//bug +refaire les tests
+    public void recolter(Mine m) {
         int extrait = capaciteeExtraction;
         if (m.getTypeMateriau().equals(this.getTypeMateriau())) {
             if (capacitee == soute) {
