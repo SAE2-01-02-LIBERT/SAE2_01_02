@@ -119,6 +119,10 @@ public class Robot implements Localisable{
         return new Robot(d,Nwpos);
     }
 
+    public void jouerAuto(){
+
+    }
+
     public int[] getPosition() {
         return position;
     }
