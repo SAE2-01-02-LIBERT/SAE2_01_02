@@ -185,7 +185,7 @@ public class Jeu extends Stage {
         Group root = new Group();
         Matrice(147,175);
         get_infoJeu(770,325);
-        chosen_robot(770,325);
+        //chosen_robot(770,325);
         root.getChildren().addAll(bg,g);
         g.getChildren().addAll(grille,infoJeu);
         Scene scene =  new Scene(root,1000,800);
@@ -262,9 +262,9 @@ public class Jeu extends Stage {
             }
         }
     }
-        public void chosen_robot(){
-            tr.setText("SELECTED ROBOT : " +rob.get_numero());
-        }
+        //public void chosen_robot(){
+        //    tr.setText("SELECTED ROBOT : " +rob.get_numero());
+        //}
         //public void nb_tour(){nbtour+=1;tour.setText("TURN :" +(nbtour));}
         public void set_rob(Robot r) {rob=r;}
 }

@@ -22,58 +22,48 @@ public class GestionEventGame implements EventHandler<KeyEvent> {
         if (k.getText().equals("&")) {
             rob = monde.getRoboList()[0];
             jeu.set_rob(rob);
-            jeu.chosen_robot();
         } else if (k.getText().equals("é")) {
             rob = monde.getRoboList()[1];
             jeu.set_rob(rob);
-            jeu.chosen_robot();
         } else if (k.getText().equals(Character.toString((char) 34))) {
             if (monde.getRoboList().length >= 3) {
                 rob = monde.getRoboList()[2];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("'")) {
             if (monde.getRoboList().length >= 4) {
                 rob = monde.getRoboList()[3];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("(")) {
             if (monde.getRoboList().length >= 5) {
                 rob = monde.getRoboList()[4];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("-")) {
             if (monde.getRoboList().length >= 6) {
                 rob = monde.getRoboList()[5];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("è")) {
             if (monde.getRoboList().length >= 7) {
                 rob = monde.getRoboList()[6];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("_")) {
             if (monde.getRoboList().length >= 8) {
                 rob = monde.getRoboList()[7];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("ç")) {
             if (monde.getRoboList().length >= 9) {
                 rob = monde.getRoboList()[8];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("à")) {
             if (monde.getRoboList().length >= 10) {
                 rob = monde.getRoboList()[9];
                 jeu.set_rob(rob);
-                jeu.chosen_robot();
             }
         } else if (k.getText().equals("z")) {
             boolean b = rob.nord();
