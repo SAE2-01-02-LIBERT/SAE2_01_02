@@ -140,43 +140,28 @@ public class Monde {
 
     public void attenants() {
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; i < 9; j++) {
+            for (int j = 0; j < 9; j++) {
                 int[] coord = {0, 0, 0, 0};
                     if (monde[i][j] instanceof Terre) {
-                        try {
-                            if (monde[i - 1][j] instanceof Terre) { //Nord
-                                coord[0] = 1;
-                            }
-                        } catch (Exception e) {
-                            continue;
+                        if (i - 1 >= 0 && monde[i - 1][j] instanceof Terre) { //Nord
+                            coord[0] = 1;
                         }
-                        try {
-                            if (monde[i + 1][j] instanceof Terre) { //Sud
-                                coord[1] = 1;
-                            }
-                        } catch (Exception e) {
-                            continue;
+                        if (i + 1 <= 9 && monde[i + 1][j] instanceof Terre) { //Sud
+                            coord[1] = 1;
                         }
-                        try {
-                            if (monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
-                                coord[2] = 1;
-                            }
-                        } catch (Exception e) {
-                            continue;
+                        if (j - 1 >= 0 && monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
+                            coord[2] = 1;
                         }
-                        try {
-                            if (monde[i][j + 1] instanceof Terre) { //Est
-                                coord[3] = 1;
-                            }
-                        } catch (Exception e) {
-                            continue;
+                        if (j + 1 <= 9 && monde[i][j + 1] instanceof Terre) { //Est
+                            coord[3] = 1;
                         }
                         ((Terre) monde[i][j]).setAtennant(coord);
-
                     }
+
             }
         }
     }
+    
     public void affichermonde(int cpt) {
         StringBuilder mondeAfficher = new StringBuilder();
         mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
