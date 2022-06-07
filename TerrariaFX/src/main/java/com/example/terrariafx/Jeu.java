@@ -30,11 +30,15 @@ public class Jeu extends Stage{
     private VBox infogame;
     private int tour;
     private Text afficherRobot;
+    private boolean auto;
 
     public Jeu() throws ExecutionException {
         super();
+        auto = false;
         this.setTitle("Robot Mineur");
         Button end = new Button("Fin");
+        Button stop = new Button("Stop Auto");
+        Button autojeu = new Button("Auto-Jeu");
         Stage temp = this;
         Group root = new Group();
         ImageView font = new ImageView(new Image("partie.png"));
@@ -44,6 +48,18 @@ public class Jeu extends Stage{
             public void handle(MouseEvent mouseEvent) {
                 score();
                 temp.close();
+            }
+        });
+        autojeu.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                auto = true;
+            }
+        });
+        stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                auto = false;
             }
         });
 
@@ -89,6 +105,12 @@ public class Jeu extends Stage{
         this.infogame.getChildren().add(info);
         this.infogame.getChildren().add(afficherRobot);
         this.infogame.getChildren().add(end);
+        if(!auto) {
+            this.infogame.getChildren().add(autojeu);
+        }
+        else {
+            this.infogame.getChildren().add(stop);
+        }
 
         infogame.setLayoutX(820);
         infogame.setLayoutY(60);
@@ -144,12 +166,29 @@ public class Jeu extends Stage{
 
     public VBox actualiserinfop(){
         Button end = new Button("Fin");
+        Button autojeu = new Button("Auto-Jeu");
+        Button stop = new Button("Stop Auto");
         Stage temp = this;
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 score();
                 temp.close();
+            }
+        });
+        autojeu.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                auto = true;
+                while(auto){
+
+                }
+            }
+        });
+        stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                auto = false;
             }
         });
         this.infogame.getChildren().clear();
@@ -162,6 +201,12 @@ public class Jeu extends Stage{
         infogame.getChildren().add(info);
         infogame.getChildren().add(robot);
         this.infogame.getChildren().add(end);
+        if(!auto) {
+            this.infogame.getChildren().add(autojeu);
+        }
+        else {
+            this.infogame.getChildren().add(stop);
+        }
         return infogame;
     }
     public void score() {
