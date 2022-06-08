@@ -1,6 +1,6 @@
 package com.example.terrariafx;
 
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class Monde {
@@ -80,7 +80,6 @@ public class Monde {
         ajoutMine();
         ajoutEntrepot();
         ajoutRobot();
-        attenants();
     }
 
     public void ajoutMine () throws ExecutionException {
@@ -138,29 +137,8 @@ public class Monde {
         }
     }
 
-    public void attenants() { // mets en memoire des terres leurs adjacents
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                Terre[] coord = {null, null, null, null};
-                if (monde[i][j] instanceof Terre) {
-                    if (i - 1 >= 0 && monde[i - 1][j] instanceof Terre) { //Nord
-                        coord[0] = (Terre)monde[i-1][j];
-                    }
-                    if (i + 1 <= 9 && monde[i + 1][j] instanceof Terre) { //Sud
-                        coord[1] = (Terre)monde[i + 1][j];
-                    }
-                    if (j - 1 >= 0 && monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
-                        coord[2] = (Terre)monde[i][j-1];
-                    }
-                    if (j + 1 <= 9 && monde[i][j + 1] instanceof Terre) { //Est
-                        coord[3] = (Terre)monde[i][j + 1];
-                    }
-                    ((Terre) monde[i][j]).setAtennant(coord);
-                }
-            }
-        }
-    }
-    
+
+
     public void affichermonde(int cpt) {
         StringBuilder mondeAfficher = new StringBuilder();
         mondeAfficher.append("  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- " + "\n");
@@ -310,7 +288,6 @@ public class Monde {
             System.out.println("Entrez une commande valide !");
         }
     }
-
     public Mine[] getMineList() {
         return mineList;
     }

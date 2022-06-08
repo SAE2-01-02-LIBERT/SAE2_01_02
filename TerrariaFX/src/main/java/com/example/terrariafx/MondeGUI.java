@@ -5,6 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 public class MondeGUI {
@@ -66,6 +70,8 @@ public class MondeGUI {
         return grilleVb;
     }
 
+
+
     public VBox getGrilleVb(){
         return this.grilleVb;
     }
@@ -90,6 +96,7 @@ public class MondeGUI {
         }
         return stock;
     }
+
 
     public int stockinEntrepot(String type){
         int stock = 0;

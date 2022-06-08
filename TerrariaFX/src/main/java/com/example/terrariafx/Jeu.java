@@ -23,6 +23,8 @@ import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 
 public class Jeu extends Stage{
+
+    private AI IA;
     private Menu menu;
     private GestionEvent gestionEvent;
     private MondeGUI mondeGUI;
@@ -176,21 +178,15 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
-        autojeu.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                auto = true;
-                while(auto){
-
-                }
-            }
-        });
+        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot));
         stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 auto = false;
             }
         });
+
+
         this.infogame.getChildren().clear();
         ArrayList<Text> didac = didacticiel();
         Text info = new Text();

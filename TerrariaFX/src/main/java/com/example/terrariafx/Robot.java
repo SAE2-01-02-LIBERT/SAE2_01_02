@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Robot implements Localisable{
     private String type;
+
     private String typeMine; // Or ou nickel
     private int soute;
     private int capacitee;
@@ -12,7 +13,8 @@ public class Robot implements Localisable{
     private int numero;
     private int[] position;
 
-    private ArrayList<int[]> chemin;
+
+    private int[][] chemin;
 
     public Robot() {
         this.type = "Robot";
@@ -24,7 +26,6 @@ public class Robot implements Localisable{
         this.position = new int[2];
         this.position[0] = 0; // par defaut
         this.position[1] = 0; // par defaut
-        this.chemin = new ArrayList<int[]>();
     }
 
     public Robot(String typeMine, int num) {
@@ -76,17 +77,6 @@ public class Robot implements Localisable{
             System.out.println("Impossible, votre robot ne peut recolter ce minerai");
         }
     }
-
-    public void distance(Batiment batiment){
-        ArrayList<int[]> dist = new ArrayList<>(2);
-
-
-
-
-
-        this.chemin = dist;
-    }
-
     public void deposer() {
         soute = 0;
     }
@@ -186,6 +176,10 @@ public class Robot implements Localisable{
     public void setPosition(int[] position) {
         this.position = position;
     }
+    public void setChemin(int[][] chemin) {
+        this.chemin = chemin;
+    }
+
 }
 
 
