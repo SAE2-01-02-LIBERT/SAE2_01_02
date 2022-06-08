@@ -138,26 +138,25 @@ public class Monde {
         }
     }
 
-    public void attenants() {
+    public void attenants() { // mets en memoire des terres leurs adjacents
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int[] coord = {0, 0, 0, 0};
-                    if (monde[i][j] instanceof Terre) {
-                        if (i - 1 >= 0 && monde[i - 1][j] instanceof Terre) { //Nord
-                            coord[0] = 1;
-                        }
-                        if (i + 1 <= 9 && monde[i + 1][j] instanceof Terre) { //Sud
-                            coord[1] = 1;
-                        }
-                        if (j - 1 >= 0 && monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
-                            coord[2] = 1;
-                        }
-                        if (j + 1 <= 9 && monde[i][j + 1] instanceof Terre) { //Est
-                            coord[3] = 1;
-                        }
-                        ((Terre) monde[i][j]).setAtennant(coord);
+                Terre[] coord = {null, null, null, null};
+                if (monde[i][j] instanceof Terre) {
+                    if (i - 1 >= 0 && monde[i - 1][j] instanceof Terre) { //Nord
+                        coord[0] = (Terre)monde[i-1][j];
                     }
-
+                    if (i + 1 <= 9 && monde[i + 1][j] instanceof Terre) { //Sud
+                        coord[1] = (Terre)monde[i + 1][j];
+                    }
+                    if (j - 1 >= 0 && monde[i][j - 1] instanceof Terre) { //Ou-Est lol c'est pour la blague
+                        coord[2] = (Terre)monde[i][j-1];
+                    }
+                    if (j + 1 <= 9 && monde[i][j + 1] instanceof Terre) { //Est
+                        coord[3] = (Terre)monde[i][j + 1];
+                    }
+                    ((Terre) monde[i][j]).setAtennant(coord);
+                }
             }
         }
     }
@@ -180,7 +179,6 @@ public class Monde {
             }
         }
         mondeAfficher.append("\n");
-
     }
 
     public String GetInfo(int cpt){

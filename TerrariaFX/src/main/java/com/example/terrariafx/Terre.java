@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Terre extends Secteur {
     private String type;
-    private int[] attenants;
+    private Terre[] attenants;
     private Localisable[] locals;
 
     public Terre() {
@@ -75,12 +75,12 @@ public class Terre extends Secteur {
         }
         return terrain;
     }
-    public void setAtennant(int[] att){
+    public void setAtennant(Terre[] att){
         this.attenants = att;
     }
     public String getAttenants() {
         String St = null;
-        for (int at : attenants){
+        for (Terre at : attenants){
             St += at+", ";
         }return St;
     }

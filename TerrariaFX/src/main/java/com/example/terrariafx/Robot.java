@@ -1,5 +1,6 @@
 package com.example.terrariafx;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Robot implements Localisable{
@@ -11,6 +12,8 @@ public class Robot implements Localisable{
     private int numero;
     private int[] position;
 
+    private ArrayList<int[]> chemin;
+
     public Robot() {
         this.type = "Robot";
         this.typeMine = "OR";
@@ -21,6 +24,7 @@ public class Robot implements Localisable{
         this.position = new int[2];
         this.position[0] = 0; // par defaut
         this.position[1] = 0; // par defaut
+        this.chemin = new ArrayList<int[]>();
     }
 
     public Robot(String typeMine, int num) {
@@ -45,7 +49,6 @@ public class Robot implements Localisable{
         this.type = r.type;
         this.typeMine = r.typeMine;
     }
-
     public void recolter(Mine m) {
         int extrait = capaciteeExtraction;
         if (m.getTypeMateriau().equals(this.getTypeMateriau())) {
@@ -72,6 +75,16 @@ public class Robot implements Localisable{
         else{
             System.out.println("Impossible, votre robot ne peut recolter ce minerai");
         }
+    }
+
+    public void distance(Batiment batiment){
+        ArrayList<int[]> dist = new ArrayList<>(2);
+
+
+
+
+
+        this.chemin = dist;
     }
 
     public void deposer() {
@@ -119,75 +132,57 @@ public class Robot implements Localisable{
         return new Robot(d,Nwpos);
     }
 
-    public void jouerAuto(){
-
-    }
-
     public int[] getPosition() {
         return position;
     }
     public int getnum(){
         return this.numero;
     }
-
     @Override
     public String afficher() {
         return " R | " + this.numero + " ";
     }
-
     @Override
     public int getStock() {
         return this.soute;
     }
-
     public int getCapaciteeExtraction() {
         return capaciteeExtraction;
     }
-
     @Override
     public String getTypeMateriau(){
         return typeMine;
     }
-
     @Override
     public int[] getPos() {
         return this.position;
     }
-
     @Override
     public String getType() {
         return this.type;
     }
-
     @Override
     public String getInfo() {
         return "| " + "R" + this.numero + "   " +"[ "+ this.position[0] +", "+this.position[1]+" ]  " + this.typeMine +"  "+ this.soute + " / " + this.capacitee+"\t |";
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
     public void setTypeMine(String typeMine) {
         this.typeMine = typeMine;
     }
-
     public void setSoute(int soute) {
         this.soute = soute;
     }
-
     public void setCapacitee(int capacitee) {
         this.capacitee = capacitee;
     }
-
     public void setCapaciteeExtraction(int capaciteeExtraction) {
         this.capaciteeExtraction = capaciteeExtraction;
     }
-
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
     public void setPosition(int[] position) {
         this.position = position;
     }
