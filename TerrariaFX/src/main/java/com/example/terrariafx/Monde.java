@@ -355,4 +355,7 @@ public class Monde {
         return pressence;
     }
 
+    public void distMine(){
+
+    }
 }
