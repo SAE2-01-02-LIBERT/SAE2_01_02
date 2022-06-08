@@ -356,6 +356,30 @@ public class Monde {
     }
 
     public void distMine(){
-
+        int petit=100;
+        for(int cptm=0;cptm<getMineList().length;cptm++){
+            for(int i=0;i<getRoboList().length;i++) {
+                int x=0;
+                int y=0;
+                Mine m = mineList[cptm];
+                Robot r = roboList[i];
+                int mx=m.getPos()[0];
+                int rx=r.getPos()[0];
+                int my=m.getPos()[1];
+                int ry=r.getPos()[1];
+                if(mx<rx){
+                    x=rx-mx;
+                }else{
+                    x=mx-rx;
+                }
+                if(my<ry){
+                    y=ry-my;
+                }else{
+                    y=my-ry;
+                }
+                if(x+y<petit){
+                    petit = x+y;}
+            }
+        }
     }
 }
