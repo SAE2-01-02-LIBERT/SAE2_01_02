@@ -20,7 +20,6 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
         this.rob = r;
         this.afficherRobot = aR;
     }
-
     @Override
     public void handle(KeyEvent k) {
         if (k.getText().equals("&")) {

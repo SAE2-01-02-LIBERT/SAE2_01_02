@@ -83,19 +83,19 @@ public class AI {
 
     public int[][] attenantes(int[] coord) {
         int[][] res = new int[4][2];
-        if ( coord[0]-1>=0 && coord[0]-1 <=9 && coord[1]>=0 && coord[1]<=9 && world.getMonde()[coord[0]-1][coord[1]] instanceof Terre) {
+        if ( coord[0]-1>=0 && coord[0]-1 <=9 && coord[1]>=0 && coord[1]<=9 && world.getMonde()[coord[0]-1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]-1,coord[1])) {
             res[0][0]= coord[0]-1 ;
             res[0][1] = coord[1];
         }
-        if ( coord[0]+1>=0 && coord[0]+1<=9 && coord[1]>=0 && coord[1]<=9 && world.getMonde()[coord[0]+1][coord[1]] instanceof Terre) {
+        if ( coord[0]+1>=0 && coord[0]+1<=9 && coord[1]>=0 && coord[1]<=9 && world.getMonde()[coord[0]+1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]+1,coord[1])) {
             res[1][0]= coord[0]+1;
             res[1][1] = coord[1];
         }
-        if ( coord[1]-1>=0 && coord[1]-1<=9 && coord[0]>=0 && coord[0]<=9 && world.getMonde()[coord[0]][coord[1]-1] instanceof Terre) {
+        if ( coord[1]-1>=0 && coord[1]-1<=9 && coord[0]>=0 && coord[0]<=9 && world.getMonde()[coord[0]][coord[1]-1] instanceof Terre && world.veriflocal1(coord[0],coord[1]-1)) {
             res[2][0]= coord[0];
             res[2][1] = coord[1]-1;
         }
-        if ( coord[1]+1>=0 && coord[1]+1<=9 &&  coord[0]>=0 && coord[0]<=9 &&world.getMonde()[coord[0]][coord[1]+1] instanceof Terre) {
+        if ( coord[1]+1>=0 && coord[1]+1<=9 &&  coord[0]>=0 && coord[0]<=9 &&world.getMonde()[coord[0]][coord[1]+1] instanceof Terre && world.veriflocal1(coord[0],coord[1]+1)) {
             res[3][0]= coord[0];
             res[3][1] = coord[1]+1;
         }
@@ -116,20 +116,20 @@ public class AI {
         ArrayList<int[]> file = new ArrayList<>();
         int[][] dis = matricedistance();
         dis[batiment.getPos()[0]][batiment.getPos()[1]]=0;
-        int[] coordB = new int[2];
-        coordB[0]=batiment.getPos()[0];
-        coordB[1]= batiment.getPos()[1];
+        int[] coordB = new int[]{batiment.getPos()[0],batiment.getPos()[1]};
         file.add(coordB);
-        while (file.isEmpty() == false){
+
+        while (file.size()>1){
             int[] ele = file.get(0);
             int[][] voisin = attenantes(ele);
             for(int[] v : voisin ){
+
                 if (dis[v[0]][v[1]] == 2){
                     file.add(v);
                     dis[v[0]][v[1]] = dis[ele[0]][ele[1]] + 1 ;
                 }
-                file.remove(0);
             }
+            file.remove(0);
         }
         return dis;
     }
@@ -137,43 +137,47 @@ public class AI {
     public void resolution() { // fonctionne comme une pile
         int[][] dis = distance();
         ArrayList<int[]> chemin = new ArrayList<>();
-        int[] tmp = new int[2]; // par de coordoner du robot
-        tmp[0] = Rb.getPosition()[0];
-        tmp[1] = Rb.getPosition()[1];
+        int[] tmp = new int[]{Rb.getPosition()[0],Rb.getPosition()[1]};
         boolean notin = false;
         while (notin == false) {
+
             for (int i = 0; i < chemin.size(); i++) {
-                if (chemin.indexOf(i) == tmp[0] && chemin.indexOf(i) == tmp[1]) {
+                if (chemin.get(i)[0] == tmp[0] && chemin.get(i)[1] == tmp[1]) {
                     notin = true;
                 }
             }
-            if (tmp[0]+1 < 9 && dis[tmp[0]+1][tmp[1]] == dis[tmp[0]][tmp[1]] -1  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre){ // deplacement vers le SUD
-                if (world.veriflocal1(tmp[0]+1,tmp[1])==true){
-                    // deplacer un robot quand sur un entrepot
-                }
+
+            /*
+            System.out.println("distance : "+tmp[0]+1);
+            System.out.println("distance1 : "+dis[tmp[0]+1][tmp[1]]);
+            System.out.println(dis[tmp[0]][tmp[1]]-1);
+            System.out.println("intance de : "+world.getMonde()[tmp[0]+1][tmp[1]].toString()+"\n");
+             */
+
+
+            //pas pris en compte mais que celui ci
+            if ( tmp[0]+1 < 10 && dis[tmp[0]+1][tmp[1]] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre ){ // deplacement vers le SUD
                 tmp = new int[]{tmp[0] + 1, tmp[1]};
                 chemin.add(tmp);
+                System.out.println("alledN");
             }
-            else if (tmp[0]-1 >=0 && dis[tmp[0]-1][tmp[1]] == dis[tmp[0]][tmp[1]] -1  && world.getMonde()[tmp[0]-1][tmp[1]] instanceof Terre){ // Deplacement vers le nord
-                if (world.veriflocal1(tmp[0]-1,tmp[1])==true){
-                    // deplacer un robot quand sur un entrepot
-                }
+            //pas pris en compte
+            else if (tmp[0]-1 >=0 && dis[tmp[0]-1][tmp[1]] <= dis[tmp[0]][tmp[1]] && world.getMonde()[tmp[0]-1][tmp[1]] instanceof Terre ){ // Deplacement vers le nord
                 tmp = new int[]{tmp[0] - 1, tmp[1]};
                 chemin.add(tmp);
+                System.out.println("alledS");
             }
-            else if (tmp[1]+1 <= 9 && dis[tmp[0]][tmp[1]+1] == dis[tmp[0]][tmp[1]] - 1  && world.getMonde()[tmp[0]][tmp[1]+1] instanceof Terre){ // Deplacement vers l'Est
-                if (world.veriflocal1(tmp[0]-1,tmp[1])==true){
-                    // deplacer un robot quand sur un entrepot
-                }
+            //pas pris en compte
+            else if (tmp[1]+1 < 10 && dis[tmp[0]][tmp[1]+1] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]][tmp[1]+1] instanceof Terre ){ // Deplacement vers l'Est
                 tmp = new int[]{tmp[0], tmp[1]+1};
                 chemin.add(tmp);
+                System.out.println("alledE");
             }
-            else if (tmp[1]-1 >=0 && dis[tmp[0]][tmp[1]-1] == dis[tmp[0]][tmp[1]] - 1  && world.getMonde()[tmp[0]][tmp[1]-1] instanceof Terre){ // Deplacement vers l'Est
-                if (world.veriflocal1(tmp[0]-1,tmp[1])==true){
-                    // deplacer un robot quand sur un entrepot
-                }
+            //pas pris en compte
+            else if (tmp[1]-1 >=0 && dis[tmp[0]][tmp[1]-1] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]][tmp[1]-1] instanceof Terre){ // Deplacement vers l'Est
                 tmp = new int[]{tmp[0], tmp[1]-1};
                 chemin.add(tmp);
+                System.out.println("alledO");
             }
         }
         Collections.reverse(Arrays.asList(dis));

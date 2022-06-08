@@ -24,7 +24,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Jeu extends Stage{
 
-    private AI IA;
     private Menu menu;
     private GestionEvent gestionEvent;
     private MondeGUI mondeGUI;
@@ -33,6 +32,7 @@ public class Jeu extends Stage{
     private int tour;
     private Text afficherRobot;
     private boolean auto;
+
 
     public Jeu() throws ExecutionException {
         super();
