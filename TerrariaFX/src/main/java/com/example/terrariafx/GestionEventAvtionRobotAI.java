@@ -23,15 +23,18 @@ public class GestionEventAvtionRobotAI implements EventHandler  {
         this.monde=monde;
         this.jeu=jeu;
         this.afficherRobot=aR;
-        this.ia = new AI(monde);
-        this.roborIa = ia.getRb();
+        System.out.println("alled");
+
     }
 
     @Override
     public void handle(Event event) {
-        if(event.getSource().toString().contains("")){
-
+        if(event.getSource().toString().contains("Auto-Jeu")){
+            this.ia = new AI(monde);
+            this.roborIa = ia.getRb();
+            System.out.println("lancement");
         }
 
     }
+
 }
