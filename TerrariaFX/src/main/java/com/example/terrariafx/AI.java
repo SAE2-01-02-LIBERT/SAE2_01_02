@@ -106,26 +106,36 @@ public class AI {
                     matriceadj[i][j] = -1;
                 }
             }
+        String mondeAfficher = "";
+        for (int i = 0; i < 10; i++) {
+            mondeAfficher+= "\n";
+            for (int j = 0; j < 10; j++) {
+                mondeAfficher += "|"+ matriceadj[i][j]+"\t";
+            }
+        }
+        System.out.println(mondeAfficher);
             return matriceadj;
     }
 
     public int[][] distance(){// calcul les distance de secteur pour chaque secteur distant de l'objectif
-
-        ArrayList<int[]> file = new ArrayList<>();
-        int[][] dis = matricedistance();
-        dis[batiment.getPos()[0]][batiment.getPos()[1]]=0;
+        ArrayList<int[]> file = new ArrayList<int[]>();
         file.add(new int[]{batiment.getPos()[0],batiment.getPos()[1]});
 
-        while (file.size()>=1){
+        int[][] dis = matricedistance();
+        dis[batiment.getPos()[0]][batiment.getPos()[1]] = 0;
 
+        while (file.size() > 0) {
             int[] ele = file.get(0);
             int[][] voisin = attenantes(ele);
-            for(int[] v : voisin ){
-                if (dis[v[0]][v[1]] == -1){
-                    file.add(v);
-                    dis[v[0]][v[1]] = dis[ele[0]][ele[1]] + 1 ;
+            for (int i = 0; i < 4; i++) {
+
+                if (dis[voisin[i][0]][voisin[i][1]] == -1) {
+                    //System.out.println(dis[voisin[i][0]][voisin[i][1]] + ";" + dis[ele[0]][ele[1]]);
+                    file.add(voisin[i]);
+                    dis[voisin[i][0]][voisin[i][1]] = dis[ele[0]][ele[1]] + 1;
                 }
             }
+            //System.out.println("pot" + ele[0] + ";" + ele[1]);
             file.remove(0);
         }
 
@@ -133,24 +143,52 @@ public class AI {
         for (int i = 0; i < 10; i++) {
             mondeAfficher+= "\n";
             for (int j = 0; j < 10; j++) {
-                mondeAfficher += "| "+ dis[i][j];
+                mondeAfficher += "|"+ dis[i][j]+"\t";
+            }
+        }
+
+        System.out.println(mondeAfficher);
+        return dis;
+    }
+
+/*
+    public int[][] distance(){
+        ArrayList<int[]> file = new ArrayList<int[]>();
+        int[][] dis = matricedistance();
+        dis[batiment.getPos()[0]][batiment.getPos()[1]]=0;
+        file.add(new int[]{batiment.getPos()[0],batiment.getPos()[1]});
+
+        while (file.size() >= 1){
+
+        }
+
+
+        String mondeAfficher = "";
+        for (int i = 0; i < 10; i++) {
+            mondeAfficher+= "\n";
+            for (int j = 0; j < 10; j++) {
+                mondeAfficher += "|"+ dis[i][j]+"\t";
             }
         }
         System.out.println(mondeAfficher);
         return dis;
     }
+ */
 
     public void resolution() { // fonctionne comme une pile generer des action de deplacement
         int[][] dis = distance();
         ArrayList<int[]> chemin = new ArrayList<>();
         int[] tmp = new int[]{Rb.getPosition()[0],Rb.getPosition()[1]};
         boolean notin = false;
+
         while (notin == false) {
             for (int i = 0; i < chemin.size(); i++) {
                 if (chemin.get(i)[0] == tmp[0] && chemin.get(i)[1] == tmp[1]) {
                     notin = true;
                 }
             }
+            System.out.println("Boucle");
+/*
             // pour plus de visibiliter
             if (tmp[0]+1 < 10 && tmp[0]-1 >= 0 && tmp[1]+1 < 10 && tmp[1]-1 >=0) {
                 System.out.println("x: " + tmp[0] + " ; y :" + tmp[1]);
@@ -159,38 +197,41 @@ public class AI {
                 System.out.println("distance : " + tmp[0] + 1);
                 System.out.println("distance1 : " + dis[tmp[0] + 1][tmp[1]]);
                 System.out.println(dis[tmp[0]][tmp[1]]);
-                System.out.println("intance de : " + world.getMonde()[tmp[0] + 1][tmp[1]].toString() + "\n");
             }
-
+ */
             //pas pris en compte mais que celui ci
-            if ( tmp[0]+1 < 10 && dis[tmp[0]+1][tmp[1]] == dis[tmp[0]][tmp[1]]-1  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre ){ // deplacement vers le SUD
-                tmp = new int[]{tmp[0] + 1, tmp[1]};
-                chemin.add(tmp);
-                System.out.println("alledN");
-            }
-            //pas pris en compte
-            else if (tmp[0]-1 >= 0 && dis[tmp[0]-1][tmp[1]] == dis[tmp[0]][tmp[1]]-1 && world.getMonde()[tmp[0]-1][tmp[1]] instanceof Terre ){ // Deplacement vers le nord
-                tmp = new int[]{tmp[0] - 1, tmp[1]};
+            if (tmp[0]+1 < 10 && tmp[1]< 10 && (dis[tmp[0]-1][tmp[1]] == dis[tmp[0]][tmp[1]]-1)){ // deplacement vers le SUD
+                tmp[0] += 1;
                 chemin.add(tmp);
                 System.out.println("alledS");
             }
             //pas pris en compte
-            else if (tmp[1]+1 < 10 && dis[tmp[0]][tmp[1]+1] == dis[tmp[0]][tmp[1]]-1 && world.getMonde()[tmp[0]][tmp[1]+1] instanceof Terre ){ // Deplacement vers l'Est
-                tmp = new int[]{tmp[0], tmp[1]+1};
+            else if (tmp[0]-1 >= 0 && tmp[1]< 10 && dis[tmp[0]-1][tmp[1]] == dis[tmp[0]][tmp[1]]-1 ){ // Deplacement vers le nord
+                tmp[0] -= 1;
+                chemin.add(tmp);
+                System.out.println("alledN");
+            }
+            //pas pris en compte
+            else if (tmp[1]+1 < 10 && tmp[0]< 10 && dis[tmp[0]][tmp[1]+1] == dis[tmp[0]][tmp[1]]-1 ){ // Deplacement vers l'Est
+                tmp[1]+=1;
                 chemin.add(tmp);
                 System.out.println("alledE");
             }
             //pas pris en compte
-            else if (tmp[1]-1 >=0 && dis[tmp[0]][tmp[1]-1] == dis[tmp[0]][tmp[1]]-1  && world.getMonde()[tmp[0]][tmp[1]-1] instanceof Terre){ // Deplacement vers l'Est
-                tmp = new int[]{tmp[0], tmp[1]-1};
+            else if (tmp[1]-1 >=0 && tmp[0]< 10 && dis[tmp[0]][tmp[1]-1] == dis[tmp[0]][tmp[1]]-1 ){ // Deplacement vers l'Est
+                tmp[1]-=1;
                 chemin.add(tmp);
                 System.out.println("alledO");
             }
         }
+
         Collections.reverse(Arrays.asList(dis));
         Rb.setChemin(dis);
-    }
 
+        for (int i = 0; i < 10; i++) {
+            System.out.println(dis[0]);
+            }
+    }
 
     public Robot getRb() {
         return Rb;
