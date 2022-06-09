@@ -332,14 +332,14 @@ public class Monde {
         return pressence;
     }
 
-    public void distMine(){
+    public void distMine(Mine m, Robot r){
         int petit=100;
         for(int cptm=0;cptm<getMineList().length;cptm++){
             for(int i=0;i<getRoboList().length;i++) {
                 int x=0;
                 int y=0;
-                Mine m = mineList[cptm];
-                Robot r = roboList[i];
+                m = mineList[cptm];
+                r = roboList[i];
                 int mx=m.getPos()[0];
                 int rx=r.getPos()[0];
                 int my=m.getPos()[1];
