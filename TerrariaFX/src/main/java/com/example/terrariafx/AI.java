@@ -25,12 +25,12 @@ public class AI {
                 batiment = world.getMineList()[i];
                 for (int j = 0; j < world.getNbrRobot(); j++) {
                     if (world.getMineList()[i].getTypeMateriau() == world.getRoboList()[j].getTypeMateriau()) {
-                        Rb = world.getRoboList()[i];
-                        int newdistance = distance()[world.getRoboList()[i].getPos()[0]][world.getRoboList()[i].getPos()[1]];
+                        Rb = world.getRoboList()[j];
+                        int newdistance = distance()[world.getRoboList()[j].getPos()[0]][world.getRoboList()[j].getPos()[1]];
                         if (world.getMineList()[i].getTypeMateriau() == "Or") {
-                            listeOr[0][i] = newdistance;
+                            listeOr[0][j] = newdistance;
                         } else {
-                            listeOr[1][i] = newdistance;
+                            listeOr[1][j] = newdistance;
                         }
                     }
                 }
@@ -100,33 +100,47 @@ public class AI {
     }
 
     public int[][] matricedistance() {
-        int[][] matriceadj = new int[10][10];
-        for (int i=0 ; i < 9 ; i++){
-            for (int j=0 ; j < 9 ; j++){
-                matriceadj[i][j]= 0;
+            System.out.println("Matrice");
+            int[][] matriceadj = new int[10][10];
+            for (int i = 0; i <= 9; i++) {
+                for (int j = 0; j <= 9; j++) {
+                    matriceadj[i][j] = -1;
+                }
             }
-        }
-        return matriceadj;
+            return matriceadj;
     }
 
     public int[][] distance(){// calcul les distance de secteur pour chaque secteur distant de l'objectif
+
+        System.out.println("distance ()");
+
         ArrayList<int[]> file = new ArrayList<>();
         int[][] dis = matricedistance();
         dis[batiment.getPos()[0]][batiment.getPos()[1]]=0;
         file.add(new int[]{batiment.getPos()[0],batiment.getPos()[1]});
 
-        while (file.size()>1){
+        while (file.size()>=1){
+
             int[] ele = file.get(0);
             int[][] voisin = attenantes(ele);
             for(int[] v : voisin ){
-
-                if (dis[v[0]][v[1]] == 0){
+                System.out.println(v[0]+";"+v[1]);
+                if (dis[v[0]][v[1]] == -1){
                     file.add(v);
                     dis[v[0]][v[1]] = dis[ele[0]][ele[1]] + 1 ;
                 }
             }
             file.remove(0);
         }
+
+        String mondeAfficher = "";
+        for (int i = 0; i < 10; i++) {
+            mondeAfficher+= "\n";
+            for (int j = 0; j < 10; j++) {
+                mondeAfficher += " "+ dis[i][j];
+            }
+        }
+        System.out.println(mondeAfficher);
         return dis;
     }
 
@@ -142,13 +156,19 @@ public class AI {
                     notin = true;
                 }
             }
-            System.out.println("Rb coord : "+ Rb.getPosition()[0] +" , " +Rb.getPosition()[1]);
-            System.out.println("batiement coord : "+ batiment.getPos()[0] +" , " +batiment.getPos()[1]);
-            System.out.println("distance : "+tmp[0]+1);
-            System.out.println("distance1 : "+dis[tmp[0]+1][tmp[1]]);
-            System.out.println(dis[tmp[0]][tmp[1]]);
-            System.out.println("intance de : "+world.getMonde()[tmp[0]+1][tmp[1]].toString()+"\n");
-            System.out.println("x: "+tmp[0]+" ; y :"+tmp[1]);
+            /*
+            // pour plus de visibiliter
+            if (tmp[0]+1 < 10 && tmp[0]-1 >= 0 && tmp[1]+1 < 10 && tmp[1]-1 >=0) {
+                System.out.println("x: " + tmp[0] + " ; y :" + tmp[1]);
+                System.out.println("Rb coord : " + Rb.getPosition()[0] + " , " + Rb.getPosition()[1]);
+                System.out.println("batiement coord : " + batiment.getPos()[0] + " , " + batiment.getPos()[1]);
+                System.out.println("distance : " + tmp[0] + 1);
+                System.out.println("distance1 : " + dis[tmp[0] + 1][tmp[1]]);
+                System.out.println(dis[tmp[0]][tmp[1]]);
+                System.out.println("intance de : " + world.getMonde()[tmp[0] + 1][tmp[1]].toString() + "\n");
+            }
+
+             */
 
             //pas pris en compte mais que celui ci
             if ( tmp[0]+1 < 10 && dis[tmp[0]+1][tmp[1]] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre ){ // deplacement vers le SUD

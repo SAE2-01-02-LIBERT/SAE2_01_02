@@ -52,18 +52,7 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
-        autojeu.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                auto = true;
-            }
-        });
-        stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                auto = false;
-            }
-        });
+
 
         VBox gauche = new VBox();
         VBox droite = new VBox();
@@ -71,6 +60,15 @@ public class Jeu extends Stage{
 
         this.mondeGUI = new MondeGUI();
         gauche.getChildren().add(mondeGUI.setGrille());
+
+        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot));
+        /*stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                auto = false;
+            }
+        });
+         */
 
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
@@ -92,7 +90,7 @@ public class Jeu extends Stage{
         txt.add(new Text("  Deposer"));
         for (int i = 0; i <= 6; i++) {
             HBox cmd = new HBox();
-            cmd.getChildren().add(new ImageView(new Image("btn" + i + ".png")));
+            cmd.getChildren().add(new ImageView(new Image("btn" + i  + ".png")));
             cmd.getChildren().add(txt.get(i));
             boutons.getChildren().add(cmd);
         }
@@ -107,12 +105,15 @@ public class Jeu extends Stage{
         this.infogame.getChildren().add(info);
         this.infogame.getChildren().add(afficherRobot);
         this.infogame.getChildren().add(end);
+
         if(!auto) {
             this.infogame.getChildren().add(autojeu);
         }
-        else {
+        /*else {
             this.infogame.getChildren().add(stop);
         }
+
+         */
 
         infogame.setLayoutX(820);
         infogame.setLayoutY(60);
@@ -169,7 +170,7 @@ public class Jeu extends Stage{
     public VBox actualiserinfop(){
         Button end = new Button("Fin");
         Button autojeu = new Button("Auto-Jeu");
-        Button stop = new Button("Stop Auto");
+        //Button stop = new Button("Stop Auto");
         Stage temp = this;
         end.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -178,6 +179,7 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
+        /*
         autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot));
         stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -185,6 +187,9 @@ public class Jeu extends Stage{
                 auto = false;
             }
         });
+
+                 */
+
 
 
         this.infogame.getChildren().clear();
@@ -197,12 +202,14 @@ public class Jeu extends Stage{
         infogame.getChildren().add(info);
         infogame.getChildren().add(robot);
         this.infogame.getChildren().add(end);
-        if(!auto) {
+        /*if(!auto) {
             this.infogame.getChildren().add(autojeu);
         }
         else {
             this.infogame.getChildren().add(stop);
         }
+
+         */
         return infogame;
     }
     public void score() {

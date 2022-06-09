@@ -356,6 +356,7 @@ public class GestionEventActionRobot implements EventHandler<KeyEvent> {
                     }
                 } else if (Rbsect.equals("-")) {
                     if (monde.getNbrRobot() >= 6) {
+
                         rbnum = 5;
                     }
                 } else if (Rbsect.equals("è")) {

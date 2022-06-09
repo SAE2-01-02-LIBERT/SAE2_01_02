@@ -19,7 +19,7 @@ public class GestionEventAvtionRobotAI implements EventHandler  {
 
     private AI ia;
 
-    public GestionEventAvtionRobotAI(Monde monde, Jeu jeu, Text aR) {
+    public GestionEventAvtionRobotAI(Monde monde, Jeu jeu,Text aR) {
         this.monde=monde;
         this.jeu=jeu;
         this.afficherRobot=aR;
@@ -29,10 +29,11 @@ public class GestionEventAvtionRobotAI implements EventHandler  {
 
     @Override
     public void handle(Event event) {
+        System.out.println("lancement");
         if(event.getSource().toString().contains("Auto-Jeu")){
             this.ia = new AI(monde);
             this.roborIa = ia.getRb();
-            System.out.println("lancement");
+
         }
 
     }
