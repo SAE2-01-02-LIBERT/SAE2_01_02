@@ -80,19 +80,19 @@ public class AI {
 
     public int[][] attenantes(int[] coord) {
         int[][] res = new int[4][2];
-        if ((coord[0] - 1 >=0 && coord[0] - 1 < 10 && coord[1] >= 0 && coord[1] < 10 )&& world.getMonde()[coord[0]-1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]-1,coord[1])) {
+        if ((coord[0] - 1 >=0 && coord[0] - 1 < 10 && coord[1] >= 0 && coord[1] < 10 )&& world.getMonde()[coord[0]-1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]-1,coord[1])==false) {
             res[0][0] = coord[0]-1 ;
             res[0][1] = coord[1];
         }
-        if ((coord[0] + 1 >= 0 && coord[0] + 1 < 10 && coord[1] >= 0 && coord[1] < 10) && world.getMonde()[coord[0]+1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]+1,coord[1])) {
+        if ((coord[0] + 1 >= 0 && coord[0] + 1 < 10 && coord[1] >= 0 && coord[1] < 10) && world.getMonde()[coord[0]+1][coord[1]] instanceof Terre && world.veriflocal1(coord[0]+1,coord[1])==false) {
             res[1][0] = coord[0]+1;
             res[1][1] = coord[1];
         }
-        if ((coord[1] - 1 >= 0 && coord[1] - 1 < 10 && coord[0] >= 0 && coord[0] < 10) && world.getMonde()[coord[0]][coord[1]-1] instanceof Terre && world.veriflocal1(coord[0],coord[1]-1)) {
+        if ((coord[1] - 1 >= 0 && coord[1] - 1 < 10 && coord[0] >= 0 && coord[0] < 10) && world.getMonde()[coord[0]][coord[1]-1] instanceof Terre && world.veriflocal1(coord[0],coord[1]-1)==false) {
             res[2][0] = coord[0];
             res[2][1] = coord[1]-1;
         }
-        if ( (coord[1] + 1 >= 0 && coord[1] + 1 < 10 &&  coord[0] >= 0 && coord[0] < 10) && world.getMonde()[coord[0]][coord[1]+1] instanceof Terre && world.veriflocal1(coord[0],coord[1]+1)) {
+        if ( (coord[1] + 1 >= 0 && coord[1] + 1 < 10 &&  coord[0] >= 0 && coord[0] < 10) && world.getMonde()[coord[0]][coord[1]+1] instanceof Terre && world.veriflocal1(coord[0],coord[1]+1)==false) {
             res[3][0]= coord[0];
             res[3][1] = coord[1]+1;
         }
@@ -100,7 +100,6 @@ public class AI {
     }
 
     public int[][] matricedistance() {
-            System.out.println("Matrice");
             int[][] matriceadj = new int[10][10];
             for (int i = 0; i <= 9; i++) {
                 for (int j = 0; j <= 9; j++) {
@@ -112,8 +111,6 @@ public class AI {
 
     public int[][] distance(){// calcul les distance de secteur pour chaque secteur distant de l'objectif
 
-        System.out.println("distance ()");
-
         ArrayList<int[]> file = new ArrayList<>();
         int[][] dis = matricedistance();
         dis[batiment.getPos()[0]][batiment.getPos()[1]]=0;
@@ -124,7 +121,6 @@ public class AI {
             int[] ele = file.get(0);
             int[][] voisin = attenantes(ele);
             for(int[] v : voisin ){
-                System.out.println(v[0]+";"+v[1]);
                 if (dis[v[0]][v[1]] == -1){
                     file.add(v);
                     dis[v[0]][v[1]] = dis[ele[0]][ele[1]] + 1 ;
@@ -137,7 +133,7 @@ public class AI {
         for (int i = 0; i < 10; i++) {
             mondeAfficher+= "\n";
             for (int j = 0; j < 10; j++) {
-                mondeAfficher += " "+ dis[i][j];
+                mondeAfficher += "| "+ dis[i][j];
             }
         }
         System.out.println(mondeAfficher);
@@ -150,13 +146,11 @@ public class AI {
         int[] tmp = new int[]{Rb.getPosition()[0],Rb.getPosition()[1]};
         boolean notin = false;
         while (notin == false) {
-
             for (int i = 0; i < chemin.size(); i++) {
                 if (chemin.get(i)[0] == tmp[0] && chemin.get(i)[1] == tmp[1]) {
                     notin = true;
                 }
             }
-            /*
             // pour plus de visibiliter
             if (tmp[0]+1 < 10 && tmp[0]-1 >= 0 && tmp[1]+1 < 10 && tmp[1]-1 >=0) {
                 System.out.println("x: " + tmp[0] + " ; y :" + tmp[1]);
@@ -168,28 +162,26 @@ public class AI {
                 System.out.println("intance de : " + world.getMonde()[tmp[0] + 1][tmp[1]].toString() + "\n");
             }
 
-             */
-
             //pas pris en compte mais que celui ci
-            if ( tmp[0]+1 < 10 && dis[tmp[0]+1][tmp[1]] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre ){ // deplacement vers le SUD
+            if ( tmp[0]+1 < 10 && dis[tmp[0]+1][tmp[1]] == dis[tmp[0]][tmp[1]]-1  && world.getMonde()[tmp[0]+1][tmp[1]] instanceof Terre ){ // deplacement vers le SUD
                 tmp = new int[]{tmp[0] + 1, tmp[1]};
                 chemin.add(tmp);
                 System.out.println("alledN");
             }
             //pas pris en compte
-            else if (tmp[0]-1 >= 0 && dis[tmp[0]-1][tmp[1]] <= dis[tmp[0]][tmp[1]] && world.getMonde()[tmp[0]-1][tmp[1]] instanceof Terre ){ // Deplacement vers le nord
+            else if (tmp[0]-1 >= 0 && dis[tmp[0]-1][tmp[1]] == dis[tmp[0]][tmp[1]]-1 && world.getMonde()[tmp[0]-1][tmp[1]] instanceof Terre ){ // Deplacement vers le nord
                 tmp = new int[]{tmp[0] - 1, tmp[1]};
                 chemin.add(tmp);
                 System.out.println("alledS");
             }
             //pas pris en compte
-            else if (tmp[1]+1 < 10 && dis[tmp[0]][tmp[1]+1] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]][tmp[1]+1] instanceof Terre ){ // Deplacement vers l'Est
+            else if (tmp[1]+1 < 10 && dis[tmp[0]][tmp[1]+1] == dis[tmp[0]][tmp[1]]-1 && world.getMonde()[tmp[0]][tmp[1]+1] instanceof Terre ){ // Deplacement vers l'Est
                 tmp = new int[]{tmp[0], tmp[1]+1};
                 chemin.add(tmp);
                 System.out.println("alledE");
             }
             //pas pris en compte
-            else if (tmp[1]-1 >=0 && dis[tmp[0]][tmp[1]-1] <= dis[tmp[0]][tmp[1]]  && world.getMonde()[tmp[0]][tmp[1]-1] instanceof Terre){ // Deplacement vers l'Est
+            else if (tmp[1]-1 >=0 && dis[tmp[0]][tmp[1]-1] == dis[tmp[0]][tmp[1]]-1  && world.getMonde()[tmp[0]][tmp[1]-1] instanceof Terre){ // Deplacement vers l'Est
                 tmp = new int[]{tmp[0], tmp[1]-1};
                 chemin.add(tmp);
                 System.out.println("alledO");
@@ -198,7 +190,6 @@ public class AI {
         Collections.reverse(Arrays.asList(dis));
         Rb.setChemin(dis);
     }
-
 
 
     public Robot getRb() {
