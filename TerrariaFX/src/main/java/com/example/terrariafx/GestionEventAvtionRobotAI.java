@@ -11,31 +11,114 @@ public class GestionEventAvtionRobotAI implements EventHandler  {
 
     private  Jeu jeu;
     private  Monde monde; //redondance d'info
-
-    private Robot roborIa;
-
-    private String Rbsect;
+    private int Rbsect;
     private Text afficherRobot;
-
     private AI ia;
 
-    public GestionEventAvtionRobotAI(Monde monde, Jeu jeu,Text aR) {
+    public GestionEventAvtionRobotAI(Monde monde, Jeu jeu,Text aR,AI ia) {
         this.monde=monde;
         this.jeu=jeu;
         this.afficherRobot=aR;
-        System.out.println("alled");
-
+        this.ia=ia;
+        this.Rbsect = jeu.getRbch().getnum();
     }
-
     @Override
     public void handle(Event event) {
-        System.out.println("lancement");
-        if(event.getSource().toString().contains("Auto-Jeu")){
-            this.ia = new AI(monde);
-            this.roborIa = ia.getRb();
+        int action = ia.resolution();
 
+        if (event.getSource().toString().contains("Auto-Jeu")) {
+            try {
+                if (action == 0) {
+                    monde.actionRobot(jeu.getRbD(), "N");
+                    jeu.getMondeGUI().setGrille();
+
+                    jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                    jeu.getIa().setNwRb(jeu.getRbch());
+                    jeu.setTour();
+                    jeu.actualiserinfop();
+
+                    if (jeu.getMondeGUI().mineraisinRobot() == 0 && jeu.getMondeGUI().stockRestantinmine() == 0) {
+                        jeu.score();
+                    }
+                }
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (action == 1) {
+            try {
+                monde.actionRobot(jeu.getRbD(), "S");
+                jeu.getMondeGUI().setGrille();
+                jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                jeu.getIa().setNwRb(jeu.getRbch());
+
+                jeu.setTour();
+                jeu.actualiserinfop();
+                if (jeu.getMondeGUI().mineraisinRobot() == 0 && jeu.getMondeGUI().stockRestantinmine() == 0) {
+                    jeu.score();
+                }
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (action == 3) {
+            try {
+                monde.actionRobot(jeu.getRbD(), "O");
+                jeu.getMondeGUI().setGrille();
+                jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                jeu.getIa().setNwRb(jeu.getRbch());
+                jeu.setTour();
+                jeu.actualiserinfop();
+                if (jeu.getMondeGUI().mineraisinRobot() == 0 && jeu.getMondeGUI().stockRestantinmine() == 0) {
+                    jeu.score();
+                }
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (action == 2) {
+            try {
+                monde.actionRobot(jeu.getRbD(), "E");
+                jeu.getMondeGUI().setGrille();
+                jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                jeu.getIa().setNwRb(jeu.getRbch());
+                jeu.setTour();
+                jeu.actualiserinfop();
+                if (jeu.getMondeGUI().mineraisinRobot() == 0 && jeu.getMondeGUI().stockRestantinmine() == 0) {
+                    jeu.score();
+                }
+            }catch(ExecutionException e){
+                throw new RuntimeException(e);
+            }
         }
+        else if (action==4) {
+            try {
+                    monde.actionRobot(jeu.getRbD(), "R");
+                    jeu.getMondeGUI().setGrille();
+                    jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                    jeu.setTour();
+                    jeu.actualiserinfop();
+                    if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                        jeu.score();
+                    }
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        else if (action==5) {
+                try {
+                    monde.actionRobot(jeu.getRbD(), "D");
+                    jeu.getMondeGUI().setGrille();
+                    jeu.setRbD(monde.getRoboList()[Rbsect-1]);
+                    jeu.setTour();
+                    System.out.println(jeu.getTour());
+                    jeu.actualiserinfop();
+                    if(jeu.getMondeGUI().mineraisinRobot()==0 && jeu.getMondeGUI().stockRestantinmine()== 0 ){
+                        jeu.score();
+                    }
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+            }
 
     }
 
 }
+

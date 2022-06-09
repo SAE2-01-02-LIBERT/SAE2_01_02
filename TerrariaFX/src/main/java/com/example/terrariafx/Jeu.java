@@ -32,7 +32,7 @@ public class Jeu extends Stage{
     private int tour;
     private Text afficherRobot;
     private boolean auto;
-
+    private AI ia;
 
     public Jeu() throws ExecutionException {
         super();
@@ -52,16 +52,13 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
-
-
         VBox gauche = new VBox();
         VBox droite = new VBox();
         HBox hbox = new HBox();
-
         this.mondeGUI = new MondeGUI();
         gauche.getChildren().add(mondeGUI.setGrille());
+        this.ia = new AI(mondeGUI.getMonde());
 
-        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot));
         /*stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -72,14 +69,15 @@ public class Jeu extends Stage{
 
         hbox.getChildren().add(gauche);
         hbox.getChildren().add(droite);
+        this.rbch = mondeGUI.getWorld().getRoboList()[0];
+
+        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot,ia));
         hbox.setPadding(new Insets(30,10,0, 30));
         // ajouter des label || bouton pour les numero de secteur
 
         this.infogame = new VBox();
         VBox boutons = new VBox();
-
         boutons.setPadding(new Insets(0,20,15, 0));
-
         ArrayList<Text> txt = new ArrayList<Text>();
         txt.add(new Text("  Select robot"));
         txt.add(new Text("  Aller vers le Nord"));
@@ -95,7 +93,7 @@ public class Jeu extends Stage{
             boutons.getChildren().add(cmd);
         }
 
-        this.rbch = mondeGUI.getWorld().getRoboList()[0];
+
 
         Text info  = new Text(mondeGUI.getMonde().GetInfo(tour));
         afficherRobot = new Text("Robot selectionne : "+this.rbch.getnum());
@@ -105,15 +103,8 @@ public class Jeu extends Stage{
         this.infogame.getChildren().add(info);
         this.infogame.getChildren().add(afficherRobot);
         this.infogame.getChildren().add(end);
+        this.infogame.getChildren().add(autojeu);
 
-        if(!auto) {
-            this.infogame.getChildren().add(autojeu);
-        }
-        /*else {
-            this.infogame.getChildren().add(stop);
-        }
-
-         */
 
         infogame.setLayoutX(820);
         infogame.setLayoutY(60);
@@ -179,18 +170,16 @@ public class Jeu extends Stage{
                 temp.close();
             }
         });
+
+        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot,ia));
         /*
-        autojeu.setOnMouseClicked(new GestionEventAvtionRobotAI(mondeGUI.getMonde(),this,afficherRobot));
         stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 auto = false;
             }
         });
-
                  */
-
-
 
         this.infogame.getChildren().clear();
         ArrayList<Text> didac = didacticiel();
@@ -202,13 +191,12 @@ public class Jeu extends Stage{
         infogame.getChildren().add(info);
         infogame.getChildren().add(robot);
         this.infogame.getChildren().add(end);
-        /*if(!auto) {
-            this.infogame.getChildren().add(autojeu);
-        }
+        this.infogame.getChildren().add(autojeu);
+        /*
+
         else {
             this.infogame.getChildren().add(stop);
         }
-
          */
         return infogame;
     }
@@ -219,5 +207,12 @@ public class Jeu extends Stage{
         else{
             new FenetreScore((mondeGUI.stockinEntrepot("OR") + mondeGUI.stockinRobot("OR")), mondeGUI.Orestant(), (mondeGUI.stockinEntrepot("NI") + mondeGUI.stockinRobot("NI")), mondeGUI.Niestant(), tour);
         }
+    }
+
+    public Robot getRbch() {
+        return rbch;
+    }
+    public AI getIa() {
+        return ia;
     }
 }

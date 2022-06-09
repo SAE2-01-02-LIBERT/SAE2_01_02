@@ -8,6 +8,9 @@ public class Robot implements Localisable{
 
     private String typeMine; // Or ou nickel
     private int soute;
+
+
+
     private int capacitee;
     private int capaciteeExtraction;
     private int numero;
@@ -179,7 +182,9 @@ public class Robot implements Localisable{
     public void setChemin(int[][] chemin) {
         this.chemin = chemin;
     }
-
+    public int getCapacitee() {
+        return capacitee;
+    }
 }
 
 
